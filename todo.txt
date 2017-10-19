@@ -1,0 +1,1 @@
+ffmpeg -i inputfile.avi -r 1 -f image2 image-%3d.jpeg
