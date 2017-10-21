@@ -10,12 +10,16 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the (optional) video file")
 ap.add_argument("-w", "--width", type=int, default=640, help="width to resize the image")
 ap.add_argument("-p", "--points", type=int, default=32, help="points to detect in the image")
-ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
+ap.add_argument("-a", "--min_area", type=int, default=2000, help="minimum area size")
+ap.add_argument("-r", "--min_radius", type=int, default=20, help="minimum radius size")
 args = vars(ap.parse_args())
 
+if args.get("min_area", True):
+    min_area = args["min_area"]
 if args.get("points", True):
-    points_to_detect=args["points"]
-
+    points_to_detect = args["points"]
+if args.get("min_radius", True):
+    min_radius = args["min_radius"]
 # Initiate detector
 #keypoint_detector = cv2.ORB_create()
 #keypoint_detector = cv2.BRISK_create()
@@ -31,28 +35,16 @@ if not args.get("video", False):
 else:
     camera = cv2.VideoCapture(args["video"])
 
-
 # initialize the first frame in the video stream
 previousFrame = None
 frame_counter = 0
 frame_count_max = camera.get(cv2.CAP_PROP_FRAME_COUNT)
 
-# keep looping
 while True:
     # grab the current frame
     (grabbed, frame) = camera.read()
     text = "No Change"
     frame_counter += 1
-
-    # If the last frame is reached, reset the capture and the frame_counter
-    if frame_counter == frame_count_max:
-        print("resetting frame_counter from:", frame_count_max)
-        frame_counter = 0
-        #camera = cv2.set(cv2.CAP_PROP_POS_FRAMES, N)
-        camera = cv2.VideoCapture(args["video"])
-
-    print("frame_counter:", frame_counter)
-    print("frame_count_max:", frame_count_max)
 
     # if we are viewing a video and we did not grab a
 	# frame, then we have reached the end of the video
@@ -73,39 +65,50 @@ while True:
         previousFrame = gray
         continue
 
-    # compute the absolute difference between the current frame and
-    # first frame
+    # compute the absolute difference between the current and last
     frameDelta = cv2.absdiff(previousFrame, gray)
     thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
 
     # dilate the thresholded image to fill in holes, then find contours
     # on thresholded image
-    thresh = cv2.dilate(thresh, None, iterations=2)
+    thresh = cv2.dilate(thresh, None, iterations=0)
     (_, cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # loop over the contours
+    # loop over the contours > min_area and draw boxes
     for c in cnts:
         # if the contour is too small, ignore it
-        if cv2.contourArea(c) < args["min_area"]:
+        if cv2.contourArea(c) < min_area:
                 continue
 
-        # compute the bounding box for the contour, draw it on the frame,
-        # and update the text
+        # compute the bounding box for the contour, draw it
         (x, y, w, h) = cv2.boundingRect(c)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.rectangle(img0, (x, y), (x + w, y + h), (0, 255, 0), 2)
         text = "Change"
 
+    # get the largest and draw a circle if ? radius
+    if len(cnts) > 0:
+        # find the largest contour in the mask, then use it to compute
+        # the minimum enclosing circle and centroid
+        c = max(cnts, key=cv2.contourArea)
+        ((x, y), radius) = cv2.minEnclosingCircle(c)
+        M = cv2.moments(c)
+        #(cX, cY) = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+
+        # only draw if the radius meets a minimum size
+        if radius > min_radius:
+            cv2.circle(img0, (int(x), int(y)), int(radius), (0, 255, 255), 2)
+
     # draw the text and timestamp on the frame
-    cv2.putText(frame, "Room Status: {}".format(text), (10, 20),
+    cv2.putText(img0, "Status: {}".format(text), (10, 20),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-    cv2.putText(frame, datetime.datetime.now().strftime("%A %d %B %Y %I:%M:%S%p"),
-                (10, frame.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
+    cv2.putText(img0, datetime.datetime.now().strftime("%A %d %B %Y %I:%M:%S%p"),
+                (10, img0.shape[0] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 0, 255), 1)
 
     # display
-    cv2.imshow("Frame", img0)
-    cv2.imshow("Grey", gray)
+    #cv2.imshow("Grey", gray)
     cv2.imshow("Thresh", thresh)
-    cv2.imshow("Frame Delta", frameDelta)
+    #cv2.imshow("Frame Delta", frameDelta)
+    cv2.imshow("Frame", img0)
 
     previousFrame = gray
     # # find the keypoints
@@ -122,9 +125,16 @@ while True:
     # img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:64], None, flags=2)
     # plt.axis("off")
     # plt.imshow(cv2.cvtColor(img3, cv2.COLOR_BGR2RGB)),plt.show()
+
+    # If the last frame is reached, reset the capture and the frame_counter
+    if frame_counter == frame_count_max:
+        frame_counter = 0
+        # camera = cv2.set(cv2.CAP_PROP_POS_FRAMES, N)
+        camera = cv2.VideoCapture(args["video"])
+        previousFrame = None
+
     # L=81, R=83
     key = cv2.waitKey(1) & 0xFF
-    print("Key:",key)
     # if the 'q' key is pressed, stop the loop
     if key == ord("q"):
         break
