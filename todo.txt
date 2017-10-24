@@ -1,1 +1,18 @@
 ffmpeg -i inputfile.avi -r 1 -f image2 image-%3d.jpeg
+
+//In order to use GOTURN tracker, GOTURN architecture goturn.prototxt and goturn.caffemodel are > required to exist in root folder.
+//There are 2 ways to get caffemodel:
+//1 - Train you own GOTURN model using https://github.com/Auron-X/GOTURN_Training_Toolkit
+//2 - Download pretrained caffemodel from https://github.com/opencv/opencv_extra
+As the OpenCV Extra repo doesn't seem to contain any Goturn caffemodel, pretrained or otherwise.
+I downloaded it from http://cs.stanford.edu/people/davheld/public/GOTURN/trained_model/tracker.caffemodel instead.
+Is that is what is intended, or is it some other .caffemodel file one is supposed to use?
+
+find / -name "goturn.prototxt"
+https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking
+
+The above error seems to be caused by the mismatching of the goturn.prototxt file.
+I received the file from the following site.
+Https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking
+The following command merge four files into one.
+cat goturn.caffemodel.zip.001 goturn.caffemodel.zip.002 goturn.caffemodel.zip.003 goturn.caffemodel.zip.004 > goturn.caffemodel
