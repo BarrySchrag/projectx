@@ -1,4 +1,7 @@
 # python demo0.py -a ./media/0146.bmp -b ./media/0147.bmp
+# python demo0.py -a ./media/file1.jpg -b ./media/file2.jpg
+
+# Demonstrates finding correlating points in 2 seperate images which are similar but not identical
 
 import argparse
 import cv2
@@ -19,9 +22,9 @@ imutils.resize(img1, width=400)
 imutils.resize(img2, width=400)
 
 # Initiate
-#keypoint_detector = cv2.ORB_create()
-#keypoint_detector = cv2.BRISK_create()
-key_descriptors = cv2.AKAZE_create(cv2.AKAZE_DESCRIPTOR_MLDB_UPRIGHT)
+key_descriptors = cv2.ORB_create()
+#key_descriptors = cv2.BRISK_create()
+#key_descriptors = cv2.AKAZE_create(cv2.AKAZE_DESCRIPTOR_MLDB_UPRIGHT)
 
 # find the keypoints and descriptors
 kp1, des1 = key_descriptors.detectAndCompute(img1,None)

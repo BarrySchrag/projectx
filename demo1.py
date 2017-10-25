@@ -1,4 +1,16 @@
-# python demo1.py --video ./media/20171014_180142.mp4 --width 720
+# python demo1.py --video ./media/20171014_180142.mp4 --width 340
+# Demonstrates constraining the region of attention based on analysis of change in a dynamic scene
+#
+# Takes each a frame and frame+1
+# Applied intra-frame differencing and blob detection to find the contour region of the largest blob
+# The largest blob' bounding box is used as a que to capture the image area of the blob and send it to a feature tracker
+# The capture sent to the feature tracker is output in the small window #1-16
+# The feature tracker is represented by the blue bounding box,
+#    and tracks the region until the blob detector finds a larger region of change.
+# A max point of change found via the intra-frame difference method, and is represented by the red +
+# When the max point of change is inside the countour region of the largest intra-frame change
+#   then re-initialize the feature tracker to track this new region
+#
 
 import argparse
 import datetime
@@ -12,11 +24,11 @@ import numpy as np
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the (optional) video file")
-ap.add_argument("-w", "--width", type=int, default=640, help="width to resize the image")
+ap.add_argument("-w", "--width", type=int, default=480, help="width to resize the image")
 ap.add_argument("-p", "--points", type=int, default=32, help="points to detect in the image")
 ap.add_argument("-a", "--min_area", type=int, default=1000, help="minimum area size")
 ap.add_argument("-r", "--min_radius", type=int, default=2000, help="minimum radius size")
-ap.add_argument("-t", "--tracker_type", default="KCF", help="tracker type one of BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN")
+ap.add_argument("-t", "--feature_tracker_type", default="KCF", help="feature_tracker type one of: BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN")
 
 args = vars(ap.parse_args())
 
@@ -29,7 +41,7 @@ if args.get("min_radius", True):
 
 # Initialize Tracker
 tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
-tracker_type = args.get("tracker_type")
+tracker_type = args.get("feature_tracker_type")
 if tracker_type not in tracker_types:
     sys.exit()
 
@@ -119,39 +131,40 @@ while True:
         if cv2.contourArea(c) > tracked_area:
             tracked_area = cv2.contourArea(c)
 
-            # Initialize tracker once for each attention point with first frame and bounding box
+            # Initialize feature_tracker once for each attention point with first frame and bounding box
             if int(minor_ver) < 3:
-                tracker = cv2.Tracker_create(tracker_type)
+                feature_tracker = cv2.Tracker_create(tracker_type)
             else:
                 if tracker_type == 'BOOSTING':
-                    tracker = cv2.TrackerBoosting_create()
+                    feature_tracker = cv2.TrackerBoosting_create()
                 if tracker_type == 'MIL':
-                    tracker = cv2.TrackerMIL_create()
+                    feature_tracker = cv2.TrackerMIL_create()
                 if tracker_type == 'KCF':
-                    tracker = cv2.TrackerKCF_create()
+                    feature_tracker = cv2.TrackerKCF_create()
                 if tracker_type == 'TLD':
-                    tracker = cv2.TrackerTLD_create()
+                    feature_tracker = cv2.TrackerTLD_create()
                 if tracker_type == 'MEDIANFLOW':
-                    tracker = cv2.TrackerMedianFlow_create()
+                    feature_tracker = cv2.TrackerMedianFlow_create()
                 if tracker_type == 'GOTURN':
-                    tracker = cv2.TrackerGOTURN_create()
+                    feature_tracker = cv2.TrackerGOTURN_create()
 
-            bbox = cv2.boundingRect(c)
-
+            # Is the point of greatest change inside the largest polygon?
             if cv2.pointPolygonTest(c, maxLoc, False) > 0 and tracked_area < 8000:
-                ok = tracker.init(img0, bbox)
+                bbox = cv2.boundingRect(c)
+                ok = feature_tracker.init(img0, bbox)
                 captures += 1
 
-                imCrop = img0[int(bbox[1]):int(bbox[1] + bbox[3]), int(bbox[0]):int(bbox[0] + bbox[2])]
-                print ("Captures, tracked_area:",captures, tracked_area)
-
+                # Limit the number of windows drawn
                 if captures < 20:
+                    # Extract the bounding box from the original image
+                    imCrop = img0[int(bbox[1]):int(bbox[1] + bbox[3]), int(bbox[0]):int(bbox[0] + bbox[2])]
+                    print("Captures, tracked_area:", captures, tracked_area)
                     cv2.imshow(str(captures), imCrop)
                     cv2.moveWindow(str(captures), captures*96, 500);
 
-        if tracker:
-            # Update tracker
-            ok, bbox = tracker.update(img0)
+        if feature_tracker:
+            # send the next image to the feature_tracker to find the new bounding box
+            ok, bbox = feature_tracker.update(img0)
 
         # Calculate Frames per second (FPS)
         fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer);
@@ -167,7 +180,7 @@ while True:
             cv2.putText(img0, "Tracking failure detected", (5, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 0, 255), 2)
             tracked_area = min_area
 
-        # Display tracker type on frame
+        # Display feature_tracker type on frame
         cv2.putText(img0, tracker_type + " Tracker", (5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50, 170, 50), 2);
 
         # Display FPS on frame

@@ -5,7 +5,7 @@ import sys
 
 if __name__ == '__main__':
 
-    # Set up tracker.
+    # Set up feature_tracker.
     # Instead of MIL, you can also use
 
     tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     # Uncomment the line below to select a different bounding box
     bbox = cv2.selectROI(frame, False)
 
-    # Initialize tracker with first frame and bounding box
+    # Initialize feature_tracker with first frame and bounding box
     ok = tracker.init(frame, bbox)
 
     while True:
@@ -61,7 +61,7 @@ if __name__ == '__main__':
         # Start timer
         timer = cv2.getTickCount()
 
-        # Update tracker
+        # Update feature_tracker
         ok, bbox = tracker.update(frame)
 
         # Calculate Frames per second (FPS)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
             # Tracking failure
             cv2.putText(frame, "Tracking failure detected", (100, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 0, 255), 2)
 
-        # Display tracker type on frame
+        # Display feature_tracker type on frame
         cv2.putText(frame, tracker_type + " Tracker", (100, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50, 170, 50), 2);
 
         # Display FPS on frame
