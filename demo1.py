@@ -1,15 +1,15 @@
 # python demo1.py --video ./media/20171014_180142.mp4 --width 340
 # Demonstrates constraining the region of attention based on analysis of change in a dynamic scene
 #
-# Takes each a frame and frame+1
-# Applied intra-frame differencing and blob detection to find the contour region of the largest blob
-# The largest blob' bounding box is used as a que to capture the image area of the blob and send it to a feature tracker
-# The capture sent to the feature tracker is output in the small window #1-16
-# The feature tracker is represented by the blue bounding box,
-#    and tracks the region until the blob detector finds a larger region of change.
-# A max point of change found via the intra-frame difference method, and is represented by the red +
-# When the max point of change is inside the countour region of the largest intra-frame change
-#   then re-initialize the feature tracker to track this new region
+# DONE Takes each a frame and frame+1
+# DONE Applied intra-frame differencing and blob detection to find the contour region of the largest blob
+# DONE The largest blob' bounding box is used as a que to capture the image area of the blob and send it to a feature tracker
+# DONE The capture sent to the feature tracker is output in the small window #1-16
+# DONE The feature tracker is represented by the blue bounding box,
+# DONE   and tracks the region until the blob detector finds a larger region of change.
+# DONE A max point of change found via the intra-frame difference method, and is represented by the red +
+# DONE When the max point of change is inside the countour region of the largest intra-frame change
+# DONE   then re-initialize the feature tracker to track this new region
 #
 
 import argparse
@@ -24,7 +24,7 @@ import numpy as np
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the (optional) video file")
-ap.add_argument("-w", "--width", type=int, default=480, help="width to resize the image")
+ap.add_argument("-w", "--width", type=int, default=720, help="width to resize the image")
 ap.add_argument("-p", "--points", type=int, default=32, help="points to detect in the image")
 ap.add_argument("-a", "--min_area", type=int, default=1000, help="minimum area size")
 ap.add_argument("-r", "--min_radius", type=int, default=2000, help="minimum radius size")
@@ -198,10 +198,10 @@ while True:
         # draw the bbox for the contour
         cv2.rectangle(img0, (x, y), (x + w, y + h), (192, 192, 192), 1)
     # get the largest and draw a circle if ? radius
-    # if len(cnts) > 0:
+    # if len(contours) > 0:
     #     # find the largest contour in the mask, then use it to compute
     #     # the minimum enclosing circle and centroid
-    #     c = max(cnts, key=cv2.contourArea)
+    #     c = max(contours, key=cv2.contourArea)
     #     ((x, y), radius) = cv2.minEnclosingCircle(c)
     #     M = cv2.moments(c)
     #     #(cX, cY) = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))

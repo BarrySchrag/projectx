@@ -2,6 +2,7 @@
 # python demo0.py -a ./media/file1.jpg -b ./media/file2.jpg
 
 # Demonstrates finding correlating points in 2 seperate images which are similar but not identical
+# DONE Utilize a modern binary descriptor and a matcher, to find coorelated matching points in 2 images sorted by relevance.
 
 import argparse
 import cv2
