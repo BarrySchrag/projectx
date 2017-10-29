@@ -7,10 +7,11 @@
 # DONE The mean distance between each x,y point is determined
 # DONE The mean location in x,y is determined
 # DONE If the std deviation of the distances between points is lower than a threshold ~ 40
-# DONE   Capture the image at the x,y location + radius a multiple of the standard deviation ~2
+# DONE   Capture the image at the x,y location + radius a multiple of the standard deviation ~4
 # TODO Determine the extent of the region to track
-#        Evaluate blob detection in the region to determine if this satisfies the requirement
-# TODO Capture frame 1 blue circle, find it in frame 2 and get vectors of N common points.
+#      If the blob of motion representing the region of interest overlaps the point of greatest change then capture the real image 100x100
+#      Using the resulting capture, find frame1 in frame2
+#      Get vectors of N points which correlate as common points.
 #       Exclude the capture from further processing
 #       For each captured track:
 #           Perform a correlated point search in the next frame
@@ -25,7 +26,48 @@ import sys
 import numpy as np
 import time
 from collections import deque
+import copy
+from skimage.exposure import rescale_intensity
 
+
+def convolve(image, kernel):
+    # grab the spatial dimensions of the image, along with
+    # the spatial dimensions of the kernel
+    (iH, iW) = image.shape[:2]
+    (kH, kW) = kernel.shape[:2]
+
+    # allocate memory for the output image, taking care to
+    # "pad" the borders of the input image so the spatial
+    # size (i.e., width and height) are not reduced
+    pad = int((kW - 1) / 2)
+    image = cv2.copyMakeBorder(image, pad, pad, pad, pad, cv2.BORDER_REPLICATE)
+    output = np.zeros ( (iH, iW), dtype="float32" )
+
+    # loop over the input image, "sliding" the kernel across
+    # each (x, y)-coordinate from left-to-right and top to
+    # bottom
+    for y in np.arange ( pad, iH + pad ):
+        for x in np.arange ( pad, iW + pad ):
+            # extract the ROI of the image by extracting the
+            # *center* region of the current (x, y)-coordinates
+            # dimensions
+            roi = image[y - pad:y + pad + 1, x - pad:x + pad + 1]
+
+            # perform the actual convolution by taking the
+            # element-wise multiplicate between the ROI and
+            # the kernel, then summing the matrix
+            k = (roi * kernel).sum ()
+
+            # store the convolved value in the output (x,y)-
+            # coordinate of the output image
+            output[y - pad, x - pad] = k
+
+            # rescale the output image to be in the range [0, 255]
+            output = rescale_intensity ( output, in_range=(0, 255) )
+            output = (output * 255).astype ( "uint8" )
+
+            # return the output image
+            return output
 
 # Function to get each a,b of a series
 # Use: for a, b in pairwise(que):
@@ -49,6 +91,14 @@ points_to_detect = 0
 min_radius = 0
 stdev = 0
 count_of_concordant_points = 0
+output_to_gray = False
+frame_counter_start_frame = 0
+
+# construct a sharpening filter
+sharpen = np.array((
+	[1, 1, 1],
+	[1, -7, 1],
+	[1, 1, 1]), dtype="int")
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -63,6 +113,8 @@ ap.add_argument("-d", "--stdev_min", type=int, default=30,
                 help="minimum distance between x,y points to be a valid region of interest")
 ap.add_argument("-c", "--count_of_concordant_points", type=int, default=3,
                 help="minimum count of concordant x,y points to be considered valid region of interest")
+ap.add_argument("-f", "--frame_counter_start_frame", type=int, default=220,
+                help="delay for what frame to begin with")
 
 args = vars(ap.parse_args())
 
@@ -76,6 +128,8 @@ if args.get("stdev_min", True):
     stdev_min = args["stdev_min"]
 if args.get("count_of_concordant_points", True):
     count_of_concordant_points = args["count_of_concordant_points"]
+if args.get("frame_counter_start_frame", True):
+    frame_counter_start_frame = args["frame_counter_start_frame"]
 
 # initialize Tracker
 tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
@@ -99,10 +153,17 @@ frame_count_max = 0
 tracked_area = 0
 kernel = np.ones((5, 5), np.uint8)
 imCrop = None
+bbox = None
 que = deque()
 previousXY = None
 captures = 0
+captures_max = 30
 fps = 0
+scalar_stdev_in_xy = 5
+capture_window_x = 0
+captures_to_file = 0
+captures_to_file_max = 10
+capture_start = 21
 
 while True:
     # start timer
@@ -113,6 +174,9 @@ while True:
         print("Loop frame_counter:", frame_counter)
         previousFrame = None
         frame_counter = 0
+        captures = 0
+        capture_window_x = 0
+        captures_to_file = 0
 
         # if a video path was not supplied, grab the reference to the webcam
         if not args.get("video", False):
@@ -127,15 +191,20 @@ while True:
     (grabbed, frame) = camera.read()
     frame_counter += 1
 
+    # command line paramater to delay the start of processing
+    if frame_counter < frame_counter_start_frame:
+        continue
+
     # if we are viewing a video and we did not grab a
     # frame, then we have reached the end of the video
     if args.get("video") and not grabbed:
         break
     if args.get("width", True):
         width = args["width"]
-        img0 = imutils.resize(frame, width)
+        img = imutils.resize(frame, width)
     else:
-        img0 = frame
+        img = frame
+    img0 = img.copy()
 
     height, width, channels = img0.shape
 
@@ -204,26 +273,30 @@ while True:
     stdev_y = np.std(list_y)
 
     # find the stdev in x,y
-    stdev_in_xy = stdev_x + stdev_y / 2
+    stdev_in_xy = (stdev_x + stdev_y) / 2
 
-    # draw the mean center of the x,y points with some std dev diameter
+
+    # if the std deviation is small
     if stdev_in_xy < stdev_min:
-        cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy*2), (255, 0, 0), 2)
+        # draw the mean center of the x,y points
+        cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy),
+                   (255, 0, 0), 2)
         # cv2.drawMarker(img0, (int(vector_result[0]),int(vector_result[1])), (0, 255, 0), cv2.MARKER_CROSS, 10, 1)
 
-    # close the holes
-    thresh = cv2.dilate(thresh, kernel, iterations=1)
+        # close the holes
+        thresh = cv2.dilate(thresh, kernel, iterations=1)
+        # roi = thresh[int(x - 20):int(x + 20), int(y - 20):int(y + 20)]
+        roi = cv2.circle(np.zeros(thresh.shape, thresh.dtype),
+                         (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy),
+                         255, -1 )
+        thresh = cv2.bitwise_and(thresh, thresh, mask=roi)
 
-    #roi = thresh[int(x - 20):int(x + 20), int(y - 20):int(y + 20)]
-    roi = cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy*4), (255, 0, 0), 2)
-    mask = np.zeros (roi.shape, np.uint8)
-    grayMask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
-    ret, b_mask = cv2.threshold(gray, 127, 255, 0)
-    thresh = cv2.bitwise_and(thresh, thresh, mask=b_mask)
+        # find contours - returns image, contours, hierarchy
+        (_, contours, hierarchy) = cv2.findContours(thresh, cv2.RETR_EXTERNAL,
+                                                    cv2.CHAIN_APPROX_SIMPLE, None, None)
+    else:
+        thresh = np.zeros(thresh.shape, thresh.dtype)
 
-    # find contours - returns image, contours, hierarchy
-    (_, contours, hierarchy) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE,
-                                                None, None)
     if len(contours) > 0:
         # find the largest contour in the mask, then compute
         c = max(contours, key=cv2.contourArea)
@@ -231,10 +304,27 @@ while True:
         if cv2.pointPolygonTest(c, maxLoc, False) > 0:
             bbox = cv2.boundingRect(c)
             # Extract the bounding box from the original image
-            imCrop = img0[int(bbox[1]):int(bbox[1] + bbox[3]), int(bbox[0]):int(bbox[0] + bbox[2])]
+            imCrop = img[int(bbox[1]):int(bbox[1] + bbox[3]), int(bbox[0]):int(bbox[0] + bbox[2])]
+            captures += 1
+            if captures < captures_max:
+                cv2.imshow(str(captures), imCrop)
+                cv2.moveWindow(str(captures), capture_window_x, (height+10)*2)
+                capture_window_x += int(imCrop.shape[1])+10
 
-            cv2.imshow("Captured", imCrop)
-            cv2.moveWindow("Captured", height, width)
+    if captures > capture_start and captures_to_file < captures_to_file_max:
+        imCrop = img[int ( bbox[1] ):int ( bbox[1] + 100 ), int ( bbox[0] ):int ( bbox[0] + 100 )]
+        if output_to_gray:
+            grayCrop = cv2.cvtColor ( imCrop, cv2.COLOR_BGR2GRAY )
+            grayCrop = cv2.filter2D ( grayCrop, -1, sharpen )
+            cv2.imwrite ( "./media/frame-" + str(frame_counter) + ".jpg", grayCrop )
+            cv2.imshow ( str ( captures_to_file ), grayCrop )
+
+        else:
+            cv2.imwrite ( "./media/frame-" + str ( frame_counter ) + ".jpg", imCrop )
+            cv2.imshow ( str ( captures_to_file ), imCrop )
+
+        cv2.moveWindow ( "Capture:" + str ( captures_to_file ), 100*captures_to_file, ((height + 10) * 2 ) + 50)
+        captures_to_file += 1
     #     # initialize feature_tracker once for each attention point with first frame and bounding box
     #     if int(minor_ver) < 3:
     #         feature_tracker = cv2.Tracker_create(tracker_type)
@@ -300,7 +390,7 @@ while True:
     # time.sleep(.25 - (1.0 / cv2.getTickFrequency() / (cv2.getTickCount() - timer)))
 
     # output result
-    print("fps, num_pts,x,y,mean, vector_result ", fps, num_pts,
+    print("fps, frame#, num_pts,x,y,mean, vector_result ", fps, frame_counter, num_pts,
           stdev_x, stdev_y, stdev_in_xy, vector_result)
 
     # calculate Frames per second (FPS)
