@@ -2,106 +2,167 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0001.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0002.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0003.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0004.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0005.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0006.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0007.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0008.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0009.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0010.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0011.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0012.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0013.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0014.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0015.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0016.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0017.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0018.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0019.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0020.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0021.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0022.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0023.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0024.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0025.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0026.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0027.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0028.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0029.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0030.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0031.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0032.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0033.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0034.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0035.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0036.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0037.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0038.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0039.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0040.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0041.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0042.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0043.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0044.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0045.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0046.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0047.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0048.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0049.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0050.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0051.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0052.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0053.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0054.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0055.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0056.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0057.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0058.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0059.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0060.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0061.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0062.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0063.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0064.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0065.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0066.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0067.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0068.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0069.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0070.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0071.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0072.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0073.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0074.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0075.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0076.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0077.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0078.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0079.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0080.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0081.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0082.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0083.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0084.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0085.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0086.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0087.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0088.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0089.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0090.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0091.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0092.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0093.bmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0094.bmp" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo4.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/geometry.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0095.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0096.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0097.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0098.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0099.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0100.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0101.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0102.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0103.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0104.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0105.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0106.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0107.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0108.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0109.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0110.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0111.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0112.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0113.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0114.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0115.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0116.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0117.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0118.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0119.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0120.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0121.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0122.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0123.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0124.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0125.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0126.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0127.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0128.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0129.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0130.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0131.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0132.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0133.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0134.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0135.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0136.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0137.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0138.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0139.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0140.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0141.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0142.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0143.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0144.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0145.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0148.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0149.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0150.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0151.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0152.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0153.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0154.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0155.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0156.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0157.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0158.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0159.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0160.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0161.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0162.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0163.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0164.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0165.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0166.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0167.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0168.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0169.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0170.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0171.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0172.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0173.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0174.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0175.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0176.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0177.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0178.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0179.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0180.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0181.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0182.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0183.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0184.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0185.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0186.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0187.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0188.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0189.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0190.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0191.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0192.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0193.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0194.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0195.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0196.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0197.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0198.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0199.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0200.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0201.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0202.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0203.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0204.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0205.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0206.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0207.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0208.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0209.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0210.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0211.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0212.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0213.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0214.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0215.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0216.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0217.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0218.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/0219.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-101.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-102.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-103.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-104.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-105.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-106.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-107.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-108.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-109.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-110.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-111.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-112.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3738.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3739.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3740.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3741.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3742.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3743.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3744.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3745.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3746.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-3747.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-426.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-427.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-428.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-429.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-430.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-431.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-432.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-433.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-434.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/media/frame-435.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo0.py" afterPath="$PROJECT_DIR$/demo0.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo0.sh" afterPath="$PROJECT_DIR$/demo0.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo1.py" afterPath="$PROJECT_DIR$/demo1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo2.py" afterPath="$PROJECT_DIR$/demo2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo3.py" afterPath="$PROJECT_DIR$/demo3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/object_tracking.py" afterPath="$PROJECT_DIR$/samples/object_tracking.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo.txt" afterPath="$PROJECT_DIR$/todo.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -112,21 +173,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="demo0.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo0.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="demo0.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="25" column="68" lean-forward="false" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+            <state relative-caret-position="0">
+              <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="57" />
               <folding>
                 <element signature="e#344#359#0" expanded="true" />
               </folding>
@@ -137,9 +188,11 @@
       <file leaf-file-name="demo1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-              <folding />
+            <state relative-caret-position="2772">
+              <caret line="159" column="107" lean-forward="false" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="107" />
+              <folding>
+                <element signature="e#958#973#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,8 +200,8 @@
       <file leaf-file-name="demo2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+            <state relative-caret-position="108">
+              <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
               <folding>
                 <element signature="e#1235#1250#0" expanded="true" />
               </folding>
@@ -156,23 +209,75 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo3.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="demo3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="325" column="38" lean-forward="false" selection-start-line="325" selection-start-column="38" selection-end-line="325" selection-end-column="38" />
+            <state relative-caret-position="90">
+              <caret line="5" column="83" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="83" />
               <folding>
-                <element signature="e#1434#1449#0" expanded="true" />
+                <element signature="e#1898#1913#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="convenience.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/site-packages/imutils/convenience.py">
+      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="155">
+              <caret line="306" column="7" lean-forward="true" selection-start-line="306" selection-start-column="7" selection-end-line="306" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo4.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/demo4.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="277" column="37" lean-forward="true" selection-start-line="277" selection-start-column="37" selection-end-line="277" selection-end-column="37" />
+              <folding>
+                <element signature="e#1004#1019#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="geometry.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/geometry.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="builtins.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/826386008/builtins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51102">
+              <caret line="2839" column="8" lean-forward="false" selection-start-line="2839" selection-start-column="8" selection-end-line="2839" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todo.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -189,36 +294,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>erode</find>
-      <find>data1</find>
-      <find>previousFrame</find>
-      <find>alt</find>
-      <find>maxLoc</find>
-      <find>tracked_region</find>
-      <find>failure</find>
-      <find>init</find>
-      <find>5</find>
-      <find>mean_distance_between_points</find>
-      <find>distance_between_points</find>
-      <find>dist_between_point_pair</find>
-      <find>vector_result</find>
-      <find>max</find>
-      <find>camera</find>
-      <find>mean_x</find>
-      <find>,</find>
-      <find>height</find>
-      <find>[1]</find>
-      <find>thresh</find>
-      <find>stdev_min</find>
-      <find>width</find>
-      <find>imCrop</find>
-      <find>captures_to_file_max</find>
-      <find>_brisk</find>
-      <find>count_of_concordant_points</find>
-      <find>-h</find>
-      <find>sharpen</find>
+      <find>detector</find>
       <find>move</find>
+      <find>count_of_concordant_points</find>
+      <find>kernel</find>
+      <find>capture_start</find>
+      <find>stdev_min</find>
+      <find>thresh</find>
+      <find>previousFrameThresh</find>
+      <find>tracker_types</find>
+      <find>gray</find>
+      <find>fps</find>
       <find>captures</find>
+      <find>-h</find>
+      <find>key</find>
+      <find>p1b1</find>
+      <find>tracker_type</find>
+      <find>feature_tracker4</find>
+      <find>video_file</find>
+      <find>prev</find>
+      <find>init</find>
+      <find>bbox2</find>
+      <find>img</find>
+      <find>feature_tracker2</find>
+      <find>nrange</find>
+      <find>range</find>
+      <find>track_found_ok</find>
+      <find>feature_tracker</find>
+      <find>scalar_stdev_in_xy</find>
+      <find>trackers</find>
+      <find>30</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -241,20 +346,23 @@
         <option value="$PROJECT_DIR$/samples/face_detection_video/video_template.py" />
         <option value="$PROJECT_DIR$/samples/object_tracking.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt" />
-        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/goturn.prototxt" />
         <option value="$PROJECT_DIR$/demo2.py" />
         <option value="$PROJECT_DIR$/demo1.py" />
-        <option value="$PROJECT_DIR$/demo0.py" />
         <option value="$PROJECT_DIR$/demo0.sh" />
+        <option value="$PROJECT_DIR$/demo0.py" />
         <option value="$PROJECT_DIR$/demo3.py" />
+        <option value="$PROJECT_DIR$/todo.txt" />
+        <option value="$PROJECT_DIR$/geometrypy.py" />
+        <option value="$PROJECT_DIR$/demo4.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="29" />
-    <option name="width" value="1450" />
-    <option name="height" value="1024" />
+    <option name="x" value="478" />
+    <option name="y" value="27" />
+    <option name="width" value="1338" />
+    <option name="height" value="1009" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -274,6 +382,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -301,7 +410,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,7 +434,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo3">
+  <component name="RunManager" selected="Python.demo4">
     <configuration name="demo0" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -395,7 +503,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="version" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="demo4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -407,25 +515,25 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/version.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo4.py" />
+      <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.demo1" />
-      <item index="1" class="java.lang.String" itemvalue="Python.version" />
-      <item index="2" class="java.lang.String" itemvalue="Python.demo2" />
-      <item index="3" class="java.lang.String" itemvalue="Python.demo0" />
-      <item index="4" class="java.lang.String" itemvalue="Python.demo3" />
+      <item index="1" class="java.lang.String" itemvalue="Python.demo2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.demo0" />
+      <item index="3" class="java.lang.String" itemvalue="Python.demo3" />
+      <item index="4" class="java.lang.String" itemvalue="Python.demo4" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.demo3" />
-        <item index="1" class="java.lang.String" itemvalue="Python.demo0" />
-        <item index="2" class="java.lang.String" itemvalue="Python.demo2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.demo1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.version" />
+        <item index="0" class="java.lang.String" itemvalue="Python.demo4" />
+        <item index="1" class="java.lang.String" itemvalue="Python.demo3" />
+        <item index="2" class="java.lang.String" itemvalue="Python.demo1" />
+        <item index="3" class="java.lang.String" itemvalue="Python.demo2" />
+        <item index="4" class="java.lang.String" itemvalue="Python.demo0" />
       </list>
     </recent_temporary>
   </component>
@@ -474,25 +582,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="29" width="1450" height="1024" extended-state="0" />
+    <frame x="478" y="27" width="1338" height="1009" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18051577" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1876947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26771653" sideWeight="0.47058824" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32516703" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3830735" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3250283" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38278595" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17706013" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34428087" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31737193" sideWeight="0.50811356" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3171008" sideWeight="0.50811356" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -506,6 +615,9 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -513,18 +625,109 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="90" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="bbox2" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/demo0.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo0.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="57" />
+          <folding>
+            <element signature="e#344#359#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2772">
+          <caret line="159" column="107" lean-forward="true" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="107" />
+          <folding>
+            <element signature="e#958#973#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding>
+            <element signature="e#1235#1250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6228">
+          <caret line="354" column="59" lean-forward="true" selection-start-line="352" selection-start-column="17" selection-end-line="354" selection-end-column="59" />
+          <folding>
+            <element signature="e#1898#1913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5544">
+          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/826386008/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51102">
+          <caret line="2839" column="8" lean-forward="false" selection-start-line="2839" selection-start-column="8" selection-end-line="2839" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6714">
+          <caret line="381" column="32" lean-forward="false" selection-start-line="381" selection-start-column="32" selection-end-line="381" selection-end-column="32" />
+          <folding>
+            <element signature="e#1004#1019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/version.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -540,7 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -558,9 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1332">
           <caret line="75" column="13" lean-forward="true" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -568,7 +767,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-          <folding />
+          <folding>
+            <element signature="e#958#973#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -576,9 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -604,9 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -632,9 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -652,9 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -662,9 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -696,9 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -710,19 +893,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/goturn.prototxt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,17 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -748,17 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
-          <folding>
-            <element signature="e#1235#1250#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,28 +924,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="25" column="68" lean-forward="false" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="57" />
           <folding>
             <element signature="e#344#359#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/demo2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding>
+            <element signature="e#1235#1250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/demo1.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2772">
+          <caret line="159" column="107" lean-forward="false" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="107" />
+          <folding>
+            <element signature="e#958#973#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/826386008/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51102">
+          <caret line="2839" column="8" lean-forward="false" selection-start-line="2839" selection-start-column="8" selection-end-line="2839" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geometry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="306" column="7" lean-forward="true" selection-start-line="306" selection-start-column="7" selection-end-line="306" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="325" column="38" lean-forward="false" selection-start-line="325" selection-start-column="38" selection-end-line="325" selection-end-column="38" />
+        <state relative-caret-position="90">
+          <caret line="5" column="83" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="83" />
           <folding>
-            <element signature="e#1434#1449#0" expanded="true" />
+            <element signature="e#1898#1913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="277" column="37" lean-forward="true" selection-start-line="277" selection-start-column="37" selection-end-line="277" selection-end-column="37" />
+          <folding>
+            <element signature="e#1004#1019#0" expanded="true" />
           </folding>
         </state>
       </provider>

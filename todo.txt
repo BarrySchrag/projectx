@@ -1,18 +1,30 @@
-ffmpeg -i inputfile.avi -r 1 -f image2 image-%3d.jpeg
+Plan to categorize any motion through analysis of sub-atomic action sequences
+    From a video stream, pick out one or more region candidates containing significant change
+Tag and track regions separately, not switching between them
+    Detect the external contour which encompasses the region of change
+    Capture a bounding box of this contour, and show it on screen
+            Extract the motion vectors contained in the matched region in the bounding box between frames
+                Keep a between frame history of the set of vectors related to the object
+                Calculate statistics for these vectors over time
+                Partition the stream of vectors into time series groups based on:
+                    When the statistics are outside the norm, become reversed or have extreme deviations
+                Reformat time series grouped vectors into histograms (one for angle and magnitude)
+            Extract attributes which are within the boundary including but not limited to:
+                Luminance
+                Texture Size, Frequency and Orientation
+                Scale (extent of the object)
+            Concurrently determine if there is any time frequency component associated with the attributes including motion vectors
 
-//In order to use GOTURN tracker, GOTURN architecture goturn.prototxt and goturn.caffemodel are > required to exist in root folder.
-//There are 2 ways to get caffemodel:
-//1 - Train you own GOTURN model using https://github.com/Auron-X/GOTURN_Training_Toolkit
-//2 - Download pretrained caffemodel from https://github.com/opencv/opencv_extra
-As the OpenCV Extra repo doesn't seem to contain any Goturn caffemodel, pretrained or otherwise.
-I downloaded it from http://cs.stanford.edu/people/davheld/public/GOTURN/trained_model/tracker.caffemodel instead.
-Is that is what is intended, or is it some other .caffemodel file one is supposed to use?
+Build a Data Set
+    Design requirements for a data set of basic actions, create training data, label
+Execute:
+    Feed the histograms to a Time Series NN, in with the goal to predict the next partitioned set of the sequence
+Analyze Result
+    After training, analyze with PCA, NMPI, extract hierarchy, determine relevance to predictability
+    Run on the AVA dataset.
 
-find / -name "goturn.prototxt"
-https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking
-
-The above error seems to be caused by the mismatching of the goturn.prototxt file.
-I received the file from the following site.
-Https://github.com/opencv/opencv_extra/tree/c4219d5eb3105ed8e634278fad312a1a8d2c182d/testdata/tracking
-The following command merge four files into one.
-cat goturn.caffemodel.zip.001 goturn.caffemodel.zip.002 goturn.caffemodel.zip.003 goturn.caffemodel.zip.004 > goturn.caffemodel
+Other info:
+To extract .mp4 from youtube
+    youtube-dl -f mp4 https://www.youtube.com/watch?v=f9clDwjYX-Y
+To extract .jpg from .avi
+    ffmpeg -i inputfile.avi -r 1 -f image2 image-%3d.jpeg

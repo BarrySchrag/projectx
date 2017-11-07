@@ -63,7 +63,7 @@ try:
     cv2.imshow ( "img_orb", img_orb )
     cv2.moveWindow ( "img_orb", img_orb.shape[1]*0, vertical_offset)
 except Exception as e:
-    print("Error: " + str(e))
+    print("ORB Error: " + str(e))
 
 try:
     # Brisk the keypoints and descriptors
@@ -87,7 +87,7 @@ try:
     cv2.imshow ( "img_brisk", img_brisk )
     cv2.moveWindow ( "img_brisk", img_brisk.shape[1]*1, vertical_offset)
 except Exception as e:
-    print("Error: " + str(e))
+    print("BRISK Error: " + str(e))
 
 try:
     # Brisk the keypoints and descriptors
@@ -111,7 +111,7 @@ try:
     cv2.imshow ( "img_Akaze", img_Akaze )
     cv2.moveWindow ( "img_Akaze", img_Akaze.shape[1]*2, vertical_offset)
 except Exception as e:
-    print("Error: " + str(e))
+    print("AKAZE Error: " + str(e))
 
 try:
     # Initiate SIFT detector
@@ -121,32 +121,43 @@ try:
     kp1, des1 = sift.detectAndCompute(img1,None)
     kp2, des2 = sift.detectAndCompute(img2,None)
     # FLANN parameters
-    FLANN_INDEX_KDTREE = 1
-    index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
-    search_params = dict(checks=50)   # or pass empty dictionary
-    flann = cv2.FlannBasedMatcher(index_params,search_params)
-    matches = flann.knnMatch(des1,des2,k=2)
+    # FLANN_INDEX_KDTREE = 1
+    # index_params = dict(algorithm = FLANN_INDEX_KDTREE, trees = 5)
+    # search_params = dict(checks=50)   # or pass empty dictionary
+    # flann = cv2.FlannBasedMatcher(index_params,search_params)
+    # matches = flann.knnMatch(des1,des2,k=2)
+    #
+    # # Need to draw only good matches, so create a mask
+    # matchesMask = [[0,0] for i in range(len(matches))]
+    # # ratio test as per Lowe's paper
+    # for i,(m,n) in enumerate(matches):
+    #     if use_ratio:
+    #         if m.distance < ratio_test_value*n.distance:
+    #             matchesMask[i]=[1,0]
+    #     else:
+    #         matchesMask[i]=[1,0]
+    #
+    # draw_params = dict(matchColor = (0,255,0),
+    #                    singlePointColor = (255,0,0),
+    #                    matchesMask = matchesMask,
+    #                    flags = 0)
+    # img_sift = cv2.drawMatchesKnn(img1,kp1,img2,kp2,matches,None, **draw_params)
+    bf = cv2.BFMatcher ()
+    matches = bf.knnMatch ( des1, des2, k=2 )
+    # Apply ratio test
+    good = []
+    for m, n in matches:
+        if m.distance < 0.75 * n.distance:
+            good.append ( [m] )
+    # cv2.drawMatchesKnn expects list of lists as matches.
+    img_sift = cv2.drawMatchesKnn ( img1, kp1, img2, kp2, good, None)
 
-    # Need to draw only good matches, so create a mask
-    matchesMask = [[0,0] for i in range(len(matches))]
-    # ratio test as per Lowe's paper
-    for i,(m,n) in enumerate(matches):
-        if use_ratio:
-            if m.distance < ratio_test_value*n.distance:
-                matchesMask[i]=[1,0]
-        else:
-            matchesMask[i]=[1,0]
-
-    draw_params = dict(matchColor = (0,255,0),
-                       singlePointColor = (255,0,0),
-                       matchesMask = matchesMask,
-                       flags = 0)
-    img_sift = cv2.drawMatchesKnn(img1,kp1,img2,kp2,matches,None, **draw_params)
     #plt.imshow(img3,),plt.show()
     cv2.imshow ( "SIFT", img_sift )
     cv2.moveWindow ( "SIFT", img_sift.shape[1]*3, vertical_offset)
+
 except Exception as e:
-    print("Error: " + str(e))
+    print("SIFT Error: " + str(e))
 
 try:
     #SURF
@@ -181,7 +192,7 @@ try:
     cv2.imshow ( "SURF", img_surf )
     cv2.moveWindow ( "SURF", img_surf.shape[1]*4, vertical_offset)
 except Exception as e:
-    print("Error: " + str(e))
+    print("SURF Error: " + str(e))
 
 
 while True:

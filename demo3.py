@@ -1,4 +1,12 @@
-# python demo3.py --video ./media/20171014_180142.mp4 --width 340
+# Moving camera female subject outdoor, hand wave
+# python demo3.py --video ./media/20171014_180142.mp4 --width 640
+# Static camera male subject outdoor, ball drop black
+# python demo3.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640
+# Static camera male subject outdoor, ball drop multiple types
+# python demo3.py --video ./media/Ball_Bounce_Reference-sKJegbjS4N8.mp4 --width 640
+# Static camera poplar subject outdoor, wind
+# python demo3.py --video ./media/The_sky..._The_wind..._A_poplar_tree-f9clDwjYX-Y.mp4 --width 640
+
 # Demonstrates capturing a region which has motion relevancy based on analysis of change in a dynamic scene
 #
 # DONE Takes each a frameN and frameN+1
@@ -113,7 +121,7 @@ ap.add_argument("-d", "--stdev_min", type=int, default=30,
                 help="minimum distance between x,y points to be a valid region of interest")
 ap.add_argument("-c", "--count_of_concordant_points", type=int, default=3,
                 help="minimum count of concordant x,y points to be considered valid region of interest")
-ap.add_argument("-f", "--frame_counter_start_frame", type=int, default=220,
+ap.add_argument("-f", "--frame_counter_start_frame", type=int, default=5,
                 help="delay for what frame to begin with")
 
 args = vars(ap.parse_args())
@@ -137,6 +145,32 @@ tracker_type = args.get("feature_tracker_type")
 if tracker_type not in tracker_types:
     sys.exit()
 
+# Setup SimpleBlobDetector parameters.
+params = cv2.SimpleBlobDetector_Params ()
+
+# Change thresholds
+params.minThreshold = 25;
+params.maxThreshold = 255;
+
+# Filter by Area.
+params.filterByArea = True
+params.minArea = 500
+
+# Filter by Circularity
+params.filterByCircularity = False
+params.minCircularity = 0.1
+
+# Filter by Convexity
+params.filterByConvexity = False
+params.minConvexity = 0.87
+
+# Filter by Inertia
+params.filterByInertia = False
+params.minInertiaRatio = 0.01
+
+# Create a detector with the parameters
+detector = cv2.SimpleBlobDetector_create (params)
+
 # initiate detector
 # keypoint_detector = cv2.ORB_create()
 # keypoint_detector = cv2.BRISK_create()
@@ -157,13 +191,13 @@ bbox = None
 que = deque()
 previousXY = None
 captures = 0
-captures_max = 30
+captures_max = 18
 fps = 0
 scalar_stdev_in_xy = 5
 capture_window_x = 0
 captures_to_file = 0
-captures_to_file_max = 10
-capture_start = 21
+captures_to_file_max = 0 # 20
+capture_start = 1
 
 while True:
     # start timer
@@ -208,8 +242,16 @@ while True:
 
     height, width, channels = img0.shape
 
+    # Detect blobs.
+    keypoints = None # detector.detect (img0)
+
+    # Draw detected blobs as red circles.
+    # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
+    #im_with_keypoints = cv2.drawKeypoints (img0, keypoints, np.array ( [] ), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS )
+
     gray = cv2.cvtColor(img0, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (21, 21), 0)  # or 15..17
+    #gray = cv2.bilateralFilter ( gray, 11, 21, 21 )
+    gray = cv2.GaussianBlur(gray, (11, 11), 0)  # or 7,9,11,13,15,17,21
 
     # if the first frame is None, initialize it
     if previousFrame is None:
@@ -304,9 +346,10 @@ while True:
         if cv2.pointPolygonTest(c, maxLoc, False) > 0:
             bbox = cv2.boundingRect(c)
             # Extract the bounding box from the original image
-            imCrop = img[int(bbox[1]):int(bbox[1] + bbox[3]), int(bbox[0]):int(bbox[0] + bbox[2])]
+            imCrop = img[int(bbox[1]):int(bbox[1] + 100), int(bbox[0]):int(bbox[0] + 100)]
+
             captures += 1
-            if captures < captures_max:
+            if frame_counter > capture_start and captures < captures_max:
                 cv2.imshow(str(captures), imCrop)
                 cv2.moveWindow(str(captures), capture_window_x, (height+10)*2)
                 capture_window_x += int(imCrop.shape[1])+10
@@ -379,6 +422,10 @@ while True:
     cv2.imshow("Frame", img0)
     cv2.moveWindow("Frame", width, 0)
 
+    # show blobs
+    # cv2.imshow ("Keypoints", im_with_keypoints )
+    # cv2.moveWindow ("Keypoints", width, height)
+
     previousFrame = gray
 
     key = cv2.waitKey(1) & 0xFF
@@ -390,8 +437,9 @@ while True:
     # time.sleep(.25 - (1.0 / cv2.getTickFrequency() / (cv2.getTickCount() - timer)))
 
     # output result
-    print("fps, frame#, num_pts,x,y,mean, vector_result ", fps, frame_counter, num_pts,
-          stdev_x, stdev_y, stdev_in_xy, vector_result)
+    print('fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, vector_result:{6}'.format (
+       fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, vector_result ) )
+
 
     # calculate Frames per second (FPS)
     fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)
