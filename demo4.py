@@ -264,7 +264,7 @@ while True:
         continue
 
     if calcOpticFlow == True:
-        #flow = cv2.calcOpticalFlowFarneback ( previousFrame, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0 )
+        #flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0 )
         flow = cv2.calcOpticalFlowFarneback ( previousFrame, thresh, None, 0.4, 1, 12, 2, 8, 1.2, 0 )
 
         mag, ang = cv2.cartToPolar ( flow[..., 0], flow[..., 1] )
@@ -338,11 +338,11 @@ while True:
         cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), (255, 0, 0), 2)
 
         # close the holes
-        #thresh = cv2.dilate(thresh, kernel, iterations=1)
+        #image_thresh = cv2.dilate(image_thresh, kernel, iterations=1)
 
-        # roi = cv2.circle(np.zeros(thresh.shape, thresh.dtype),
+        # roi = cv2.circle(np.zeros(image_thresh.shape, image_thresh.dtype),
         #                 (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), 255, -1 )
-        # thresh = cv2.bitwise_and(thresh, thresh, mask=roi)
+        # image_thresh = cv2.bitwise_and(image_thresh, image_thresh, mask=roi)
 
         # find contours - returns image, contours, hierarchy
         (_, contours, hierarchy) = cv2.findContours(thresh, cv2.RETR_EXTERNAL,

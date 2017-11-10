@@ -113,8 +113,8 @@ while True:
     (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(frameDelta,None)
 
     # close up tiny holes
-    #thresh = cv2.erode(thresh,None, iterations=3)
-    #thresh = cv2.erode(thresh, kernel, iterations=1)
+    #image_thresh = cv2.erode(image_thresh,None, iterations=3)
+    #image_thresh = cv2.erode(image_thresh, kernel, iterations=1)
     # dilate the thresholded image to fill in holes, then find contours
     thresh = cv2.dilate(thresh, kernel, iterations=1)
     # returns image, contours, hierarchy
@@ -222,7 +222,7 @@ while True:
 
     cv2.imshow("Thresh", thresh)
     cv2.moveWindow("Thresh", 0, 0)
-    #cv2.imshow("Frame Delta", frameDelta)
+    #cv2.imshow("Frame Delta", frameDelta1)
     cv2.imshow("Frame", img0)
     #h, w, ch = img0.shape
     cv2.moveWindow("Frame",width, 0)

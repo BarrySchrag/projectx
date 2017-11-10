@@ -27,9 +27,67 @@ import copy
 from skimage.exposure import rescale_intensity
 from geometry import *
 
+def refreshScreen(thresh, frameDelta, img0, flow, glitch, width, height):
+    cv2.imshow("Thresh", thresh)
+    cv2.moveWindow("Thresh", 0, height)
+
+    cv2.imshow("Frame Delta", frameDelta)
+    cv2.moveWindow("Frame Delta", width, 0)
+
+    cv2.imshow("Frame", img0)
+    cv2.moveWindow("Frame", 0, 0)
+
+    if type ( flow ) is not type ( None ):
+        cv2.imshow ("FB Flow", flow )
+        cv2.moveWindow ("FB Flow", width, height)
+    if type(glitch) is not type(None):
+        cv2.imshow ("FB Flow Glitch", glitch )
+        cv2.moveWindow ("FB Flow Glitch", width, height)
+    cv2.waitKey(1) & 0xFF
+
+def draw_flow(img, flow, step=16):
+    h, w = img.shape[:2]
+    y, x = np.mgrid[step/2:h:step, step/2:w:step].reshape(2,-1).astype(int)
+    fx, fy = flow[y,x].T
+    lines = np.vstack([x, y, x+fx, y+fy]).T.reshape(-1, 2, 2)
+    lines = np.int32(lines + 0.5)
+    vis = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
+    cv2.polylines(vis, lines, 0, (0, 255, 0))
+    for (x1, y1), (_x2, _y2) in lines:
+        cv2.circle(vis, (x1, y1), 1, (0, 255, 0), -1)
+    return vis
+
+
+def draw_hsv(flow):
+    h, w = flow.shape[:2]
+    fx, fy = flow[:,:,0], flow[:,:,1]
+    ang = np.arctan2(fy, fx) + np.pi
+    v = np.sqrt(fx*fx+fy*fy)
+    hsv = np.zeros((h, w, 3), np.uint8)
+    hsv[...,0] = ang*(180/np.pi/2)
+    hsv[...,1] = 255
+    hsv[...,2] = np.minimum(v*4, 255)
+    bgr = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
+    return bgr
+
+
+def warp_flow(img, flow):
+    h, w = flow.shape[:2]
+    flow = -flow
+    flow[:,:,0] += np.arange(w)
+    flow[:,:,1] += np.arange(h)[:,np.newaxis]
+    res = cv2.remap(img, flow, None, cv2.INTER_LINEAR)
+    return res
+
 def drawRectagleOnImage(image, bbox, color, thickness=1, linetype=1):
+    # x,y,w,h
     p1 = (int (bbox[0]), int (bbox[1]))
     p2 = (int (bbox[0] + bbox[2] ), int(bbox[1] + bbox[3]))
+    cv2.rectangle (image, p1, p2, color, thickness, linetype)
+
+def drawRectagleOnImage2(image, rect, color, thickness=1, linetype=1):
+    p1 = (int (rect.l_top.x), int (rect.l_top.y))
+    p2 = (int (rect.r_top.x ), int(rect.l_bot.y))
     cv2.rectangle (image, p1, p2, color, thickness, linetype)
 
 def convolve(image, kernel):
@@ -95,7 +153,38 @@ stdev = 0
 count_of_concordant_points = 0
 output_to_gray = False
 frame_counter_start_frame = 0
-
+show_optic_flow_fb = True
+show_optic_flow_hsv = False
+show_optic_flow_glitch = False
+camera = None
+previousGray = None
+previousFrameDelta1 = None
+frameDeltaTemp = None
+frame_counter = 0
+frame_count_max = 0
+tracked_area = 0
+kernel = np.ones((5, 5), np.uint8)
+imCrop = None
+bbox = None
+que = deque()
+previousXY = None
+captures = 0
+captures_max = 6
+fps = 0
+scalar_stdev_in_xy = 1
+capture_window_x = 0
+captures_to_file = 0
+captures_to_file_max = 0 # 20
+capture_start = 0
+key = -1
+trackers = cv2.MultiTracker_create()
+track_found_bbox = []
+frames_between_image_captures_for_tracking = 0
+imageDerivative = 1
+dist_to_polygon = 0
+image_thresh = None
+image_flow = None
+image_curr_glitch = None
 # construct a sharpening filter
 sharpen = np.array((
 	[1, 1, 1],
@@ -113,7 +202,7 @@ ap.add_argument("-t", "--feature_tracker_type", default="ALL",
                 help="feature_tracker type one of: ALL, NONE")
 ap.add_argument("-d", "--stdev_min", type=int, default=38,
                 help="minimum distance between x,y points to be a valid region of interest")
-ap.add_argument("-c", "--count_of_concordant_points", type=int, default=3,
+ap.add_argument("-c", "--count_of_concordant_points", type=int, default=2,
                 help="minimum count of concordant x,y points to be considered valid region of interest")
 ap.add_argument("-f", "--frame_counter_start_frame", type=int, default=0,
                 help="delay for what frame to begin with")
@@ -171,30 +260,6 @@ keypoint_detector = cv2.AKAZE_create(cv2.AKAZE_DESCRIPTOR_MLDB_UPRIGHT)
 # create BFMatcher object
 bf = cv2.BFMatcher(cv2.NORM_HAMMING2, crossCheck=True)
 
-# settings
-calcOpticFlow = False
-camera = None
-previousFrame = None
-frame_counter = 0
-frame_count_max = 0
-tracked_area = 0
-kernel = np.ones((5, 5), np.uint8)
-imCrop = None
-bbox = None
-que = deque()
-previousXY = None
-captures = 0
-captures_max = 18
-fps = 0
-scalar_stdev_in_xy = 1
-capture_window_x = 0
-captures_to_file = 0
-captures_to_file_max = 0 # 20
-capture_start = 0
-key = -1
-trackers = cv2.MultiTracker_create()
-track_found_bbox = []
-frames_between_image_captures_for_tracking = 4
 while True:
     # start timer
     timer = cv2.getTickCount()
@@ -202,7 +267,7 @@ while True:
     # if the last frame is reached, reset the capture and the frame_counter
     if frame_counter >= frame_count_max:
         print("Loop frame_counter:", frame_counter)
-        previousFrame = None
+        previousGray = None
         frame_counter = 0
         capture_window_x = 0
         captures_to_file = 0
@@ -240,8 +305,6 @@ while True:
     if args.get("width", True):
         width = args["width"]
         img = imutils.resize(frame, width)
-        hsv = np.zeros_like ( img )
-        hsv[..., 1] = 255
     else:
         img = frame
     img0 = img.copy()
@@ -256,35 +319,49 @@ while True:
     #im_with_keypoints = cv2.drawKeypoints (img0, keypoints, np.array ( [] ), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS )
 
     gray = cv2.cvtColor(img0, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (7, 7), 0)  # or 7,9,11,13,15,17,21
+    gray = cv2.GaussianBlur(gray, (5, 5), 0)  # or 7,9,11,13,15,17,21
 
     # if the first frame is None, initialize it
-    if previousFrame is None:
-        previousFrame = gray
+    if previousGray is None:
+        previousGray = gray
         continue
 
-    if calcOpticFlow == True:
-        #flow = cv2.calcOpticalFlowFarneback ( previousFrame, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0 )
-        flow = cv2.calcOpticalFlowFarneback ( previousFrame, thresh, None, 0.4, 1, 12, 2, 8, 1.2, 0 )
-
-        mag, ang = cv2.cartToPolar ( flow[..., 0], flow[..., 1] )
-        hsv[..., 0] = ang * 180 / np.pi / 2
-        hsv[..., 2] = cv2.normalize ( mag, None, 0, 255, cv2.NORM_MINMAX )
-        rgb = cv2.cvtColor ( hsv, cv2.COLOR_HSV2BGR )
-
     # compute the absolute difference between the current and last
-    frameDelta = cv2.absdiff(previousFrame, gray)
+    frameDelta1 = cv2.absdiff( previousGray, gray )
+    if previousFrameDelta1 is None:
+        previousFrameDelta1 = frameDelta1
+        continue
+
+    # this calculates the 2nd derivative of the grayscale image
+    frameDelta2 = cv2.absdiff ( previousFrameDelta1, frameDelta1 )
 
     # determine min/max value location
-    (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(frameDelta, None)
+    (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc( frameDelta1, None )
+    (minVal2, maxVal2, minLoc2, maxLoc2) = cv2.minMaxLoc ( frameDelta2, None )
 
     # take the threshold of the absolute difference
-    thresh = cv2.threshold(frameDelta, 10, 255, cv2.THRESH_BINARY)[1]
+    if imageDerivative == 2:
+        image_thresh = cv2.threshold( frameDelta2, 10, 255, cv2.THRESH_BINARY )[1]
+        maxLoc = maxLoc2
+        frameDeltaTemp = frameDelta2
+    else:
+        image_thresh = cv2.threshold ( frameDelta1, 10, 255, cv2.THRESH_BINARY )[1]
+        frameDeltaTemp = frameDelta1
+
+    # determine optic flow
+    if show_optic_flow_fb == True:
+        image_flow = cv2.calcOpticalFlowFarneback ( gray, previousGray, image_thresh, 0.5, 3, 15, 3, 5, 1.2, 0 )
+        image_flow = draw_flow ( gray, image_flow )
+        if show_optic_flow_hsv == True:
+            image_flow = draw_hsv ( image_flow )
+        if show_optic_flow_glitch == True:
+            image_cur_glitch = warp_flow ( image_cur_glitch, image_flow )
+
 
     # draw marker at max location
     cv2.drawMarker(img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 2)
 
-    # limit the size of the queue
+     # limit the size of the queue
     if len(que) > count_of_concordant_points:
         que.popleft()
 
@@ -338,32 +415,55 @@ while True:
         cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), (255, 0, 0), 2)
 
         # close the holes
-        #thresh = cv2.dilate(thresh, kernel, iterations=1)
+        #image_thresh = cv2.dilate(image_thresh, kernel, iterations=1)
 
-        # roi = cv2.circle(np.zeros(thresh.shape, thresh.dtype),
+        # roi = cv2.circle(np.zeros(image_thresh.shape, image_thresh.dtype),
         #                 (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), 255, -1 )
-        # thresh = cv2.bitwise_and(thresh, thresh, mask=roi)
+        # image_thresh = cv2.bitwise_and(image_thresh, image_thresh, mask=roi)
 
         # find contours - returns image, contours, hierarchy
-        (_, contours, hierarchy) = cv2.findContours(thresh, cv2.RETR_EXTERNAL,
-                                                    cv2.CHAIN_APPROX_SIMPLE, None, None)
+        (_, contours, hierarchy) = cv2.findContours( image_thresh, cv2.RETR_EXTERNAL,
+                                                     cv2.CHAIN_APPROX_SIMPLE, None, None )
     else:
-        thresh = np.zeros(thresh.shape, thresh.dtype)
+        image_thresh = np.zeros( image_thresh.shape, image_thresh.dtype )
         contours.clear
 
     if len(contours) > 0 and captures < captures_max:
         # find the largest contour
         c = max(contours, key=cv2.contourArea)
-        dist = cv2.pointPolygonTest(c, maxLoc, True)
-        print("Dist:",dist)
-        if dist > 5:
-            bbox = cv2.boundingRect(c)
-            proposed_object_bbox = Rect ( int ( bbox[0] ), int ( bbox[1] ), int ( bbox[2] ), int ( bbox[3] ) )
+        dist_to_polygon = cv2.pointPolygonTest(c, maxLoc, True)
+        if dist_to_polygon > 5:
+            bbox = cv2.boundingRect(c) # x,y,w,h
+            proposed_object_bbox = Rect ( int ( bbox[0] ), int ( bbox[1] ), int ( bbox[2] ), int ( bbox[3] ) ) # x, y, width, height):
+            drawRectagleOnImage ( img0, bbox, (128,128,128))
+            drawRectagleOnImage2 ( img0, proposed_object_bbox, (0, 0, 128) )
+
             # We have not yet tracked anything, so add it
+            proposed_box_overlaps = False
             if trackers.getObjects() == ():
+                proposed_box_overlaps == False
+            else:
+                # Loop through all existing bounding boxes to see if this point is already in a region
+                for i in np.arange(0, captures):
+
+                    bx = trackers.getObjects()[i]
+                    tracked_object_bbox = Rect( int(bx[0]), int(bx[1] ), int(bx[2] ), int(bx[3] ) )
+
+                    # Is the point inside the box OR the tracked objects' bounding box overlaps
+                    # Do not make a new track if we are already tracking it
+                    if (tracked_object_bbox.is_point_inside_rect(Point(maxLoc[0],maxLoc[1])) == True
+                        or proposed_object_bbox.overlaps_with(tracked_object_bbox) == True):
+                        proposed_box_overlaps = True
+
+            # create a new tracked region only if we are not already tracking it
+            if proposed_box_overlaps == False:
+                # slice startY:endY, startX: endX
                 imCropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
                              int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
                 captures += 1
+
+                # save the tracked region bounding box for optic flow calc to the last bbox
+                #bbox_tracked.add(captures,bbox)
 
                 # show the region we are tracking
                 cv2.imshow ( str ( captures ), imCropOrig )
@@ -371,28 +471,7 @@ while True:
                 capture_window_x += int ( imCropOrig.shape[1] ) + 10
 
                 # initialize a new feature tracker
-                trackers.add ( cv2.TrackerMIL_create (), img, bbox )
-            else:
-                # Loop through all existing bounding boxes to see if this point is already in a region
-                for i in np.arange(0, captures):
-                    bx = trackers.getObjects()[i]
-                    tracked_object_bbox = Rect( int(bx[0]), int(bx[1] ), int(bx[2] ), int(bx[3] ) )
-                    # Is the point inside the box OR the tracked objects' bounding box overlaps
-                    # Do not make a new track if we are already tracking it
-                    if tracked_object_bbox.is_point_inside_rect(Point(maxLoc[0],maxLoc[1])) == True or proposed_object_bbox.overlaps_with(tracked_object_bbox) == True:
-                        continue
-                    else:
-                        imCropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
-                                     int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
-                        captures += 1
-
-                        # show the region we are tracking
-                        cv2.imshow ( str ( captures ), imCropOrig )
-                        cv2.moveWindow ( str ( captures ), capture_window_x, (height + 10) * 2 )
-                        capture_window_x += int ( imCropOrig.shape[1] ) + 10
-
-                        # initialize a new feature tracker
-                        trackers.add(cv2.TrackerMIL_create(), img, bbox)
+                trackers.add(cv2.TrackerMIL_create(), img, bbox)
 
     # send the next image to a feature_tracker to find region in the new image
     trackers.update(img)
@@ -401,36 +480,39 @@ while True:
     for i in np.arange(0, captures):
         drawRectagleOnImage (img0,  trackers.getObjects()[i], (0, 255, 0) )
 
-    cv2.imshow("Thresh", thresh)
-    cv2.moveWindow("Thresh", 0, height)
+    refreshScreen ( image_thresh, frameDeltaTemp, img0, image_flow, image_curr_glitch, width, height )
 
-    cv2.imshow("Frame Delta", frameDelta)
-    cv2.moveWindow("Frame Delta", width, 0)
-
-    cv2.imshow("Frame", img0)
-    cv2.moveWindow("Frame", 0, 0)
-
-    if calcOpticFlow == True:
-        cv2.imshow ("Motion", rgb )
-        cv2.moveWindow ("Motion", width, height)
     # show blobs
     # cv2.imshow ("Keypoints", im_with_keypoints )
     # cv2.moveWindow ("Keypoints", width, height)
 
-    previousFrame = gray
+    # save the previous frames to calculate derivatives
+    previousGray = gray
+    previousFrameDelta1 = frameDelta1
 
-    key = cv2.waitKey(1) & 0xFF
+    key = cv2.waitKey(1)
     # if the 'q' key is pressed, stop the loop
     if key == ord("q") or key == 27:
         break
+    if key == ord('1'):
+        show_optic_flow_fb = not show_optic_flow_fb
+        print ( 'FB optic flow visualization is', ['off', 'on'][show_optic_flow_fb] )
+    if key == ord ('2'):
+        show_optic_flow_hsv = not show_optic_flow_hsv
+        print ( 'HSV optic flow visualization is', ['off', 'on'][show_optic_flow_hsv] )
+    if key == ord ('3'):
+        show_optic_flow_glitch = not show_optic_flow_glitch
+        if show_optic_flow_glitch:
+            image_cur_glitch = img.copy()
+        print ( 'glitch is', ['off', 'on'][show_optic_flow_glitch] )
 
     # slow down the process to observe change
     # time.sleep(.25 - (1.0 / cv2.getTickFrequency() / (cv2.getTickCount() - timer)))
 
     # output result
     print (
-        'fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, vector_result:{6}'.format (
-            fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, vector_result ) )
+        'fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, distance:{6} vector_result:{7}'.format (
+            fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, dist_to_polygon, vector_result ) )
 
     # calculate Frames per second (FPS)
     fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)

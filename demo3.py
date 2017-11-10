@@ -327,7 +327,7 @@ while True:
 
         # close the holes
         thresh = cv2.dilate(thresh, kernel, iterations=1)
-        # roi = thresh[int(x - 20):int(x + 20), int(y - 20):int(y + 20)]
+        # roi = image_thresh[int(x - 20):int(x + 20), int(y - 20):int(y + 20)]
         roi = cv2.circle(np.zeros(thresh.shape, thresh.dtype),
                          (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy),
                          255, -1 )
