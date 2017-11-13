@@ -21,11 +21,14 @@ import cv2
 import imutils
 import sys
 import numpy as np
+import math
 import time
 from collections import deque
 import copy
 from skimage.exposure import rescale_intensity
 from geometry import *
+import logging
+from datetime import *
 
 def refreshScreen(thresh, frameDelta, img0, flow, glitch, width, height):
     cv2.imshow("Thresh", thresh)
@@ -45,7 +48,42 @@ def refreshScreen(thresh, frameDelta, img0, flow, glitch, width, height):
         cv2.moveWindow ("FB Flow Glitch", width, height)
     cv2.waitKey(1) & 0xFF
 
-def draw_flow(img, flow, step=16):
+# In Numpy, axes are defined for arrays with more than one dimension.
+# A 2-dimensional array has two corresponding axes:
+# the first running vertically downwards across rows (axis 0),
+# and the second running horizontally across columns (axis 1).
+# array([[ 0,  1,  2,  3],
+#        [ 4,  5,  6,  7],
+#        [ 8,  9, 10, 11]])
+#
+# x.sum(axis=1)
+# array([ 6, 22, 38])
+def angle_between(p1, p2):
+    xDiff = p2[0] - p1[0]
+    yDiff = p2[1] - p1[1]
+    return math.atan2(yDiff, xDiff)
+
+# ddof=0 (default, interprete data as population)
+# ddof=1 (interprete it as samples, i.e. estimate true variance)
+def std_dev(v1):
+    return np.std(v1, axis=0)
+
+def var(v1):
+    return np.var(v1, axis=0)
+
+def distance(v1, v2):
+    # math.sqrt ( (_x2 - x1) * (_x2 - x1) + (_y2 - y1) * (_y2 - y1) )
+    return np.sqrt(np.sum((v1 - v2) ** 2))
+
+def sumColumn(m):
+    return [sum(col) for col in zip(*m)]
+
+def meanColumn(m):
+    return [np.mean(col) for col in zip(*m)]
+
+def draw_flow(img, arrows, flow, step=16):
+    #global arrows
+    arrows.clear()
     h, w = img.shape[:2]
     y, x = np.mgrid[step/2:h:step, step/2:w:step].reshape(2,-1).astype(int)
     fx, fy = flow[y,x].T
@@ -54,9 +92,11 @@ def draw_flow(img, flow, step=16):
     vis = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
     cv2.polylines(vis, lines, 0, (0, 255, 0))
     for (x1, y1), (_x2, _y2) in lines:
+        rad = angle_between((x1, y1), (_x2, _y2))
+        dist = distance ( (x1, y1), (_x2, _y2) )
+        arrows.append ( [x1, y1, _x2, _y2, rad, dist ])
         cv2.circle(vis, (x1, y1), 1, (0, 255, 0), -1)
     return vis
-
 
 def draw_hsv(flow):
     h, w = flow.shape[:2]
@@ -143,6 +183,7 @@ def distance(v1, v2):
 
 (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split ( '.' )
 
+font = cv2.FONT_HERSHEY_SIMPLEX
 width = 0
 height = 0
 channels = 0
@@ -152,7 +193,7 @@ min_radius = 0
 stdev = 0
 count_of_concordant_points = 0
 output_to_gray = False
-frame_counter_start_frame = 0
+frame_counter_start_frame = 0 #150
 show_optic_flow_fb = True
 show_optic_flow_hsv = False
 show_optic_flow_glitch = False
@@ -169,7 +210,7 @@ bbox = None
 que = deque()
 previousXY = None
 captures = 0
-captures_max = 6
+captures_max = 3
 fps = 0
 scalar_stdev_in_xy = 1
 capture_window_x = 0
@@ -185,6 +226,9 @@ dist_to_polygon = 0
 image_thresh = None
 image_flow = None
 image_curr_glitch = None
+arrows = []
+vectors_tracked = []
+vectors_untracked = []
 # construct a sharpening filter
 sharpen = np.array((
 	[1, 1, 1],
@@ -200,7 +244,7 @@ ap.add_argument("-a", "--min_area", type=int, default=1000, help="minimum area s
 ap.add_argument("-r", "--min_radius", type=int, default=2000, help="minimum radius size")
 ap.add_argument("-t", "--feature_tracker_type", default="ALL",
                 help="feature_tracker type one of: ALL, NONE")
-ap.add_argument("-d", "--stdev_min", type=int, default=38,
+ap.add_argument("-d", "--stdev_min", type=int, default=26,
                 help="minimum distance between x,y points to be a valid region of interest")
 ap.add_argument("-c", "--count_of_concordant_points", type=int, default=2,
                 help="minimum count of concordant x,y points to be considered valid region of interest")
@@ -260,6 +304,17 @@ keypoint_detector = cv2.AKAZE_create(cv2.AKAZE_DESCRIPTOR_MLDB_UPRIGHT)
 # create BFMatcher object
 bf = cv2.BFMatcher(cv2.NORM_HAMMING2, crossCheck=True)
 
+# initialize logging
+
+file = './log/{}.csv'.format(datetime.now().strftime('%H%M%S-%Y%m%d'))
+logging.basicConfig(filename=file,
+                              format='%(asctime)s,%(name)s,%(levelname)s,%(message)s',
+                              filemode='w', level=logging.INFO)
+
+logger = logging.getLogger('info')
+#logger.addHandler(handler)
+#logger.setLevel(logging.INFO)
+
 while True:
     # start timer
     timer = cv2.getTickCount()
@@ -274,18 +329,23 @@ while True:
 
         ok2 = False
         while captures > 0:
-            trackers = cv2.MultiTracker_create()
             cv2.destroyWindow(str(captures))
             captures -=1
+        if captures == 0:
+            trackers = cv2.MultiTracker_create ()
 
         # if a video path was not supplied, grab the reference to the webcam
         if not args.get("video", False):
             camera = cv2.VideoCapture(0)
         # otherwise, grab a reference to the video file
         else:
-            #video_file = "./media/00001-Dup15rVd2eU.mp4"
-            #---video ./media/20171014_180142.mp4
             video_file = args["video"]
+            #video_file = "./media/00001-Dup15rVd2eU.mp4"
+            #video ./media/20171014_180142.mp4
+
+            # video_file = './media/PAN_TILT-_Sample-WcmHxBtz3EY.mp4'
+            #video_file = './media/Tilt-Down_shot_for_DP_Film-7-eowYn1gBE.mp4' #-90
+            #video_file = './media/Example_of_a_panning_shot-eBL6vu9NQtw.mp4'
             camera = cv2.VideoCapture(video_file)
 
         frame_count_max = camera.get(cv2.CAP_PROP_FRAME_COUNT)
@@ -319,7 +379,9 @@ while True:
     #im_with_keypoints = cv2.drawKeypoints (img0, keypoints, np.array ( [] ), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS )
 
     gray = cv2.cvtColor(img0, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (5, 5), 0)  # or 7,9,11,13,15,17,21
+    gray = cv2.GaussianBlur(gray, (7,7), 0)  # or 3,5,7,9,11,13,15,17,21
+    # close the holes
+    #gray = cv2.dilate(gray, kernel, iterations=1)
 
     # if the first frame is None, initialize it
     if previousGray is None:
@@ -350,16 +412,19 @@ while True:
 
     # determine optic flow
     if show_optic_flow_fb == True:
-        image_flow = cv2.calcOpticalFlowFarneback ( gray, previousGray, image_thresh, 0.5, 3, 15, 3, 5, 1.2, 0 )
-        image_flow = draw_flow ( gray, image_flow )
+        image_flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, image_thresh, 0.5, 2, 15, 2, 5, 1.1, 0) #cv2.OPTFLOW_FARNEBACK_GAUSSIAN )
+        #arrows.clear ()
+        image_flow = draw_flow ( gray, arrows, image_flow, 16 )
+
         if show_optic_flow_hsv == True:
             image_flow = draw_hsv ( image_flow )
         if show_optic_flow_glitch == True:
             image_cur_glitch = warp_flow ( image_cur_glitch, image_flow )
-
+#https://stackoverflow.com/questions/41760437/opencv-how-to-apply-a-filter-on-vectors-obtained-through-calcopticalflowfarneba
 
     # draw marker at max location
     cv2.drawMarker(img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 2)
+    cv2.drawMarker ( img0, maxLoc2, (0, 0, 255), cv2.MARKER_CROSS, 20, 4 )
 
      # limit the size of the queue
     if len(que) > count_of_concordant_points:
@@ -385,9 +450,6 @@ while True:
         # the mean location in x,y is determined
         x += xy[0]
         y += xy[1]
-
-        # calculate vector
-        # vector_result ...
 
         cv2.drawMarker(img0, xy, (128, 128, 128), cv2.MARKER_CROSS, 10, 1)
 
@@ -424,9 +486,9 @@ while True:
         # find contours - returns image, contours, hierarchy
         (_, contours, hierarchy) = cv2.findContours( image_thresh, cv2.RETR_EXTERNAL,
                                                      cv2.CHAIN_APPROX_SIMPLE, None, None )
-    else:
-        image_thresh = np.zeros( image_thresh.shape, image_thresh.dtype )
-        contours.clear
+    #else:
+        # image_thresh = np.zeros( image_thresh.shape, image_thresh.dtype )
+        # contours.clear
 
     if len(contours) > 0 and captures < captures_max:
         # find the largest contour
@@ -458,33 +520,95 @@ while True:
             # create a new tracked region only if we are not already tracking it
             if proposed_box_overlaps == False:
                 # slice startY:endY, startX: endX
-                imCropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
+                image_CropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
                              int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
-                captures += 1
 
-                # save the tracked region bounding box for optic flow calc to the last bbox
-                #bbox_tracked.add(captures,bbox)
+
+                # initialize a new feature tracker where bbox defines the region to track
+                trackers.add(cv2.TrackerMIL_create(), img, bbox)
+                cv2.putText ( image_CropOrig, str(captures), (1,20), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
 
                 # show the region we are tracking
-                cv2.imshow ( str ( captures ), imCropOrig )
+                cv2.imshow ( str ( captures ), image_CropOrig )
                 cv2.moveWindow ( str ( captures ), capture_window_x, (height + 10) * 2 )
-                capture_window_x += int ( imCropOrig.shape[1] ) + 10
+                capture_window_x += int ( image_CropOrig.shape[1] ) + 10
 
-                # initialize a new feature tracker
-                trackers.add(cv2.TrackerMIL_create(), img, bbox)
+                captures += 1
 
     # send the next image to a feature_tracker to find region in the new image
     trackers.update(img)
 
+    vectors_tracked.clear ()
+    vectors_untracked.clear ()
+
     # Draw bounding box if tracking success
     for i in np.arange(0, captures):
-        drawRectagleOnImage (img0,  trackers.getObjects()[i], (0, 255, 0) )
+        bx = trackers.getObjects()[i]
+        drawRectagleOnImage (img0,  bx, (0, 255, 0) )
+        cv2.putText ( img0, str(i), (int(bx[0]+1),int(bx[1]+20)), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
+
+        tracked_object_bbox = Rect ( int ( bx[0] ), int ( bx[1] ), int ( bx[2] ), int ( bx[3] ) )
+
+        # extract optic flow only from the tracked region
+        for x1, y1, _x2, _y2, rad, dist in arrows:
+            # Is the arrow origin inside the tracked object box? add it to our vector list
+            if tracked_object_bbox.is_point_inside_rect ( Point ( x1,y1 ) ) == True:
+                vectors_tracked.append([i, x1, y1, _x2, _y2, rad, dist])
+            else:
+                vectors_untracked.append([i, x1, y1, _x2, _y2, rad, dist])
+
+        tracked_data = meanColumn(vectors_tracked)
+        untracked_data = meanColumn(vectors_untracked)
+
+        tracked_rad = angle_between((tracked_data[1],tracked_data[2]), (tracked_data[3],tracked_data[4]))
+        tracked_dist =     distance((tracked_data[1],tracked_data[2]), (tracked_data[3],tracked_data[4]))
+        tracked_std_dev_rad =   std_dev(vectors_tracked)[5]
+        tracked_std_dev_dist =  std_dev(vectors_tracked)[6]
+        tracked_var_rad =           var(vectors_tracked)[5]
+        tracked_var_dist=           var(vectors_tracked)[6]
+        untracked_rad = angle_between ((untracked_data[1], untracked_data[2]), (untracked_data[3], untracked_data[4]))
+        untracked_dist =     distance ((untracked_data[1], untracked_data[2]), (untracked_data[3], untracked_data[4]))
+        untracked_std_dev_rad = std_dev(vectors_untracked)[5]
+        untracked_std_dev_dist= std_dev(vectors_untracked)[6]
+        untracked_var_rad =         var(vectors_untracked)[5]
+        untracked_var_dist =        var(vectors_untracked)[6]
+
+        print('Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
+              tracked_data[0], tracked_dist, tracked_rad, math.degrees(tracked_rad),
+            tracked_std_dev_dist, tracked_var_rad))
+
+        print ( 'UnTracked item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
+                untracked_data[0], untracked_dist, untracked_rad, math.degrees(untracked_rad),
+            untracked_std_dev_dist, untracked_var_rad))
+
+    # https://www.youtube.com/watch?v=WcmHxBtz3EY  # complete pan up from static camera outdoors dist:0.7 @359.9 deg
+    # https://www.youtube.com/watch?v=eBL6vu9NQtw  # complete pan right static camera indoors
+    # https://www.youtube.com/watch?v=PoHJsmeHYHo  #  complete pan left from static camera indoors
+    # https://www.youtube.com/watch?v=oMumnZtboU4  # complete pan up from static camera indoors
+    # https://www.youtube.com/watch?v=7-eowYn1gBE  # complete pan down from static camera indoors
+    # https://www.youtube.com/watch?v=yCaZW8pGijE # zoom, rotate, pan
+
+
+    # If no tracks, then average the flow field
+    if captures == 0:
+        untracked_data = meanColumn(arrows)
+        untracked_rad = angle_between((untracked_data[0], untracked_data[1]), (untracked_data[2], untracked_data[3]))
+        untracked_dist =     distance((untracked_data[0], untracked_data[1]), (untracked_data[2], untracked_data[3]))
+        untracked_std_dev_rad = std_dev ( arrows )[4]
+        untracked_std_dev_dist = std_dev ( arrows )[5]
+        untracked_var_rad = var ( arrows )[4]
+        untracked_var_dist = var ( arrows )[5]
+        image_data = [untracked_dist, untracked_rad, math.degrees (untracked_rad ), untracked_std_dev_dist,
+               untracked_var_rad]
+        logger.info(','.join(map(str, image_data)) )#,frame_counter)#, [untracked_dist, untracked_rad,
+
+        print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format(
+                untracked_dist, untracked_rad, math.degrees(untracked_rad), untracked_std_dev_dist, untracked_var_rad))
 
     refreshScreen ( image_thresh, frameDeltaTemp, img0, image_flow, image_curr_glitch, width, height )
 
     # show blobs
     # cv2.imshow ("Keypoints", im_with_keypoints )
-    # cv2.moveWindow ("Keypoints", width, height)
 
     # save the previous frames to calculate derivatives
     previousGray = gray
@@ -517,6 +641,8 @@ while True:
     # calculate Frames per second (FPS)
     fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)
 
+logger.flush()
+logger.close()
 # cleanup the camera and close any open windows
 print("Frame_counter:", frame_counter)
 print("Frame_count_max:", frame_count_max)
