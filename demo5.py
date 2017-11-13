@@ -304,16 +304,13 @@ keypoint_detector = cv2.AKAZE_create(cv2.AKAZE_DESCRIPTOR_MLDB_UPRIGHT)
 # create BFMatcher object
 bf = cv2.BFMatcher(cv2.NORM_HAMMING2, crossCheck=True)
 
-# initialize logging
-
+# setup logging
 file = './log/{}.csv'.format(datetime.now().strftime('%H%M%S-%Y%m%d'))
 logging.basicConfig(filename=file,
-                              format='%(asctime)s,%(name)s,%(levelname)s,%(message)s',
-                              filemode='w', level=logging.INFO)
+                    format='%(asctime)s,%(levelname)s,%(message)s',
+                    filemode='w', level=logging.INFO)
 
 logger = logging.getLogger('info')
-#logger.addHandler(handler)
-#logger.setLevel(logging.INFO)
 
 while True:
     # start timer
@@ -573,9 +570,17 @@ while True:
         untracked_var_rad =         var(vectors_untracked)[5]
         untracked_var_dist =        var(vectors_untracked)[6]
 
+        image_data = [ tracked_data[0], 'tracked', tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
+                       tracked_std_dev_dist, tracked_var_rad]
+        logger.info ( ','.join ( map ( str, image_data ) ) )
+
         print('Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
               tracked_data[0], tracked_dist, tracked_rad, math.degrees(tracked_rad),
             tracked_std_dev_dist, tracked_var_rad))
+
+        image_data = [tracked_data[0], 'untracked', untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
+                      untracked_std_dev_dist, untracked_var_rad]
+        logger.info ( ','.join ( map ( str, image_data ) ) )
 
         print ( 'UnTracked item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                 untracked_data[0], untracked_dist, untracked_rad, math.degrees(untracked_rad),
@@ -598,10 +603,10 @@ while True:
         untracked_std_dev_dist = std_dev ( arrows )[5]
         untracked_var_rad = var ( arrows )[4]
         untracked_var_dist = var ( arrows )[5]
-        image_data = [untracked_dist, untracked_rad, math.degrees (untracked_rad ), untracked_std_dev_dist,
+        image_data = [-1,'untracked', untracked_dist, untracked_rad, math.degrees (untracked_rad ),
+                      untracked_std_dev_dist,
                untracked_var_rad]
-        logger.info(','.join(map(str, image_data)) )#,frame_counter)#, [untracked_dist, untracked_rad,
-
+        logger.info(','.join(map(str, image_data)))
         print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format(
                 untracked_dist, untracked_rad, math.degrees(untracked_rad), untracked_std_dev_dist, untracked_var_rad))
 
