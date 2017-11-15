@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/002831-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/003033-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/004556-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/004623-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/004654-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/004723-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/004940-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005047-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005112-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005125-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005321-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005330-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005538-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005800-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/005909-20171113.csv" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testpattern.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo5.py" afterPath="$PROJECT_DIR$/demo5.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,13 +51,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo5.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="demo5.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="583" column="0" lean-forward="true" selection-start-line="572" selection-start-column="8" selection-end-line="583" selection-end-column="0" />
+            <state relative-caret-position="157">
+              <caret line="340" column="13" lean-forward="true" selection-start-line="340" selection-start-column="13" selection-end-line="340" selection-end-column="13" />
               <folding>
-                <element signature="e#1004#1019#0" expanded="true" />
+                <element signature="e#1477#1492#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,6 +69,18 @@
             <state relative-caret-position="18">
               <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testpattern.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/testpattern.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+              <folding>
+                <element signature="e#117#148#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +98,8 @@
       <file leaf-file-name="todo.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="14" />
+            <state relative-caret-position="108">
+              <caret line="6" column="88" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="6" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -117,7 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>thresh</find>
       <find>image_thresh</find>
       <find>trackers</find>
       <find>imgCrop</find>
@@ -147,6 +145,7 @@
       <find>Log</find>
       <find>logger</find>
       <find>untracked</find>
+      <find>20171014_180142</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -179,13 +178,14 @@
         <option value="$PROJECT_DIR$/geometrypy.py" />
         <option value="$PROJECT_DIR$/demo4.py" />
         <option value="$PROJECT_DIR$/demo5.py" />
+        <option value="$PROJECT_DIR$/testpattern.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="773" />
-    <option name="y" value="44" />
-    <option name="width" value="1044" />
+    <option name="x" value="430" />
+    <option name="y" value="42" />
+    <option name="width" value="1316" />
     <option name="height" value="1009" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -259,7 +259,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/.virtualenvs/dl4cv/bin/python3.5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/todo.txt" />
     <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT" />
   </component>
@@ -448,10 +448,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="773" y="44" width="1044" height="1009" extended-state="0" />
+    <frame x="430" y="42" width="1316" height="1009" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20366795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16131498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26771653" sideWeight="0.47058824" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560706" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
@@ -824,14 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geometry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -849,14 +841,6 @@
           <folding>
             <element signature="e#958#973#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,12 +870,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="88" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="6" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geometry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/demo5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="583" column="0" lean-forward="true" selection-start-line="572" selection-start-column="8" selection-end-line="583" selection-end-column="0" />
+        <state relative-caret-position="157">
+          <caret line="340" column="13" lean-forward="true" selection-start-line="340" selection-start-column="13" selection-end-line="340" selection-end-column="13" />
           <folding>
-            <element signature="e#1004#1019#0" expanded="true" />
+            <element signature="e#1477#1492#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testpattern.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding>
+            <element signature="e#117#148#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,6 @@
-# python demo4.py --video ./media/20171014_180142.mp4 --width 340
-# python demo4.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640
-
+# python demo5.py --video ./media/20171014_180142.mp4 --width 340
+# python demo5.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640
+# python demo5.py --video ./media/20171114_080046.mp4 --width 340
 # Demonstrates capturing a region which has motion relevancy based on analysis of change in a dynamic scene
 #
 # From a video stream, pick out one or more region candidates containing significant change  DONE
@@ -9,11 +9,14 @@
 #       In the que
 #           The mean distance between each x,y point is determined
 #           The mean location in x,y is determined
-#           If the std deviation of the distances between points is lower than a threshold ~ 40 - execute the next step
-# Tag and track regions separately, not switching between them
-#   Detect the external contour which encompasses the region of change
-#   Capture a bounding box of this contour, and show it on screen
-# See toto.txt
+#           If the std deviation of the distances between points is lower than a threshold ~ 40
+#               - execute the next step
+# Tag and track regions separately, not switching between them                               DONE
+#   Detect the external contour which encompasses the region of change                       DONE
+#   Capture a bounding box of this contour, and show it on screen                            DONE
+# Extract the motion vectors contained in the matched region in the bounding box between frames     DONE
+#   Keep the mean vectors related to the object being tracked, and the background vectors exclusive DONE
+# TODO  Subtract the background vectors from the object veectors to better identicy the object vectors
 
 # Goto Start:
 import argparse
