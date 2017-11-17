@@ -1,4 +1,4 @@
-# python demo2.py --video ./media/20171014_180142.mp4 --width 340
+# python sprint2.py --video ./media/20171014_180142.mp4 --width 340
 # Demonstrates constraining the region of attention based on analysis of change in a dynamic scene
 #
 # DONE Takes each a frameN and frameN+1

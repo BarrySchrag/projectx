@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testpattern.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/perpetualTimer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sprint6.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo0.py" afterPath="$PROJECT_DIR$/sprint0.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo0.sh" afterPath="$PROJECT_DIR$/sprint0.sh" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo1.py" afterPath="$PROJECT_DIR$/sprint1.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo2.py" afterPath="$PROJECT_DIR$/sprint2.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo3.py" afterPath="$PROJECT_DIR$/sprint3.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo4.py" afterPath="$PROJECT_DIR$/sprint4.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo5.py" afterPath="$PROJECT_DIR$/sprint5.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo5.py" afterPath="$PROJECT_DIR$/demo5.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testpattern.py" afterPath="$PROJECT_DIR$/testpattern.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,49 +23,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="demo1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo1.py">
+      <file leaf-file-name="sprint6.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sprint6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="667" column="86" lean-forward="false" selection-start-line="667" selection-start-column="81" selection-end-line="667" selection-end-column="86" />
               <folding>
-                <element signature="e#958#973#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="61" lean-forward="false" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-              <folding>
-                <element signature="e#1898#1913#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo4.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#1004#1019#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo5.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo5.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="340" column="13" lean-forward="true" selection-start-line="340" selection-start-column="13" selection-end-line="340" selection-end-column="13" />
-              <folding>
-                <element signature="e#1477#1492#0" expanded="true" />
+                <element signature="e#1464#1479#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,8 +38,8 @@
       <file leaf-file-name="geometry.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geometry.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="221" column="15" lean-forward="true" selection-start-line="221" selection-start-column="15" selection-end-line="221" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -76,11 +48,21 @@
       <file leaf-file-name="testpattern.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testpattern.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+            <state relative-caret-position="358">
+              <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding>
-                <element signature="e#117#148#0" expanded="true" />
+                <element signature="e#828#839#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="perpetualTimer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/perpetualTimer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,18 +70,8 @@
       <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="todo.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/todo.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="88" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="6" selection-end-column="88" />
+            <state relative-caret-position="551">
+              <caret line="328" column="0" lean-forward="true" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,22 +88,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>image_thresh</find>
-      <find>trackers</find>
-      <find>imgCrop</find>
-      <find>kernel</find>
-      <find>imageDerivative</find>
-      <find>maxLoc</find>
-      <find>append</find>
-      <find>vectors</find>
-      <find>draw_flow</find>
       <find>tracked_data</find>
       <find>angle_between</find>
-      <find>distance</find>
       <find>tracked_deg</find>
       <find>arrows</find>
-      <find>meanColumn</find>
-      <find>std_dev</find>
       <find>array</find>
       <find>mp4</find>
       <find>start</find>
@@ -143,12 +103,25 @@
       <find>logger.info</find>
       <find>H%M%</find>
       <find>Log</find>
-      <find>logger</find>
       <find>untracked</find>
       <find>20171014_180142</find>
+      <find>distance</find>
+      <find>demo0</find>
+      <find>demo</find>
+      <find>std_dev</find>
+      <find>stdev_x</find>
+      <find>mean(</find>
+      <find>meanColumn</find>
+      <find>100</find>
+      <find>try</find>
+      <find>logger</find>
+      <find>refreshScreen</find>
+      <find>waitKey</find>
+      <find>timer</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
+      <replace>sprint0</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -169,23 +142,28 @@
         <option value="$PROJECT_DIR$/samples/object_tracking.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt" />
         <option value="$PROJECT_DIR$/goturn.prototxt" />
-        <option value="$PROJECT_DIR$/demo2.py" />
         <option value="$PROJECT_DIR$/demo1.py" />
         <option value="$PROJECT_DIR$/demo0.sh" />
-        <option value="$PROJECT_DIR$/demo0.py" />
-        <option value="$PROJECT_DIR$/demo3.py" />
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/geometrypy.py" />
-        <option value="$PROJECT_DIR$/demo4.py" />
         <option value="$PROJECT_DIR$/demo5.py" />
+        <option value="$PROJECT_DIR$/sprint5.py" />
+        <option value="$PROJECT_DIR$/demo4.py" />
+        <option value="$PROJECT_DIR$/demo3.py" />
+        <option value="$PROJECT_DIR$/demo2.py" />
+        <option value="$PROJECT_DIR$/sprint1.py" />
+        <option value="$PROJECT_DIR$/demo0.py" />
+        <option value="$PROJECT_DIR$/sprint0.sh" />
+        <option value="$PROJECT_DIR$/sprint6.py" />
+        <option value="$PROJECT_DIR$/media/perpetualTimer.py" />
         <option value="$PROJECT_DIR$/testpattern.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="430" />
-    <option name="y" value="42" />
-    <option name="width" value="1316" />
+    <option name="x" value="636" />
+    <option name="y" value="41" />
+    <option name="width" value="1376" />
     <option name="height" value="1009" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -267,6 +245,9 @@
     <option name="myShowDebugConsoleByDefault" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -283,24 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo5">
-    <configuration name="demo0" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo0.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.testpattern">
     <configuration name="demo1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -313,7 +277,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint1.py" />
       <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -330,7 +294,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint2.py" />
       <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -347,12 +311,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint3.py" />
       <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="demo4" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="sprint4" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -364,12 +328,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint4.py" />
       <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="demo5" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="sprint5" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -381,25 +345,61 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo5.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint5.py" />
       <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python.demo4" />
-      <item index="1" class="java.lang.String" itemvalue="Python.demo5" />
+    <configuration name="sprint6" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="projectx" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint6.py" />
+      <option name="PARAMETERS" value="--video ./media/20171014_180142.mp4" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="testpattern" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="projectx" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testpattern.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Python.sprint4" />
+      <item index="1" class="java.lang.String" itemvalue="Python.sprint5" />
       <item index="2" class="java.lang.String" itemvalue="Python.demo1" />
       <item index="3" class="java.lang.String" itemvalue="Python.demo2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.demo0" />
-      <item index="5" class="java.lang.String" itemvalue="Python.demo3" />
+      <item index="4" class="java.lang.String" itemvalue="Python.demo3" />
+      <item index="5" class="java.lang.String" itemvalue="Python.sprint6" />
+      <item index="6" class="java.lang.String" itemvalue="Python.testpattern" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.demo3" />
-        <item index="1" class="java.lang.String" itemvalue="Python.demo1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.demo2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.demo0" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.testpattern" />
+        <item index="1" class="java.lang.String" itemvalue="Python.sprint6" />
+        <item index="2" class="java.lang.String" itemvalue="Python.demo3" />
+        <item index="3" class="java.lang.String" itemvalue="Python.demo1" />
+        <item index="4" class="java.lang.String" itemvalue="Python.demo2" />
       </list>
     </recent_temporary>
   </component>
@@ -448,20 +448,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="430" y="42" width="1316" height="1009" extended-state="0" />
+    <frame x="636" y="41" width="1376" height="1009" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16131498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15350877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26771653" sideWeight="0.47058824" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560706" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3250283" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38189846" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18395722" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34428087" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30905077" sideWeight="0.50811356" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29946524" sideWeight="0.50811356" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -470,6 +470,26 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26771653" sideWeight="0.47058824" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3250283" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38189846" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34428087" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15423976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560706" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30905077" sideWeight="0.50811356" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -491,59 +511,37 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="150" />
+      <option name="time" value="179" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="bbox2" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/demo0.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="57" />
-          <folding>
-            <element signature="e#344#359#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo1.py">
+    <entry file="file://$PROJECT_DIR$/sprint1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2772">
           <caret line="159" column="107" lean-forward="true" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="107" />
           <folding>
-            <element signature="e#958#973#0" expanded="true" />
+            <element signature="e#960#975#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo2.py">
+    <entry file="file://$PROJECT_DIR$/sprint2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
           <folding>
-            <element signature="e#1235#1250#0" expanded="false" />
+            <element signature="e#1237#1252#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo3.py">
+    <entry file="file://$PROJECT_DIR$/sprint3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6228">
           <caret line="354" column="59" lean-forward="true" selection-start-line="352" selection-start-column="17" selection-end-line="354" selection-end-column="59" />
           <folding>
-            <element signature="e#1898#1913#0" expanded="true" />
+            <element signature="e#1906#1921#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -580,12 +578,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo4.py">
+    <entry file="file://$PROJECT_DIR$/sprint4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6714">
           <caret line="381" column="32" lean-forward="false" selection-start-line="381" selection-start-column="32" selection-end-line="381" selection-end-column="32" />
           <folding>
-            <element signature="e#1004#1019#0" expanded="true" />
+            <element signature="e#1008#1023#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -612,12 +610,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.py">
+    <entry file="file://$PROJECT_DIR$/sprint0.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
           <folding>
-            <element signature="e#344#359#0" expanded="false" />
+            <element signature="e#351#366#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -629,12 +627,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo1.py">
+    <entry file="file://$PROJECT_DIR$/sprint1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
           <folding>
-            <element signature="e#958#973#0" expanded="true" />
+            <element signature="e#960#975#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -646,12 +644,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.py">
+    <entry file="file://$PROJECT_DIR$/sprint0.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
-            <element signature="e#344#359#0" expanded="false" />
+            <element signature="e#351#366#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -679,12 +677,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.py">
+    <entry file="file://$PROJECT_DIR$/sprint0.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
-            <element signature="e#344#359#0" expanded="false" />
+            <element signature="e#351#366#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -696,12 +694,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.py">
+    <entry file="file://$PROJECT_DIR$/sprint0.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#344#359#0" expanded="false" />
+            <element signature="e#351#366#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -765,41 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/site-packages/imutils/convenience.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo0.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="57" />
-          <folding>
-            <element signature="e#344#359#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-          <folding>
-            <element signature="e#1235#1250#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -824,44 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="61" lean-forward="false" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-          <folding>
-            <element signature="e#1898#1913#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#958#973#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1004#1019#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python3.5/datetime.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -878,30 +803,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geometry.py">
+    <entry file="file://$PROJECT_DIR$/sprint4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding>
+            <element signature="e#1008#1023#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#1906#1921#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <element signature="e#960#975#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo5.py">
+    <entry file="file://$PROJECT_DIR$/sprint0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="340" column="13" lean-forward="true" selection-start-line="340" selection-start-column="13" selection-end-line="340" selection-end-column="13" />
+        <state relative-caret-position="72">
+          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint0.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1148">
+          <caret line="646" column="53" lean-forward="false" selection-start-line="646" selection-start-column="46" selection-end-line="646" selection-end-column="53" />
           <folding>
-            <element signature="e#1477#1492#0" expanded="true" />
+            <element signature="e#1463#1478#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/site-packages/imutils/convenience.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="328" column="0" lean-forward="true" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/file5.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="667" column="86" lean-forward="false" selection-start-line="667" selection-start-column="81" selection-end-line="667" selection-end-column="86" />
+          <folding>
+            <element signature="e#1464#1479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perpetualTimer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geometry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="221" column="15" lean-forward="true" selection-start-line="221" selection-start-column="15" selection-end-line="221" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testpattern.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        <state relative-caret-position="358">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding>
-            <element signature="e#117#148#0" expanded="true" />
+            <element signature="e#828#839#0" expanded="true" />
           </folding>
         </state>
       </provider>

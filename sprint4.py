@@ -1,32 +1,21 @@
-# Moving camera female subject outdoor, hand wave
-# python demo3.py --video ./media/20171014_180142.mp4 --width 640
-# Static camera male subject outdoor, ball drop black
-# python demo3.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640
-# Static camera male subject outdoor, ball drop multiple types
-# python demo3.py --video ./media/Ball_Bounce_Reference-sKJegbjS4N8.mp4 --width 640
-# Static camera poplar subject outdoor, wind
-# python demo3.py --video ./media/The_sky..._The_wind..._A_poplar_tree-f9clDwjYX-Y.mp4 --width 640
+# python sprint4.py --video ./media/20171014_180142.mp4 --width 340
+# python sprint4.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640
 
 # Demonstrates capturing a region which has motion relevancy based on analysis of change in a dynamic scene
 #
-# DONE Takes each a frameN and frameN+1
-# DONE Applies intra-frame differencing
-# DONE The largest value of contrast difference between frames is held in a first in last out que length ~ 3
-# DONE The mean distance between each x,y point is determined
-# DONE The mean location in x,y is determined
-# DONE If the std deviation of the distances between points is lower than a threshold ~ 40
-# DONE   Capture the image at the x,y location + radius a multiple of the standard deviation ~4
-# TODO Determine the extent of the region to track
-#      If the blob of motion representing the region of interest overlaps the point of greatest change then capture the real image 100x100
-#      Using the resulting capture, find frame1 in frame2
-#      Get vectors of N points which correlate as common points.
-#       Exclude the capture from further processing
-#       For each captured track:
-#           Perform a correlated point search in the next frame
-#               the vectors between the correlated points on an overlayed frame are extracted
-#               the vectors magnitude are placed into a histogram relevant to the distance between each other
-#               the vectors direction are placed into a histogram relevent to the angle between each other
+# From a video stream, pick out one or more region candidates containing significant change  DONE
+#   Take each a frameN and frameN+1, apply intra-frame differencing
+#   The largest value of contrast difference between frames is held in a first in last out que length ~ 3
+#       In the que
+#           The mean distance between each x,y point is determined
+#           The mean location in x,y is determined
+#           If the std deviation of the distances between points is lower than a threshold ~ 40 - execute the next step
+# Tag and track regions separately, not switching between them
+#   Detect the external contour which encompasses the region of change
+#   Capture a bounding box of this contour, and show it on screen
+# See toto.txt
 
+# Goto Start:
 import argparse
 import cv2
 import imutils
@@ -36,7 +25,12 @@ import time
 from collections import deque
 import copy
 from skimage.exposure import rescale_intensity
+from geometry import *
 
+def drawRectagleOnImage(image, bbox, color, thickness=1, linetype=1):
+    p1 = (int (bbox[0]), int (bbox[1]))
+    p2 = (int (bbox[0] + bbox[2] ), int(bbox[1] + bbox[3]))
+    cv2.rectangle (image, p1, p2, color, thickness, linetype)
 
 def convolve(image, kernel):
     # grab the spatial dimensions of the image, along with
@@ -115,13 +109,13 @@ ap.add_argument("-w", "--width", type=int, default=720, help="width to resize th
 ap.add_argument("-p", "--points", type=int, default=32, help="points to detect in the image")
 ap.add_argument("-a", "--min_area", type=int, default=1000, help="minimum area size")
 ap.add_argument("-r", "--min_radius", type=int, default=2000, help="minimum radius size")
-ap.add_argument("-t", "--feature_tracker_type", default="KCF",
-                help="feature_tracker type one of: BOOSTING, MIL, KCF, TLD, MEDIANFLOW, GOTURN")
-ap.add_argument("-d", "--stdev_min", type=int, default=30,
+ap.add_argument("-t", "--feature_tracker_type", default="ALL",
+                help="feature_tracker type one of: ALL, NONE")
+ap.add_argument("-d", "--stdev_min", type=int, default=38,
                 help="minimum distance between x,y points to be a valid region of interest")
 ap.add_argument("-c", "--count_of_concordant_points", type=int, default=3,
                 help="minimum count of concordant x,y points to be considered valid region of interest")
-ap.add_argument("-f", "--frame_counter_start_frame", type=int, default=5,
+ap.add_argument("-f", "--frame_counter_start_frame", type=int, default=0,
                 help="delay for what frame to begin with")
 
 args = vars(ap.parse_args())
@@ -142,11 +136,9 @@ if args.get("frame_counter_start_frame", True):
 # initialize Tracker
 tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
 tracker_type = args.get("feature_tracker_type")
-if tracker_type not in tracker_types:
-    sys.exit()
 
 # Setup SimpleBlobDetector parameters.
-params = cv2.SimpleBlobDetector_Params ()
+params = cv2.SimpleBlobDetector_Params()
 
 # Change thresholds
 params.minThreshold = 25;
@@ -179,7 +171,8 @@ keypoint_detector = cv2.AKAZE_create(cv2.AKAZE_DESCRIPTOR_MLDB_UPRIGHT)
 # create BFMatcher object
 bf = cv2.BFMatcher(cv2.NORM_HAMMING2, crossCheck=True)
 
-# initialize the first frame in the video stream
+# settings
+calcOpticFlow = False
 camera = None
 previousFrame = None
 frame_counter = 0
@@ -193,12 +186,15 @@ previousXY = None
 captures = 0
 captures_max = 18
 fps = 0
-scalar_stdev_in_xy = 5
+scalar_stdev_in_xy = 1
 capture_window_x = 0
 captures_to_file = 0
 captures_to_file_max = 0 # 20
-capture_start = 1
-
+capture_start = 0
+key = -1
+trackers = cv2.MultiTracker_create()
+track_found_bbox = []
+frames_between_image_captures_for_tracking = 4
 while True:
     # start timer
     timer = cv2.getTickCount()
@@ -208,16 +204,24 @@ while True:
         print("Loop frame_counter:", frame_counter)
         previousFrame = None
         frame_counter = 0
-        captures = 0
         capture_window_x = 0
         captures_to_file = 0
+
+        ok2 = False
+        while captures > 0:
+            trackers = cv2.MultiTracker_create()
+            cv2.destroyWindow(str(captures))
+            captures -=1
 
         # if a video path was not supplied, grab the reference to the webcam
         if not args.get("video", False):
             camera = cv2.VideoCapture(0)
         # otherwise, grab a reference to the video file
         else:
-            camera = cv2.VideoCapture(args["video"])
+            #video_file = "./media/00001-Dup15rVd2eU.mp4"
+            #---video ./media/20171014_180142.mp4
+            video_file = args["video"]
+            camera = cv2.VideoCapture(video_file)
 
         frame_count_max = camera.get(cv2.CAP_PROP_FRAME_COUNT)
 
@@ -236,6 +240,8 @@ while True:
     if args.get("width", True):
         width = args["width"]
         img = imutils.resize(frame, width)
+        hsv = np.zeros_like ( img )
+        hsv[..., 1] = 255
     else:
         img = frame
     img0 = img.copy()
@@ -250,13 +256,21 @@ while True:
     #im_with_keypoints = cv2.drawKeypoints (img0, keypoints, np.array ( [] ), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS )
 
     gray = cv2.cvtColor(img0, cv2.COLOR_BGR2GRAY)
-    #gray = cv2.bilateralFilter ( gray, 11, 21, 21 )
-    gray = cv2.GaussianBlur(gray, (11, 11), 0)  # or 7,9,11,13,15,17,21
+    gray = cv2.GaussianBlur(gray, (7, 7), 0)  # or 7,9,11,13,15,17,21
 
     # if the first frame is None, initialize it
     if previousFrame is None:
         previousFrame = gray
         continue
+
+    if calcOpticFlow == True:
+        #flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, None, 0.5, 3, 15, 3, 5, 1.2, 0 )
+        flow = cv2.calcOpticalFlowFarneback ( previousFrame, thresh, None, 0.4, 1, 12, 2, 8, 1.2, 0 )
+
+        mag, ang = cv2.cartToPolar ( flow[..., 0], flow[..., 1] )
+        hsv[..., 0] = ang * 180 / np.pi / 2
+        hsv[..., 2] = cv2.normalize ( mag, None, 0, 255, cv2.NORM_MINMAX )
+        rgb = cv2.cvtColor ( hsv, cv2.COLOR_HSV2BGR )
 
     # compute the absolute difference between the current and last
     frameDelta = cv2.absdiff(previousFrame, gray)
@@ -265,7 +279,7 @@ while True:
     (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(frameDelta, None)
 
     # take the threshold of the absolute difference
-    thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
+    thresh = cv2.threshold(frameDelta, 10, 255, cv2.THRESH_BINARY)[1]
 
     # draw marker at max location
     cv2.drawMarker(img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 2)
@@ -321,107 +335,84 @@ while True:
     # if the std deviation is small
     if stdev_in_xy < stdev_min:
         # draw the mean center of the x,y points
-        cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy),
-                   (255, 0, 0), 2)
-        # cv2.drawMarker(img0, (int(vector_result[0]),int(vector_result[1])), (0, 255, 0), cv2.MARKER_CROSS, 10, 1)
+        cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), (255, 0, 0), 2)
 
         # close the holes
-        thresh = cv2.dilate(thresh, kernel, iterations=1)
-        # roi = image_thresh[int(x - 20):int(x + 20), int(y - 20):int(y + 20)]
-        roi = cv2.circle(np.zeros(thresh.shape, thresh.dtype),
-                         (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy),
-                         255, -1 )
-        thresh = cv2.bitwise_and(thresh, thresh, mask=roi)
+        #image_thresh = cv2.dilate(image_thresh, kernel, iterations=1)
+
+        # roi = cv2.circle(np.zeros(image_thresh.shape, image_thresh.dtype),
+        #                 (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), 255, -1 )
+        # image_thresh = cv2.bitwise_and(image_thresh, image_thresh, mask=roi)
 
         # find contours - returns image, contours, hierarchy
         (_, contours, hierarchy) = cv2.findContours(thresh, cv2.RETR_EXTERNAL,
                                                     cv2.CHAIN_APPROX_SIMPLE, None, None)
     else:
         thresh = np.zeros(thresh.shape, thresh.dtype)
+        contours.clear
 
-    if len(contours) > 0:
-        # find the largest contour in the mask, then compute
+    if len(contours) > 0 and captures < captures_max:
+        # find the largest contour
         c = max(contours, key=cv2.contourArea)
-
-        if cv2.pointPolygonTest(c, maxLoc, False) > 0:
+        dist = cv2.pointPolygonTest(c, maxLoc, True)
+        print("Dist:",dist)
+        if dist > 5:
             bbox = cv2.boundingRect(c)
-            # Extract the bounding box from the original image
-            imCrop = img[int(bbox[1]):int(bbox[1] + 100), int(bbox[0]):int(bbox[0] + 100)]
+            proposed_object_bbox = Rect ( int ( bbox[0] ), int ( bbox[1] ), int ( bbox[2] ), int ( bbox[3] ) )
+            # We have not yet tracked anything, so add it
+            if trackers.getObjects() == ():
+                imCropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
+                             int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
+                captures += 1
 
-            captures += 1
-            if frame_counter > capture_start and captures < captures_max:
-                cv2.imshow(str(captures), imCrop)
-                cv2.moveWindow(str(captures), capture_window_x, (height+10)*2)
-                capture_window_x += int(imCrop.shape[1])+10
+                # show the region we are tracking
+                cv2.imshow ( str ( captures ), imCropOrig )
+                cv2.moveWindow ( str ( captures ), capture_window_x, (height + 10) * 2 )
+                capture_window_x += int ( imCropOrig.shape[1] ) + 10
 
-    if captures > capture_start and captures_to_file < captures_to_file_max:
-        imCrop = img[int ( bbox[1] ):int ( bbox[1] + 100 ), int ( bbox[0] ):int ( bbox[0] + 100 )]
-        if output_to_gray:
-            grayCrop = cv2.cvtColor ( imCrop, cv2.COLOR_BGR2GRAY )
-            grayCrop = cv2.filter2D ( grayCrop, -1, sharpen )
-            cv2.imwrite ( "./media/frame-" + str(frame_counter) + ".jpg", grayCrop )
-            cv2.imshow ( str ( captures_to_file ), grayCrop )
+                # initialize a new feature tracker
+                trackers.add ( cv2.TrackerMIL_create (), img, bbox )
+            else:
+                # Loop through all existing bounding boxes to see if this point is already in a region
+                for i in np.arange(0, captures):
+                    bx = trackers.getObjects()[i]
+                    tracked_object_bbox = Rect( int(bx[0]), int(bx[1] ), int(bx[2] ), int(bx[3] ) )
+                    # Is the point inside the box OR the tracked objects' bounding box overlaps
+                    # Do not make a new track if we are already tracking it
+                    if tracked_object_bbox.is_point_inside_rect(Point(maxLoc[0],maxLoc[1])) == True or proposed_object_bbox.overlaps_with(tracked_object_bbox) == True:
+                        continue
+                    else:
+                        imCropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
+                                     int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
+                        captures += 1
 
-        else:
-            cv2.imwrite ( "./media/frame-" + str ( frame_counter ) + ".jpg", imCrop )
-            cv2.imshow ( str ( captures_to_file ), imCrop )
+                        # show the region we are tracking
+                        cv2.imshow ( str ( captures ), imCropOrig )
+                        cv2.moveWindow ( str ( captures ), capture_window_x, (height + 10) * 2 )
+                        capture_window_x += int ( imCropOrig.shape[1] ) + 10
 
-        cv2.moveWindow ( "Capture:" + str ( captures_to_file ), 100*captures_to_file, ((height + 10) * 2 ) + 50)
-        captures_to_file += 1
-    #     # initialize feature_tracker once for each attention point with first frame and bounding box
-    #     if int(minor_ver) < 3:
-    #         feature_tracker = cv2.Tracker_create(tracker_type)
-    #     else:
-    #         if tracker_type == 'BOOSTING':
-    #             feature_tracker = cv2.TrackerBoosting_create()
-    #         if tracker_type == 'MIL':
-    #             feature_tracker = cv2.TrackerMIL_create()
-    #         if tracker_type == 'KCF':
-    #             feature_tracker = cv2.TrackerKCF_create()
-    #         if tracker_type == 'TLD':
-    #             feature_tracker = cv2.TrackerTLD_create()
-    #         if tracker_type == 'MEDIANFLOW':
-    #             feature_tracker = cv2.TrackerMedianFlow_create()
-    #         if tracker_type == 'GOTURN':
-    #             feature_tracker = cv2.TrackerGOTURN_create()
-    #
-    #     # Is the point of greatest change inside the largest polygon?
-    #     if cv2.pointPolygonTest(c, maxLoc, False) > 0 and tracked_area < 8000:
-    #         bbox = cv2.boundingRect(c)
-    #         ok = feature_tracker.init(img0, bbox)
-    #         captures += 1
-    #
-    #         # Limit the number of windows drawn
-    #         if captures < 20:
-    #             # Extract the bounding box from the original image
-    #             imCrop = img0[int(bbox[1]):int(bbox[1] + bbox[3]), int(bbox[0]):int(bbox[0] + bbox[2])]
-    #             print("Captures, tracked_area:", captures, tracked_area)
-    #             cv2.imshow(str(captures), imCrop)
-    #             cv2.moveWindow(str(captures), captures * 96, 500)
-    #
-    # if feature_tracker:
-    #     # send the next image to the feature_tracker to find the new bounding box
-    #     ok, bbox = feature_tracker.update(img0)
-    #
-    # # Calculate Frames per second (FPS)
-    # # fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)
-    #
-    # # Draw bounding box
-    # if ok:
-    #     # Tracking success
-    #     p1 = (int(bbox[0]), int(bbox[1]))
-    #     p2 = (int(bbox[0] + bbox[2]), int(bbox[1] + bbox[3]))
-    #     cv2.rectangle(img0, p1, p2, (255, 0, 0), 2, 1)
+                        # initialize a new feature tracker
+                        trackers.add(cv2.TrackerMIL_create(), img, bbox)
+
+    # send the next image to a feature_tracker to find region in the new image
+    trackers.update(img)
+
+    # Draw bounding box if tracking success
+    for i in np.arange(0, captures):
+        drawRectagleOnImage (img0,  trackers.getObjects()[i], (0, 255, 0) )
 
     cv2.imshow("Thresh", thresh)
     cv2.moveWindow("Thresh", 0, height)
 
     cv2.imshow("Frame Delta", frameDelta)
-    cv2.moveWindow("Frame Delta", 0, 0)
+    cv2.moveWindow("Frame Delta", width, 0)
 
     cv2.imshow("Frame", img0)
-    cv2.moveWindow("Frame", width, 0)
+    cv2.moveWindow("Frame", 0, 0)
 
+    if calcOpticFlow == True:
+        cv2.imshow ("Motion", rgb )
+        cv2.moveWindow ("Motion", width, height)
     # show blobs
     # cv2.imshow ("Keypoints", im_with_keypoints )
     # cv2.moveWindow ("Keypoints", width, height)
@@ -430,16 +421,16 @@ while True:
 
     key = cv2.waitKey(1) & 0xFF
     # if the 'q' key is pressed, stop the loop
-    if key == ord("q"):
+    if key == ord("q") or key == 27:
         break
 
     # slow down the process to observe change
     # time.sleep(.25 - (1.0 / cv2.getTickFrequency() / (cv2.getTickCount() - timer)))
 
     # output result
-    print('fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, vector_result:{6}'.format (
-       fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, vector_result ) )
-
+    print (
+        'fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, vector_result:{6}'.format (
+            fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, vector_result ) )
 
     # calculate Frames per second (FPS)
     fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)

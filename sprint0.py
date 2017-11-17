@@ -1,5 +1,5 @@
-# python demo0.py -a ./media/0146.bmp -b ./media/0147.bmp
-# python demo0.py -a ./media/file1.jpg -b ./media/file2.jpg
+# python sprint0.py -a ./media/0146.bmp -b ./media/0147.bmp
+# python sprint0.sh.py -a ./media/file1.jpg -b ./media/file2.jpg
 
 # Demonstrates finding correlating points in 2 seperate images which are similar but not identical
 # DONE Utilize a modern binary descriptor and a matcher, to find coorelated matching points in 2 images sorted by relevance.
