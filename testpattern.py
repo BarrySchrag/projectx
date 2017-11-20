@@ -60,26 +60,32 @@ class TestPatternGenerator():
 
         self.transform = createTransforms(1)
 
-        self.timer = perpetualTimer(self.msec_step, self.update)
-        # cv2.imshow ( "Test Pattern", self.bg )
-        # cv2.moveWindow ( "Test Pattern", self.width, self.height )
-        # cv2.waitKey ( 1 )
+        self.tick_frequency = cv2.getTickFrequency ()
+        self.ticks = cv2.getTickCount ()
+
+        self.timer = perpetualTimer ( self.msec_step, self.update )
 
     def start(self):
         self.timer.start()
 
-    def cancel(self):
+    def release(self):
         self.timer.cancel()
 
-    def getImage(self):
-        return self.bg.copy(), self.fps
-    # def showWindowHelper(self):
-    #     cv2.imshow ( "Test Pattern", self.bg )
-    #     cv2.waitKey ( 1 )
+    def read(self):
+        return True, self.bg.copy()
+
+    def get(self, property):
+        if property is not None:
+            return sys.maxsize
+        else:
+            return -1
+
+    def getFPS(self):
+        return self.fps
 
     def update(self):
         with self.rlock:
-            self.timer = cv2.getTickCount ()
+
             # extract the right most column
             bgrightcol = self.bg[0:self.height, self.width - 1:self.width]  # [y:y+h, x:x+w]
 
@@ -89,23 +95,25 @@ class TestPatternGenerator():
             # copy the column to the left side
             self.bg[0:self.height, 0:1] = bgrightcol
 
-            self.fps = cv2.getTickFrequency () / (cv2.getTickCount () - self.timer)
+            self.fps = self.tick_frequency / (cv2.getTickCount () - self.ticks)
+
+            self.ticks = cv2.getTickCount ()
 
 if __name__ == "__main__":
 
-    tpg = TestPatternGenerator('./media/testpattern1.jpg',640, 480,1.0,0.0,1.0
-                               ,0,0)
+    #image, width, height, scale, direction, msec_step, offsetx, offsety
+    tpg = TestPatternGenerator('./media/testpattern1.jpg',640, 480,1.0,0.0,1/34,0,0)
     tpg.start()
 
     while True:
-        img, fps = tpg.getImage()
-        print(fps)
+        result, img = tpg.read()
+        print(tpg.getFPS())
         cv2.imshow ( "Test Pattern", img )
         key = cv2.waitKey ( 1 )
-
+        time.sleep(1)
         if key == ord ( "q" ) or key == 27:
             break
 
-    tpg.cancel()
+    tpg.release()
     cv2.destroyAllWindows ()
     sys.exit ()

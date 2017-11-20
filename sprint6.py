@@ -1,5 +1,7 @@
-# python sprint6.py --video ./media/20171014_180142.mp4 --width 340
-# python sprint6.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640
+# python sprint6.py --video ./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4
+# python sprint6.py --video ./media/Ball_Bounce_Reference-sKJegbjS4N8.mp4 --width 640 --start 100
+# python sprint6.py --video ./media/20171014_180142.mp4 --width 640 --start 60
+# python sprint6.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640 -- start 45
 # python sprint6.py --video ./media/20171114_080046.mp4 --width 340
 # Demonstrates capturing a region which has motion relevancy based on analysis of change in a dynamic scene
 #
@@ -19,7 +21,7 @@
 # TODO  Display the mean vectors
 # TODO  Subtract the background vectors from the object vectors
 
-
+import traceback
 import argparse
 import cv2
 import imutils
@@ -30,17 +32,24 @@ import time
 from collections import deque
 import copy
 from skimage.exposure import rescale_intensity
+from sklearn.preprocessing import normalize
 from geometry import *
 import logging
 from datetime import *
+from testpattern import *
+import matplotlib.pyplot as plt
 
 
-def refreshScreen(thresh, frameDelta, img0, flow, glitch, width, height):
+def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
     cv2.imshow ( "Thresh", thresh )
     cv2.moveWindow ( "Thresh", 0, height )
 
-    cv2.imshow ( "Frame Delta", frameDelta )
-    cv2.moveWindow ( "Frame Delta", width, 0 )
+    if type ( f0 ) is not type ( None ):
+        cv2.imshow ( "Angle Histogram", f0 )
+        cv2.moveWindow ( "Angle Histogram", width, 0 )
+    if type ( f1 ) is not type ( None ):
+        cv2.imshow ( "Dir. Histogram", f1 )
+        cv2.moveWindow ( "Dir. Histogram", width, 0 )
 
     cv2.imshow ( "Frame", img0 )
     cv2.moveWindow ( "Frame", 0, 0 )
@@ -67,7 +76,10 @@ def refreshScreen(thresh, frameDelta, img0, flow, glitch, width, height):
 def angle_between(p1, p2):
     xDiff = p2[0] - p1[0]
     yDiff = p2[1] - p1[1]
-    return math.atan2 ( yDiff, xDiff )
+    rad = math.atan2 ( yDiff, xDiff )
+    if rad < 0:
+            rad = 2 * math.pi + rad
+    return rad
 
 
 # ddof=0 (default, interprete data as population)
@@ -80,9 +92,9 @@ def var(v1):
     return np.var ( v1, axis=0 )
 
 
-def distance(v1, v2):
+#def distance(v1, v2):
     # math.sqrt ( (_x2 - x1) * (_x2 - x1) + (_y2 - y1) * (_y2 - y1) )
-    return np.sqrt ( np.sum ( (v1 - v2) ** 2 ) )
+#    return np.sqrt ( np.sum ( (v1 - v2) ** 2 ) )
 
 
 def sumColumn(m):
@@ -205,19 +217,21 @@ width = 0
 height = 0
 channels = 0
 min_area = 0
-points_to_detect = 0
+#points_to_detect = 0
 min_radius = 0
 stdev = 0
 count_of_concordant_points = 0
 output_to_gray = False
-frame_counter_start_frame = 90  # 150
+frame_counter_start_frame = 0  # 150
 show_optic_flow_fb = True
 show_optic_flow_hsv = False
 show_optic_flow_glitch = False
-camera = None
+source = None
 previousGray = None
 previousFrameDelta1 = None
 frameDeltaTemp = None
+image_hist_angle = None
+image_hist_dist = None
 frame_counter = 0
 frame_count_max = 0
 tracked_area = 0
@@ -227,7 +241,7 @@ bbox = None
 que = deque ()
 previousXY = None
 captures = 0
-captures_max = 3
+captures_max = 1
 fps = 0
 scalar_stdev_in_xy = 1
 capture_window_x = 0
@@ -245,7 +259,14 @@ image_flow = None
 image_curr_glitch = None
 arrows = []
 vectors_tracked = []
+vectors_tracked_for_hist = []
 vectors_untracked = []
+angle_hist_values = ""
+hist_height = 256
+hist_width = 360
+nbins = 16
+bin_width = hist_width/nbins
+
 # construct a sharpening filter
 sharpen = np.array ( (
     [1, 1, 1],
@@ -255,8 +276,10 @@ sharpen = np.array ( (
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser ()
 ap.add_argument ( "-v", "--video", help="path to the (optional) video file" )
-ap.add_argument ( "-w", "--width", type=int, default=720, help="width to resize the image" )
-ap.add_argument ( "-p", "--points", type=int, default=32, help="points to detect in the image" )
+ap.add_argument ( "-s", "--start", type=int, default=0, help="start frame index to begin processing the video file" )
+ap.add_argument ( "-p", "--testpattern", help="path to an (optional) background test pattern file" )
+ap.add_argument ( "-w", "--width", type=int, default=340, help="width to resize the image" )
+#ap.add_argument ( "-p", "--points", type=int, default=32, help="points to detect in the image" )
 ap.add_argument ( "-a", "--min_area", type=int, default=1000, help="minimum area size" )
 ap.add_argument ( "-r", "--min_radius", type=int, default=2000, help="minimum radius size" )
 ap.add_argument ( "-t", "--feature_tracker_type", default="ALL",
@@ -265,23 +288,21 @@ ap.add_argument ( "-d", "--stdev_min", type=int, default=26,
                   help="minimum distance between x,y points to be a valid region of interest" )
 ap.add_argument ( "-c", "--count_of_concordant_points", type=int, default=2,
                   help="minimum count of concordant x,y points to be considered valid region of interest" )
-ap.add_argument ( "-f", "--frame_counter_start_frame", type=int, default=0,
-                  help="delay for what frame to begin with" )
 
 args = vars ( ap.parse_args () )
 
 if args.get ( "min_area", True ):
     min_area = args["min_area"]
-if args.get ( "points", True ):
-    points_to_detect = args["points"]
+#if args.get ( "points", True ):
+#    points_to_detect = args["points"]
 if args.get ( "min_radius", True ):
     min_radius = args["min_radius"]
 if args.get ( "stdev_min", True ):
     stdev_min = args["stdev_min"]
 if args.get ( "count_of_concordant_points", True ):
     count_of_concordant_points = args["count_of_concordant_points"]
-if args.get ( "frame_counter_start_frame", True ):
-    frame_counter_start_frame = args["frame_counter_start_frame"]
+if args.get ( "start", True ):
+    frame_counter_start_frame = args["start"]
 
 # initialize Tracker
 tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', 'GOTURN']
@@ -330,7 +351,6 @@ logging.basicConfig ( filename=file,
 logger = logging.getLogger ( 'info' )
 
 try:
-
     while True:
         # start timer
         timer = cv2.getTickCount ()
@@ -350,24 +370,29 @@ try:
             if captures == 0:
                 trackers = cv2.MultiTracker_create ()
 
-            # if a video path was not supplied, grab the reference to the webcam
-            if not args.get ( "video", False ):
-                camera = cv2.VideoCapture ( 0 )
-            # otherwise, grab a reference to the video file
+            if args.get ( "testpattern", False):
+                background_pattern = args["testpattern"]
+                source = TestPatternGenerator ( background_pattern, 640, 480, 1.0, 0.0, 1 / 34, 0, 0 )
+                source.start ()
             else:
-                video_file = args["video"]
-                # video_file = "./media/00001-Dup15rVd2eU.mp4"
-                # video ./media/20171014_180142.mp4
+                # if a video path was not supplied, grab the reference to the webcam
+                if not args.get ( "video", False ):
+                    source = cv2.VideoCapture ( 0 )
+                # otherwise, grab a reference to the video file
+                else:
+                    video_file = args["video"]
+                    #video_file = "./media/00001-Dup15rVd2eU.mp4"
+                    # video ./media/20171014_180142.mp4
 
-                # video_file = './media/PAN_TILT-_Sample-WcmHxBtz3EY.mp4'
-                # video_file = './media/Tilt-Down_shot_for_DP_Film-7-eowYn1gBE.mp4' #-90
-                # video_file = './media/Example_of_a_panning_shot-eBL6vu9NQtw.mp4'
-                camera = cv2.VideoCapture ( video_file )
+                    # video_file = './media/PAN_TILT-_Sample-WcmHxBtz3EY.mp4'
+                    # video_file = './media/Tilt-Down_shot_for_DP_Film-7-eowYn1gBE.mp4' #-90
+                    # video_file = './media/Example_of_a_panning_shot-eBL6vu9NQtw.mp4'
+                    source = cv2.VideoCapture ( video_file )
 
-            frame_count_max = camera.get ( cv2.CAP_PROP_FRAME_COUNT )
+            frame_count_max = source.get ( cv2.CAP_PROP_FRAME_COUNT )
 
         # grab the current frame
-        (grabbed, frame) = camera.read ()
+        (grabbed, frame) = source.read ()
         frame_counter += 1
 
         # command line paramater to delay the start of processing
@@ -380,12 +405,23 @@ try:
             break
         if args.get ( "width", True ):
             width = args["width"]
-            img = imutils.resize ( frame, width )
-        else:
-            img = frame
-        img0 = img.copy ()
+            frame = imutils.resize ( frame, width )
+        #else:
+        #    img = frame
 
-        height, width, channels = img0.shape
+        img = frame
+        img0 = frame.copy()
+
+        if len(img0.shape) == 2:
+            height, width = img0.shape
+            channels = 1
+        else:
+            height, width, channels = img0.shape
+
+        if channels == 3:
+            gray = cv2.cvtColor ( img0, cv2.COLOR_BGR2GRAY )
+        else:
+            gray = img0
 
         # Detect blobs.
         keypoints = None  # detector.detect (img0)
@@ -394,7 +430,6 @@ try:
         # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
         # im_with_keypoints = cv2.drawKeypoints (img0, keypoints, np.array ( [] ), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS )
 
-        gray = cv2.cvtColor ( img0, cv2.COLOR_BGR2GRAY )
         gray = cv2.GaussianBlur ( gray, (7, 7), 0 )  # or 3,5,7,9,11,13,15,17,21
         # close the holes
         # gray = cv2.dilate(gray, kernel, iterations=1)
@@ -440,8 +475,8 @@ try:
                 # https://stackoverflow.com/questions/41760437/opencv-how-to-apply-a-filter-on-vectors-obtained-through-calcopticalflowfarneba
 
         # draw marker at max location
-        cv2.drawMarker ( img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 2 )
-        cv2.drawMarker ( img0, maxLoc2, (0, 0, 255), cv2.MARKER_CROSS, 20, 4 )
+        cv2.drawMarker ( img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 1 )
+        cv2.drawMarker ( img0, maxLoc2, (0, 0, 255), cv2.MARKER_CROSS, 20, 2 )
 
         # limit the size of the queue
         if len ( que ) > count_of_concordant_points:
@@ -537,11 +572,11 @@ try:
                 # create a new tracked region only if we are not already tracking it
                 if proposed_box_overlaps == False:
                     # slice startY:endY, startX: endX
-                    image_CropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
-                                     int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
+                    image_CropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3]-1 ),
+                                     int ( bbox[0] ):int ( bbox[0] + bbox[2]-1 )]
 
                     # initialize a new feature tracker where bbox defines the region to track
-                    trackers.add ( cv2.TrackerMIL_create (), img, bbox )
+                    trackers.add ( cv2.TrackerMIL_create (), img, (bbox[0],bbox[1], bbox[2]-1,bbox[3]-1) )
                     cv2.putText ( image_CropOrig, str ( captures ), (1, 20), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
 
                     # show the region we are tracking
@@ -555,6 +590,7 @@ try:
         trackers.update ( img )
 
         vectors_tracked.clear ()
+        vectors_tracked_for_hist.clear ()
         vectors_untracked.clear ()
 
         # Draw bounding box if tracking success
@@ -569,10 +605,35 @@ try:
             for x1, y1, _x2, _y2, rad, dist in arrows:
                 # Is the arrow origin inside the tracked object box? add it to our vector list
                 if tracked_object_bbox.is_point_inside_rect ( Point ( x1, y1 ) ) == True:
-                    if dist > 3:
-                        vectors_tracked.append ( [i, x1, y1, _x2, _y2, rad, dist] )
+                    #if dist > 3:
+                    vectors_tracked.append ( [i, x1, y1, _x2, _y2, rad, dist] )
+                    vectors_tracked_for_hist.append([math.degrees(rad),dist])
                 else:
                     vectors_untracked.append ( [i, x1, y1, _x2, _y2, rad, dist] )
+            if 1 == 1:
+                # begin histogram - get the angles into a list
+                angle_hist = [x[0] for x in vectors_tracked_for_hist]
+
+                # change type
+                angle_hist_shaped = np.array(angle_hist).astype(np.float32)
+
+                # create an empty image for the histogram
+                image_hist_angle = np.zeros((hist_height, hist_width), dtype=np.float32 )
+
+                # calculate and normalise the histogram
+                hist_item = cv2.calcHist([angle_hist_shaped], [0], None, [nbins], [0, hist_width] )
+                cv2.normalize ( hist_item, hist_item, hist_height, cv2.NORM_MINMAX )
+
+                angle_hist_values = ','.join ( map ( str, hist_item.flatten () ) )
+
+                # Loop through each bin and plot the rectangle in 255 white
+                for x, y in enumerate ( hist_item ):
+                    cv2.rectangle ( image_hist_angle, (int ( x * bin_width ), int ( y )),
+                                    (int ( x * bin_width + bin_width - 1 ), int ( hist_height )),
+                                    255, -1 )
+                # Flip upside down
+                image_hist_angle = np.flipud ( image_hist_angle )
+                # end histogram
 
             tracked_data = meanColumn ( vectors_tracked )
             untracked_data = meanColumn ( vectors_untracked )
@@ -583,13 +644,19 @@ try:
             tracked_mean_start_y = np.mean ( tracked_data[2] )
             tracked_mean_end_x = np.mean ( tracked_data[3] )
             tracked_mean_end_y = np.mean ( tracked_data[4] )
+            tracked_mean_dist = distance ( (tracked_mean_start_x, tracked_mean_start_y),
+                                           (tracked_mean_end_x, tracked_mean_end_y) )
+            cv2.arrowedLine ( img0, (int ( tracked_mean_start_x ), int ( tracked_mean_start_y )),
+                              (int ( tracked_mean_end_x ), int ( tracked_mean_end_y )),
+                              (222, 222, 222), 1, 8, 0, .8)
+            cv2.putText ( img0, '{:.1f}'.format(math.degrees(tracked_rad )),
+                          (int ( tracked_mean_start_x + 2 ),  int ( tracked_mean_start_y + 20 )),
+                          font, 0.8, (222, 222, 222), 1,cv2.LINE_AA )
+
             tracked_std_dev_rad = std_dev ( vectors_tracked )[5]
             tracked_std_dev_dist = std_dev ( vectors_tracked )[6]
             tracked_var_rad = var ( vectors_tracked )[5]
             tracked_var_dist = var ( vectors_tracked )[6]
-
-            cv2.line ( img0, (int ( tracked_mean_start_x ), int ( tracked_mean_start_y )),
-                       (int ( tracked_mean_end_x ), int ( tracked_mean_end_y )), (192, 0, 192), 1 )
 
             untracked_rad = angle_between ( (untracked_data[1], untracked_data[2]), (untracked_data[3], untracked_data[4]) )
             untracked_dist = distance ( (untracked_data[1], untracked_data[2]), (untracked_data[3], untracked_data[4]) )
@@ -606,7 +673,7 @@ try:
             print ( 'Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                 tracked_data[0], tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
                 tracked_std_dev_dist, tracked_var_rad ) )
-
+            print( 'Tracked Hist Angles:{}',format(angle_hist_values))
             image_data = [tracked_data[0], 'untracked', untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
                           untracked_std_dev_dist, untracked_var_rad]
             logger.info ( ','.join ( map ( str, image_data ) ) )
@@ -639,7 +706,8 @@ try:
             print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                 untracked_dist, untracked_rad, math.degrees ( untracked_rad ), untracked_std_dev_dist, untracked_var_rad ) )
 
-        refreshScreen ( image_thresh, frameDeltaTemp, img0, image_flow, image_curr_glitch, width, height )
+        refreshScreen ( image_thresh, image_hist_angle, image_hist_dist, img0, image_flow, image_curr_glitch, \
+                                                                             width, height )
 
         # show blobs
         # cv2.imshow ("Keypoints", im_with_keypoints )
@@ -676,20 +744,24 @@ try:
         fps = cv2.getTickFrequency () / (cv2.getTickCount () - timer)
 
     logger.close ()
-    # cleanup the camera and close any open windows
+    # cleanup the source and close any open windows
     print ( "Frame_counter:", frame_counter )
     print ( "Frame_count_max:", frame_count_max )
-    camera.release ()
+    source.release ()
     cv2.destroyAllWindows ()
     sys.exit ()
 
-
 except Exception as inst:
-    print ( type(inst) )    # the exception instance
-    print ( inst.args  )    # arguments stored in .args
-    print ( inst)
-    print ( "Unexpected error:", sys.exc_info ()[0] )
-    camera.release ()
+
+    if source is not None:
+        source.release ()
     cv2.destroyAllWindows ()
+
+    exc_type, exc_obj, exc_tb = sys.exc_info ()
+    fname = os.path.split ( exc_tb.tb_frame.f_code.co_filename )[1]
+    print ( exc_type, fname, exc_tb.tb_lineno , exc_obj)
+    #desired_trace = traceback.format_exc ( sys.exc_info () )
+    #print(desired_trace)
+    del (exc_type, exc_obj, exc_tb)
     sys.exit ()
 
