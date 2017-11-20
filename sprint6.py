@@ -265,7 +265,7 @@ dist_hist_values = ""
 
 hist_height_angle = 256
 hist_width_angle = 360
-nbins_angle = 180
+nbins_angle = 360
 bin_width_angle = hist_width_angle/nbins_angle
 
 hist_height_dist = 32
@@ -387,9 +387,9 @@ try:
                 # otherwise, grab a reference to the video file
                 else:
                     video_file = args["video"]
-                    #video_file = "./media/00001-Dup15rVd2eU.mp4"
+                    video_file = "./media/00001-Dup15rVd2eU.mp4"
                     # video ./media/20171014_180142.mp4
-                    video_file = "./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4"
+                    # video_file = "./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4"
                     # video_file = './media/PAN_TILT-_Sample-WcmHxBtz3EY.mp4'
                     # video_file = './media/Tilt-Down_shot_for_DP_Film-7-eowYn1gBE.mp4' #-90
                     # video_file = './media/Example_of_a_panning_shot-eBL6vu9NQtw.mp4'
@@ -615,7 +615,7 @@ try:
                 if tracked_object_bbox.is_point_inside_rect ( Point ( x1, y1 ) ) == True:
                     #if dist > 3:
                     vectors_tracked.append ( [i, x1, y1, _x2, _y2, rad, dist] )
-                    vectors_tracked_for_hist.append([math.degrees(rad),dist])
+                    vectors_tracked_for_hist.append([360-math.degrees(rad),dist])
                 else:
                     vectors_untracked.append ( [i, x1, y1, _x2, _y2, rad, dist] )
             if 1 == 1:

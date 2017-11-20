@@ -38,8 +38,8 @@
       <file leaf-file-name="sprint6.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sprint6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="643" column="23" lean-forward="true" selection-start-line="643" selection-start-column="23" selection-end-line="643" selection-end-column="23" />
+            <state relative-caret-position="412">
+              <caret line="614" column="12" lean-forward="true" selection-start-line="614" selection-start-column="12" selection-end-line="614" selection-end-column="12" />
               <folding>
                 <element signature="e#1660#1676#0" expanded="true" />
               </folding>
@@ -68,7 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>frameDeltaTemp</find>
       <find>hist_image_angle</find>
       <find>img0</find>
       <find>frame_counter</find>
@@ -98,6 +97,7 @@
       <find>hist_height</find>
       <find>hist_width</find>
       <find>angle_hist_values</find>
+      <find>video</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -432,6 +432,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="586" y="50" width="1100" height="1003" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19505495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
@@ -442,7 +443,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34230354" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27233586" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27233586" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20310391" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -841,8 +842,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sprint6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="643" column="23" lean-forward="true" selection-start-line="643" selection-start-column="23" selection-end-line="643" selection-end-column="23" />
+        <state relative-caret-position="412">
+          <caret line="614" column="12" lean-forward="true" selection-start-line="614" selection-start-column="12" selection-end-line="614" selection-end-column="12" />
           <folding>
             <element signature="e#1660#1676#0" expanded="true" />
           </folding>
