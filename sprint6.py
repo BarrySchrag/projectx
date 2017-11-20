@@ -37,8 +37,6 @@ from geometry import *
 import logging
 from datetime import *
 from testpattern import *
-import matplotlib.pyplot as plt
-
 
 def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
     cv2.imshow ( "Thresh", thresh )
@@ -49,7 +47,7 @@ def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
         cv2.moveWindow ( "Angle Histogram", width, 0 )
     if type ( f1 ) is not type ( None ):
         cv2.imshow ( "Dir. Histogram", f1 )
-        cv2.moveWindow ( "Dir. Histogram", width, 0 )
+        cv2.moveWindow ( "Dir. Histogram", int(width*2), 0 )
 
     cv2.imshow ( "Frame", img0 )
     cv2.moveWindow ( "Frame", 0, 0 )
@@ -257,15 +255,23 @@ dist_to_polygon = 0
 image_thresh = None
 image_flow = None
 image_curr_glitch = None
+optic_flow_window_size=32
 arrows = []
 vectors_tracked = []
 vectors_tracked_for_hist = []
 vectors_untracked = []
 angle_hist_values = ""
-hist_height = 256
-hist_width = 360
-nbins = 16
-bin_width = hist_width/nbins
+dist_hist_values = ""
+
+hist_height_angle = 256
+hist_width_angle = 360
+nbins_angle = 180
+bin_width_angle = hist_width_angle/nbins_angle
+
+hist_height_dist = 32
+hist_width_dist = 32
+nbins_dist = 8
+bin_width_dist= hist_width_dist/nbins_dist
 
 # construct a sharpening filter
 sharpen = np.array ( (
@@ -463,10 +469,12 @@ try:
 
         # determine optic flow
         if show_optic_flow_fb == True:
-            image_flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, image_thresh, 0.5, 2, 15, 2, 5, 1.1,
+            image_flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, None,
+                                                        #image_thresh,
+                                                        0.5, 2, optic_flow_window_size, 2, 5, 1.1,
                                                         0 )  # cv2.OPTFLOW_FARNEBACK_GAUSSIAN )
             # arrows.clear ()
-            image_flow = draw_flow ( gray, arrows, image_flow, 16 )
+            image_flow = draw_flow ( gray, arrows, image_flow, optic_flow_window_size )
 
             if show_optic_flow_hsv == True:
                 image_flow = draw_hsv ( image_flow )
@@ -528,7 +536,7 @@ try:
             cv2.circle ( img0, (int ( x ), int ( y )), int ( stdev_in_xy * scalar_stdev_in_xy ), (255, 0, 0), 2 )
 
             # close the holes
-            # image_thresh = cv2.dilate(image_thresh, kernel, iterations=1)
+            #image_thresh = cv2.dilate(image_thresh, kernel, iterations=1)
 
             # roi = cv2.circle(np.zeros(image_thresh.shape, image_thresh.dtype),
             #                 (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), 255, -1 )
@@ -611,28 +619,46 @@ try:
                 else:
                     vectors_untracked.append ( [i, x1, y1, _x2, _y2, rad, dist] )
             if 1 == 1:
-                # begin histogram - get the angles into a list
+                # Angle begin histogram - get the angles into a list
                 angle_hist = [x[0] for x in vectors_tracked_for_hist]
+                # Dist
+                dist_hist = [x[1] for x in vectors_tracked_for_hist]
 
-                # change type
+                # Angle - change type
                 angle_hist_shaped = np.array(angle_hist).astype(np.float32)
+                # Dist
+                dist_hist_shaped = np.array(dist_hist).astype(np.float32 )
 
-                # create an empty image for the histogram
-                image_hist_angle = np.zeros((hist_height, hist_width), dtype=np.float32 )
+                # Angle - create an empty image for the histogram
+                image_hist_angle = np.zeros((hist_height_angle, hist_width_angle), dtype=np.float32 )
+                # Dist
+                image_hist_dist = np.zeros((hist_height_dist, hist_width_dist), dtype=np.float32 )
 
-                # calculate and normalise the histogram
-                hist_item = cv2.calcHist([angle_hist_shaped], [0], None, [nbins], [0, hist_width] )
-                cv2.normalize ( hist_item, hist_item, hist_height, cv2.NORM_MINMAX )
+                # Angle - calculate and normalise the histogram
+                hist_item_angle = cv2.calcHist([angle_hist_shaped], [0], None, [nbins_angle], [0, hist_width_angle] )
+                cv2.normalize ( hist_item_angle, hist_item_angle, hist_height_angle, cv2.NORM_MINMAX )
+                # Dist
+                hist_item_dist = cv2.calcHist ( [dist_hist_shaped], [0], None, [nbins_dist], [0, hist_width_dist] )
+                cv2.normalize ( hist_item_dist, hist_item_dist, hist_height_dist, cv2.NORM_MINMAX )
 
-                angle_hist_values = ','.join ( map ( str, hist_item.flatten () ) )
+                angle_hist_values = ','.join ( map ( str, hist_item_angle.flatten () ) )
+                dist_hist_values = ','.join ( map ( str, hist_item_dist.flatten () ) )
 
-                # Loop through each bin and plot the rectangle in 255 white
-                for x, y in enumerate ( hist_item ):
-                    cv2.rectangle ( image_hist_angle, (int ( x * bin_width ), int ( y )),
-                                    (int ( x * bin_width + bin_width - 1 ), int ( hist_height )),
+                # Angle - Loop through each bin and plot the rectangle in 255 white
+                for x, y in enumerate ( hist_item_angle ):
+                    cv2.rectangle ( image_hist_angle, (int ( x * bin_width_angle ), int ( y )),
+                                    (int ( x * bin_width_angle + bin_width_angle - 1 ), int ( hist_height_angle)),
                                     255, -1 )
-                # Flip upside down
+                # Angle - Flip upside down
                 image_hist_angle = np.flipud ( image_hist_angle )
+
+                # Dist - Loop through each bin and plot the rectangle in 255 white
+                for x, y in enumerate ( hist_item_dist ):
+                    cv2.rectangle ( image_hist_dist, (int ( x * bin_width_dist ), int ( y )),
+                                    (int ( x * bin_width_dist + bin_width_dist - 1 ), int ( hist_height_dist )),
+                                    255, -1 )
+                # Dist - Flip upside down
+                image_hist_dist = np.flipud ( image_hist_dist )
                 # end histogram
 
             tracked_data = meanColumn ( vectors_tracked )
@@ -648,7 +674,7 @@ try:
                                            (tracked_mean_end_x, tracked_mean_end_y) )
             cv2.arrowedLine ( img0, (int ( tracked_mean_start_x ), int ( tracked_mean_start_y )),
                               (int ( tracked_mean_end_x ), int ( tracked_mean_end_y )),
-                              (222, 222, 222), 1, 8, 0, .8)
+                              (255, 255, 255), 1, 8, 0, 4)
             cv2.putText ( img0, '{:.1f}'.format(math.degrees(tracked_rad )),
                           (int ( tracked_mean_start_x + 2 ),  int ( tracked_mean_start_y + 20 )),
                           font, 0.8, (222, 222, 222), 1,cv2.LINE_AA )
@@ -668,7 +694,8 @@ try:
             image_data = [tracked_data[0], 'tracked', tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
                           tracked_std_dev_dist, tracked_var_rad, tracked_mean_start_x, tracked_mean_start_y,
                           tracked_mean_end_x, tracked_mean_end_y]
-            logger.info ( ','.join ( map ( str, image_data ) ) )
+            # log all data
+            logger.info ( ','.join ( map ( str, image_data ) ) +',5151,'+angle_hist_values+',5152,'+dist_hist_values)
 
             print ( 'Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                 tracked_data[0], tracked_dist, tracked_rad, math.degrees ( tracked_rad ),

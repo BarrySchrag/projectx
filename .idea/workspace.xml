@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/detectSymmetry.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/histogram.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/010938-20171117.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/011000-20171117.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/012259-20171113.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/034814-20171115.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/040026-20171115.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/062856-20171114.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/063748-20171114.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/160706-20171114.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/194425-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/201150-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/201645-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/201818-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/201911-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/211830-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/213202-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/213401-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/213716-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/214420-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/215224-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/221622-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/221925-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/222236-20171116.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/222537-20171116.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sprint6.py" afterPath="$PROJECT_DIR$/sprint6.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testpattern.py" afterPath="$PROJECT_DIR$/testpattern.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/histogram.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -56,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/sprint5.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -65,8 +39,8 @@
       <file leaf-file-name="sprint6.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sprint6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="692" column="0" lean-forward="true" selection-start-line="692" selection-start-column="0" selection-end-line="692" selection-end-column="0" />
               <folding>
                 <element signature="e#1660#1676#0" expanded="true" />
               </folding>
@@ -95,17 +69,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PI</find>
-      <find>astype</find>
-      <find>plt</find>
-      <find>ndarray</find>
-      <find>array</find>
-      <find>show</find>
-      <find>hist_height</find>
-      <find>logger</find>
-      <find>str</find>
-      <find>bins</find>
-      <find>refresh</find>
       <find>frameDeltaTemp</find>
       <find>hist_image_angle</find>
       <find>img0</find>
@@ -115,16 +78,27 @@
       <find>hist</find>
       <find>arrows</find>
       <find>angle_between</find>
-      <find>hist_width</find>
       <find>int8</find>
       <find>degrees</find>
       <find>refreshScreen</find>
       <find>width</find>
       <find>tracked_object_bbox.is_point_inside_rect</find>
       <find>frame_counter_start_frame</find>
-      <find>arrow</find>
       <find>text</find>
       <find>captures_max</find>
+      <find>farne</find>
+      <find>dir</find>
+      <find>image_hist_dist</find>
+      <find>image_hist_angle</find>
+      <find>Dir.</find>
+      <find>* 2</find>
+      <find>*2</find>
+      <find>*</find>
+      <find>arrow</find>
+      <find>height_</find>
+      <find>hist_height</find>
+      <find>hist_width</find>
+      <find>angle_hist_values</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -521,7 +495,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="254" />
+      <option name="time" value="255" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -852,7 +826,7 @@
     <entry file="file://$PROJECT_DIR$/histogram.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -862,15 +836,15 @@
     <entry file="file://$PROJECT_DIR$/sprint5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sprint6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="692" column="0" lean-forward="true" selection-start-line="692" selection-start-column="0" selection-end-line="692" selection-end-column="0" />
           <folding>
             <element signature="e#1660#1676#0" expanded="true" />
           </folding>
