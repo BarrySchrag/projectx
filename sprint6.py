@@ -257,7 +257,7 @@ dist_to_polygon = 0
 image_thresh = None
 image_flow = None
 image_curr_glitch = None
-optic_flow_window_size=32
+optic_flow_window_size=8
 arrows = []
 vectors_tracked = []
 vectors_tracked_for_hist = []
@@ -391,7 +391,7 @@ try:
                     video_file = args["video"]
                     #video_file = "./media/00001-Dup15rVd2eU.mp4"
                     # video ./media/20171014_180142.mp4
-
+                    video_file = "./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4"
                     # video_file = './media/PAN_TILT-_Sample-WcmHxBtz3EY.mp4'
                     # video_file = './media/Tilt-Down_shot_for_DP_Film-7-eowYn1gBE.mp4' #-90
                     # video_file = './media/Example_of_a_panning_shot-eBL6vu9NQtw.mp4'
