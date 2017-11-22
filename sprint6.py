@@ -73,6 +73,7 @@ def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
 #
 # x.sum(axis=1)
 # array([ 6, 22, 38])
+
 def angle_between(p1, p2):
     xDiff = p2[0] - p1[0]
     yDiff = p2[1] - p1[1]
