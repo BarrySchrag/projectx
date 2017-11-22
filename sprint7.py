@@ -1,10 +1,8 @@
-# python sprint6.py --video ./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4 # 700 area giant bball
-# python sprint6.py --video ./media/00001-Dup15rVd2eU.mp4 --width 320 -- start 45 # tiny ball drop
-# python sprint6.py --video ./media/20171014_180142.mp4 --width 640 --start 60
-
+# python sprint7.py --video ./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4
 # python sprint6.py --video ./media/Ball_Bounce_Reference-sKJegbjS4N8.mp4 --width 640 --start 100
+# python sprint6.py --video ./media/20171014_180142.mp4 --width 640 --start 60
+# python sprint6.py --video ./media/00001-Dup15rVd2eU.mp4 --width 640 -- start 45
 # python sprint6.py --video ./media/20171114_080046.mp4 --width 340
-
 # Demonstrates capturing a region which has motion relevancy based on analysis of change in a dynamic scene
 # =VAR(P68:GM68)
 # =STDEVP(P68:GM68)
