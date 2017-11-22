@@ -210,3 +210,38 @@ for (i, (v, k)) in enumerate(results):
 
 # show the custom method
 plt.show()
+
+if __name__ == "__main__":
+
+    hist_height = 100
+    hist_width = 100
+    nbins = 10
+    bin_width = hist_width / nbins
+
+    # Gas mileage for year 2000 cars from http://www.shodor.org/interactivate/activities/Histogram/
+    data = [49,49,45,45,41,38,38,38,40,37,37,34,35,36,35,38,38,32,32,32,37,31,32,31,32,30,30,32,30,30,29,28,29,29,29,30,28,27,29,30,28,27,28,27,27,29,29,29,26,27,25,25,25,25,25,25,25,26,26,27]
+
+    # Change type
+    data_shaped = np.array(data).astype(np.float32)
+    hist_out = np.zeros((hist_height, hist_width), dtype=np.float32 )
+
+    # Calculate and normalise the histogram
+    H1 = cv2.calcHist([data_shaped], [0], None, [nbins], [0, hist_width])
+    cv2.normalize(H1, H1, hist_height, cv2.NORM_MINMAX)
+
+    hist_values = ','.join(map(str, H1.flatten()))
+    print(hist_values)
+
+    # Angle - Loop through each bin and plot the rectangle in 255 white
+    for x, y in enumerate(H1):
+        cv2.rectangle(hist_image, (int(x * bin_width), int(y)),
+                      (int(x * bin_width + bin_width - 1), int(hist_height)),
+                      255, -1)
+    # Show
+    if type(hist_image) is not type(None):
+        cv2.imshow("Histogram", hist_image)
+        cv2.moveWindow("Histogram", 0, 0)
+
+    compare = CompareHistograms(H1,H2,MethodOfComparrison)
+    compare.result
+    sys.exit ()
