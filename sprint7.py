@@ -1,3 +1,5 @@
+# TODO: Split data into histograms for atomic motions!
+# TODO: Determine relative offset of direction in x,y angle
 # python sprint7.py --video ./media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4
 # python sprint6.py --video ./media/Ball_Bounce_Reference-sKJegbjS4N8.mp4 --width 640 --start 100
 # python sprint6.py --video ./media/20171014_180142.mp4 --width 640 --start 60
