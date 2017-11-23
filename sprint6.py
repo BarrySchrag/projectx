@@ -22,8 +22,7 @@
 #   Capture a bounding box of this contour, and show it on screen                            DONE
 # Extract the motion vectors contained in the matched region in the bounding box between frames     DONE
 #   Keep the mean vectors related to the object being tracked, and the background vectors exclusive DONE
-# TODO  Display the mean vectors
-# TODO  Subtract the background vectors from the object vectors
+#   Displays and logs the mean vectors, mean vector arrow is displayed on the region ROI.
 
 import traceback
 import argparse
