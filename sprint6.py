@@ -376,7 +376,6 @@ try:
             ok2 = False
             while captures > 0:
                 cv2.destroyWindow ( str ( captures ) )
-                captures -= 1
             if captures == 0:
                 trackers = cv2.MultiTracker_create ()
 
@@ -392,8 +391,8 @@ try:
                 else:
                     video_file = args["video"]
                     video_file = './media/00001-Dup15rVd2eU.mp4' # tiny ball drop
-                    #video_file = './media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4' # 700 area giant bball
-                    # video_file = './media/20171014_180142.mp4' # Kat
+                    video_file = './media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4' # 700 area giant bball
+                    video_file = './media/20171014_180142.mp4' # Kat
                     source = cv2.VideoCapture ( video_file )
 
             frame_count_max = source.get ( cv2.CAP_PROP_FRAME_COUNT )
