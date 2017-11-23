@@ -7,8 +7,6 @@ import numpy as np
 import argparse
 import glob
 import cv2
-from itertools import *
-
 
 # use compareHist with HistCompMethods, EMD, compare w/wo equalization (equalizeHist)
 # Derivative of the histogram over time
@@ -31,7 +29,8 @@ from itertools import *
 #     ("Correlation", cv2.HISTCMP_CORREL), # Correlation  Hk=1/N∑Hk(J)
 #     ("Chi-Squared", cv2.HISTCMP_CHISQR), #Chi-Square
 #     ("Intersection", cv2.HISTCMP_INTERSECT),  # Intersection
-#     ("Bhattacharyya", cv2.HISTCMP_BHATTACHARYYA), # OpenCV computes Hellinger distance, which is related to Bhattacharyya coefficient
+#     ("Bhattacharyya", cv2.HISTCMP_BHATTACHARYYA), # OpenCV computes Hellinger distance,
+#        which is related to Bhattacharyya coefficient
 #     ("Hellinger", cv2.HISTCMP_HELLINGER), # Hellinger distance
 #     ("Chi-Squared Alternative", cv2.HISTCMP_CHISQR_ALT), #Alternative Chi-Square
 #     ("Kullback-Leibler divergence", cv2.HISTCMP_KL_DIV) #Kullback-Leibler divergence
@@ -200,8 +199,8 @@ from itertools import *
 #
 # # show the custom method
 # plt.show()
-
 class CompareHistograms():
+
     H1 = None
     H2 = None
 
@@ -224,8 +223,10 @@ class CompareHistograms():
     @staticmethod
     def arrayToHistogram(array, do_normalize, hist_height, hist_width, nbins):
 
-        for x in itertools.ifilter(lambda x: x > hist_height, array):
-            raise Exception('Data values must be less than the intended histogram height.')
+        r = list(filter((lambda x: x > hist_height), array))
+        if len(r) > 0:
+            raise Exception('Data values must be less than the intended histogram height.' + str(r) )
+
         # Change type
         data_shaped = np.array(array).astype(np.float32)
         hist_out = np.zeros((hist_height, hist_width), dtype=np.float32)
@@ -299,7 +300,7 @@ class CompareHistograms():
                 d = cv2.compareHist(self.H1, self.H2, method)
                 print(methodName + ":" + str(d))
                 if reverse == True:
-                    d = 1.0/d
+                    d = 1.0/(d+1e-10)
                 results.append((methodName,d))
 
                 # sort the results each run
@@ -320,40 +321,59 @@ def histogramOutput(data_new, unique_id, data_old, do_normalize, hist_height, hi
     for (methodName, value) in result:
         print("\t" + methodName + ":" + str(value))
 
-    image = CompareHistograms.histogramToImage(H_old, True, hist_height, hist_width, nbins)
+    image = CompareHistograms.histogramToImage(H_new, True, hist_height, hist_width, nbins)
     if type(image) is not type(None):
         cv2.imshow(str(unique_id), image)
         cv2.moveWindow(str(unique_id), hist_width*unique_id+10, 0)
+
+
+def shiftLeft(seq, n):
+    n = n % len(seq)
+    # left: from nth element to end, add the piece from 0 to n to the right side
+    return seq[n:] + seq[:n]
+
+def shiftRight(seq, n):
+    n = n % len(seq)
+    # right: back from the end to the nth element, put that on the left front of the list -n items
+    return seq[-n:] + seq[:-n]
 
 if __name__ == "__main__":
 
     hist_height = 100
     hist_width = 100
     nbins = 10
-
+    do_normalize = True
+    index = 1
     # Gas mileage for year 2000 cars from http://www.shodor.org/interactivate/activities/Histogram/
     original_data = [49, 49, 45, 45, 41, 38, 38, 38, 40, 37, 37, 34, 35, 36, 35,
                      38, 38, 32, 32, 32, 37, 31, 32, 31, 32, 30, 30, 32, 30, 30,
                      29, 28, 29, 29, 29, 30, 28, 27, 29, 30, 28, 27, 28, 27, 27,
                      29, 29, 29, 26, 27, 25, 25, 25, 25, 25, 25, 25, 26, 26, 27]
-    histogramOutput(original_data, 1, original_data, True, hist_height, hist_width, nbins)
+    histogramOutput(original_data, index, original_data, do_normalize, hist_height, hist_width, nbins)
+    index+=1
 
-    # Phase shift - What does a 1/4 phase shift right do?  60/4 = 15 values moved from the right side to the left
-    data = [29, 29, 29, 26, 27, 25, 25, 25, 25, 25, 25, 25, 26, 26, 27,
-                        49, 49, 45, 45, 41, 38, 38, 38, 40, 37, 37, 34, 35, 36, 35,
-                        38, 38, 32, 32, 32, 37, 31, 32, 31, 32, 30, 30, 32, 30, 30,
-                        29, 28, 29, 29, 29, 30, 28, 27, 29, 30, 28, 27, 28, 27, 27]
-    histogramOutput(data, 2, original_data, True, hist_height, hist_width, nbins)
+    # Phase shift - What does a 1/4 phase shift right do?  15 values moved from the right side to the left
+    # Should result in the same histogram, because the values have not changed
+    data = shiftLeft(original_data,15)
+    histogramOutput(data, index, original_data, do_normalize, hist_height, hist_width, nbins)
+    index += 1
 
-    # Scale **2
-    data =  [98, 98, 90, 90, 82, 76, 76, 76, 80, 74, 74, 68, 70, 72, 70,
-                    76, 76, 64, 64, 64, 74, 62, 64, 62, 64, 60, 60, 64, 60, 60,
-                    58, 56, 58, 58, 58, 60, 56, 54, 58, 60, 56, 54, 56, 54, 54,
-                    58, 58, 58, 52, 54, 50, 50, 50, 50, 50, 50, 50, 52, 52, 54]
-    data = np.array(data)**2
-    data = data.flatten().tolist()
-    histogramOutput(data, 3, original_data, True, hist_height, hist_width, nbins)
+    data = shiftRight(original_data, 15)
+    histogramOutput(data, index, original_data, do_normalize, hist_height, hist_width, nbins)
+    index += 1
+
+    # Scale
+    scale = 2
+    data = list(map((lambda x: x * scale), original_data))
+    histogramOutput(data, index, original_data, do_normalize, hist_height, hist_width, nbins)
+    index += 1
+
+    # Scale
+    scale =.5
+    data = list(map((lambda x: x * scale), original_data))
+    histogramOutput ( data, index, original_data, do_normalize, hist_height, hist_width, nbins )
+    index += 1
 
     cv2.waitKey(0)
 
-    sys.exit ()
+    sys.exit()
