@@ -28,3 +28,38 @@ To extract .mp4 from youtube
     youtube-dl -f mp4 https://www.youtube.com/watch?v=f9clDwjYX-Y
 To extract .jpg from .avi
     ffmpeg -i inputfile.avi -r 1 -f image2 image-%3d.jpeg
+
+Non Scaled
+6 Output histogram values: 0.0,0.0,56.0,52.0,12.0,0.0,0.0,0.0,0.0,0.0
+	Correlation: 1.00
+	Chi-Squared: 60.00
+	Intersection: 0.02
+	Bhattacharyya: 0.00
+	Hellinger: 0.00
+	Chi-Squared Alternative: 40.00
+	Kullback-Leibler Divergence: -41.59
+	Euclidean: 38.68
+	Manhattan: 60.00
+	Chebysev: 28.00
+7 Output histogram values: 0.0,0.0,84.0,78.0,18.0,0.0,0.0,0.0,0.0,0.0
+	Correlation: 1.00
+	Chi-Squared: 240.00
+	Intersection: 0.02
+	Bhattacharyya: 0.00
+	Hellinger: 0.00
+	Chi-Squared Alternative: 120.00
+	Kullback-Leibler Divergence: -65.92
+	Euclidean: 77.36
+	Manhattan: 120.00
+	Chebysev: 56.00
+8 Output histogram values: 0.0,0.0,112.0,104.0,24.0,0.0,0.0,0.0,0.0,0.0
+	Correlation: 1.00
+	Chi-Squared: 540.00
+	Intersection: 0.02
+	Bhattacharyya: 0.00
+	Hellinger: 0.00
+	Chi-Squared Alternative: 216.00
+	Kullback-Leibler Divergence: -83.18
+	Euclidean: 116.03
+	Manhattan: 180.00
+	Chebysev: 84.00

@@ -41,6 +41,7 @@ from geometry import *
 import logging
 from datetime import *
 from testpattern import *
+from comparehistograms import *
 
 def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
     cv2.imshow ( "Thresh", thresh )
@@ -263,13 +264,14 @@ optic_flow_window_size=8
 arrows = []
 vectors_tracked = []
 vectors_tracked_for_hist = []
+vectors_tracked_for_hist_accumulator = []
 vectors_untracked = []
 angle_hist_values = ""
 dist_hist_values = ""
 
-hist_height_angle = 180
+hist_height_angle = 360
 hist_width_angle = 360
-nbins_angle = 360
+nbins_angle = 16
 bin_width_angle = hist_width_angle/nbins_angle
 
 hist_height_dist = 8
@@ -644,6 +646,8 @@ try:
 
                 # Angle - change type
                 angle_hist_shaped = np.array(angle_hist).astype(np.float32)
+                vectors_tracked_for_hist_accumulator = np.append(vectors_tracked_for_hist_accumulator,angle_hist_shaped).astype(np.float32)
+
                 # Dist
                 dist_hist_shaped = np.array(dist_hist).astype(np.float32 )
 
@@ -655,6 +659,22 @@ try:
                 # Angle - calculate and normalise the histogram
                 hist_item_angle = cv2.calcHist([angle_hist_shaped], [0], None, [nbins_angle], [0, hist_width_angle] )
                 cv2.normalize ( hist_item_angle, hist_item_angle, 0,hist_height_angle, cv2.NORM_MINMAX )
+
+                # Angle accumulator
+                hist_accumulated = cv2.calcHist([vectors_tracked_for_hist_accumulator], [0], None, [nbins_angle], [0,
+                                                                                                                  hist_width_angle] )
+                cv2.normalize ( hist_accumulated, hist_accumulated, 0,hist_height_angle, cv2.NORM_MINMAX )
+
+                H = comparehistograms( hist_item_angle, hist_accumulated )
+                result = H.compare('All')
+                print('Frame:' +
+                      str(frame_counter) +
+                      ' ' +
+                          str(
+                            list(map((lambda x: x[0][:3] + ':{:.1f}'.format(x[1])), result))
+                          )
+                      )
+
                 # Dist
                 hist_item_dist = cv2.calcHist ( [dist_hist_shaped], [0], None, [nbins_dist], [0, hist_width_dist] )
                 #cv2.normalize ( hist_item_dist, hist_item_dist, 0, hist_height_dist, cv2.NORM_MINMAX )
@@ -684,12 +704,18 @@ try:
 
                 tracked_rad = angle_between ( (tracked_data[1], tracked_data[2]), (tracked_data[3], tracked_data[4]) )
                 tracked_dist = distance ( (tracked_data[1], tracked_data[2]), (tracked_data[3], tracked_data[4]) )
+
                 tracked_mean_start_x = np.mean ( tracked_data[1] )
                 tracked_mean_start_y = np.mean ( tracked_data[2] )
                 tracked_mean_end_x = np.mean ( tracked_data[3] )
                 tracked_mean_end_y = np.mean ( tracked_data[4] )
                 tracked_mean_dist = distance ( (tracked_mean_start_x, tracked_mean_start_y),
                                                (tracked_mean_end_x, tracked_mean_end_y) )
+                if tracked_mean_dist < 0.5:
+                    vectors_tracked_for_hist_accumulator = []
+                    print("CUT Frame:{}", frame_counter)
+
+
                 cv2.arrowedLine ( img0, (int ( tracked_mean_start_x ), int ( tracked_mean_start_y )),
                                   (int ( tracked_mean_end_x ), int ( tracked_mean_end_y )),
                                   (255, 255, 255), 1, 8, 0, 4)
@@ -721,14 +747,14 @@ try:
                 print ( 'Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                     tracked_data[0], tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
                     tracked_std_dev_dist, tracked_var_rad ) )
-                print( 'Tracked Hist Angles:{}',format(angle_hist_values))
+                #print( 'Tracked Hist Angles:{}',format(angle_hist_values))
                 image_data = [tracked_data[0], 'untracked', untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
                               untracked_std_dev_dist, untracked_var_rad]
                 logger.info ( ','.join ( map ( str, image_data ) ) )
 
-            print ( 'UnTracked item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
-                untracked_data[0], untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
-                untracked_std_dev_dist, untracked_var_rad ) )
+            #print ( 'UnTracked item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
+            #    untracked_data[0], untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
+            #    untracked_std_dev_dist, untracked_var_rad ) )
 
         # https://www.youtube.com/watch?v=WcmHxBtz3EY  # complete pan up from static camera outdoors dist:0.7 @359.9 deg
         # https://www.youtube.com/watch?v=eBL6vu9NQtw  # complete pan right static camera indoors
@@ -800,14 +826,14 @@ try:
     sys.exit ()
 
 except Exception as inst:
-
+    print(str(inst))
     if source is not None:
         source.release ()
     cv2.destroyAllWindows ()
 
     exc_type, exc_obj, exc_tb = sys.exc_info ()
     fname = os.path.split ( exc_tb.tb_frame.f_code.co_filename )[1]
-    print ( exc_type, fname, exc_tb.tb_lineno , exc_obj)
+    print(exc_type, fname, exc_tb.tb_lineno , exc_obj)
     #desired_trace = traceback.format_exc ( sys.exc_info () )
     #print(desired_trace)
     del (exc_type, exc_obj, exc_tb)

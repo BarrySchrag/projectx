@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/projectx.iml" afterPath="$PROJECT_DIR$/.idea/projectx.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/CompareHistograms.py" afterPath="$PROJECT_DIR$/comparehistograms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CompareHistograms.py" afterPath="$PROJECT_DIR$/CompareHistograms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sprint7.py" afterPath="$PROJECT_DIR$/sprint7.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo.txt" afterPath="$PROJECT_DIR$/todo.txt" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,112 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="histogram.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/histogram.py">
+      <file leaf-file-name="comparehistograms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comparehistograms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sprint5.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sprint5.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="502" column="0" lean-forward="false" selection-start-line="502" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sprint6.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sprint6.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="576" column="25" lean-forward="false" selection-start-line="576" selection-start-column="25" selection-end-line="576" selection-end-column="25" />
-              <folding>
-                <marker date="1511421921291" expanded="true" signature="1759:2091" ph="import ..." />
-                <marker date="1511421921291" expanded="true" signature="2162:2916" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="2283:2383" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="2424:2529" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="2644:2735" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="2780:2887" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="2919:3288" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="13553:13663" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="13553:13734" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="13553:33951" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="13553:34187" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="13989:14097" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="14203:14289" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="14298:14329" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="14412:14476" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="14751:15045" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="15136:15262" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="15295:15348" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="15517:15584" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="16020:16178" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="16192:16321" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="16392:17231" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="17010:17231" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="17784:18231" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="17819:17876" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="18805:19722" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="18986:19406" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="19606:19722" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="19784:23180" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="20192:23180" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="20225:20356" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="21389:22172" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="21552:22172" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="21748:21903" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="22309:23180" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="22754:22907" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="23500:30528" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="23947:24432" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="24132:24328" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="24455:26941" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="26042:26299" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="26550:26803" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="26983:28504" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="29120:30247" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="29151:29417" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="30013:30177" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="30538:31181" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="31207:32225" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="31749:31922" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="32441:32569" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="32816:32962" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="32993:33143" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="33174:33397" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="33407:33563" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="34214:34611" ph="..." />
-                <marker date="1511421921291" expanded="true" signature="34476:34559" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sprint7.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sprint7.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-              <folding>
-                <marker date="1511421493696" expanded="false" signature="1839:2171" ph="import ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompareHistograms.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CompareHistograms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+            <state relative-caret-position="337">
+              <caret line="331" column="0" lean-forward="false" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
               <folding>
                 <element signature="e#90#106#0" expanded="true" />
               </folding>
@@ -128,12 +27,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pydevd.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <file leaf-file-name="todo.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="1598" column="0" lean-forward="false" selection-start-line="1598" selection-start-column="0" selection-end-line="1598" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sprint7.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sprint7.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="709" column="48" lean-forward="true" selection-start-line="709" selection-start-column="48" selection-end-line="709" selection-end-column="48" />
+              <folding>
+                <element signature="e#1839#1855#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,27 +53,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>angle_between</find>
-      <find>int8</find>
-      <find>degrees</find>
-      <find>refreshScreen</find>
-      <find>width</find>
-      <find>frame_counter_start_frame</find>
-      <find>text</find>
-      <find>captures_max</find>
-      <find>farne</find>
-      <find>dir</find>
-      <find>image_hist_dist</find>
-      <find>image_hist_angle</find>
-      <find>Dir.</find>
-      <find>* 2</find>
-      <find>*2</find>
-      <find>*</find>
-      <find>arrow</find>
-      <find>height_</find>
-      <find>hist_height</find>
-      <find>hist_width</find>
-      <find>angle_hist_values</find>
       <find>video</find>
       <find>frame_count</find>
       <find>dist_hist_values</find>
@@ -170,8 +60,29 @@
       <find>tracked_object_bbox.is_point_inside_rect</find>
       <find>captures</find>
       <find>eps</find>
-      <find>method</find>
       <find>dist</find>
+      <find>output</find>
+      <find>print</find>
+      <find>[3]</find>
+      <find>method</find>
+      <find>dict</find>
+      <find>{</find>
+      <find>Hist Angles</find>
+      <find>angle_hist_values</find>
+      <find>arrows</find>
+      <find>angle_hist</find>
+      <find>hist_height_angle</find>
+      <find>histogramOutput</find>
+      <find>vectors_tracked_for_hist</find>
+      <find>arrayToHistogram</find>
+      <find>comparehistograms</find>
+      <find>compare</find>
+      <find>tracked hist</find>
+      <find>angle_hist_shaped</find>
+      <find>tracked_data[5]</find>
+      <find>arrow</find>
+      <find>Untracked</find>
+      <find>bins</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -189,17 +100,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/sprint7.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/CompareHistograms.py" />
+        <option value="$PROJECT_DIR$/comparehistograms.py" />
+        <option value="$PROJECT_DIR$/sprint7.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="463" />
-    <option name="y" value="40" />
-    <option name="width" value="1427" />
-    <option name="height" value="1003" />
+    <option name="x" value="648" />
+    <option name="y" value="30" />
+    <option name="width" value="1242" />
+    <option name="height" value="1013" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -261,7 +174,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.CompareHistograms">
+  <component name="RunManager" selected="Python.sprint7">
     <configuration name="CompareHistograms" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -274,14 +187,36 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CompareHistograms.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/comparehistograms.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="sprint7" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="projectx" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint7.py" />
+      <option name="PARAMETERS" value="--video ./media/00001-Dup15rVd2eU.mp4 --width 320 --start 45" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.CompareHistograms" />
+      <item index="1" class="java.lang.String" itemvalue="Python.sprint7" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.CompareHistograms" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.sprint7" />
+        <item index="1" class="java.lang.String" itemvalue="Python.CompareHistograms" />
       </list>
     </recent_temporary>
   </component>
@@ -321,20 +256,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="463" y="40" width="1427" height="1003" extended-state="0" />
+    <frame x="648" y="30" width="1242" height="1013" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22973925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17990276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33368984" sideWeight="0.20512821" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32484075" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32406417" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18395722" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34230354" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34230354" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37782562" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20310391" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46325877" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.036466774" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -347,7 +283,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34230354" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.099765256" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32560706" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37782562" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
@@ -395,18 +330,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="273" />
+      <option name="time" value="320" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="tracked_mean_dist" language="Python" />
+        <watch expression="tracked_dist" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sprint4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6714">
-          <caret line="381" column="32" lean-forward="false" selection-start-line="381" selection-start-column="32" selection-end-line="381" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/version.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -550,15 +483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/826386008/builtins.py" />
     <entry file="file:///usr/lib/python3.5/datetime.py" />
-    <entry file="file://$PROJECT_DIR$/todo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="88" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="6" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sprint4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -637,7 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py" />
     <entry file="file://$PROJECT_DIR$/detectSymmetry.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2250">
@@ -658,7 +582,7 @@
         <state relative-caret-position="396">
           <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -737,16 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sprint7.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding>
-            <marker date="1511421493696" expanded="false" signature="1839:2171" ph="import ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -754,12 +668,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CompareHistograms.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/826386008/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="167" column="4" lean-forward="false" selection-start-line="167" selection-start-column="4" selection-end-line="167" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="304" column="21" lean-forward="true" selection-start-line="304" selection-start-column="21" selection-end-line="304" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+          <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/posixpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comparehistograms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="331" column="0" lean-forward="false" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
           <folding>
             <element signature="e#90#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="709" column="48" lean-forward="true" selection-start-line="709" selection-start-column="48" selection-end-line="709" selection-end-column="48" />
+          <folding>
+            <element signature="e#1839#1855#0" expanded="true" />
           </folding>
         </state>
       </provider>
