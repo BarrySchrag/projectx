@@ -43,27 +43,53 @@ from datetime import *
 from testpattern import *
 from comparehistograms import *
 
-def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
-    cv2.imshow ( "Thresh", thresh )
-    cv2.moveWindow ( "Thresh", 0, height )
+# Plot a dictionary of figures.
+# Use:
+# figures = {}
+# figures['im'+str(0)] = np.random.randn(100, 100)
+# figures['im'+str(1)] = np.random.randn(100, 300)
+# plot_images(figures,4)
+def plot_images(figures, ncols=1, edgewidth=8, edgeheight=55):
+    row=0
+    col=0
+    colcount = 0
+    maxheight = 0
+    for ind,title in zip(range(len(figures)), sorted(set(figures))):
+        if type(figures[title]) is type ( None ):
+            continue
+        height, width = figures[title].shape[:2]
+        if maxheight < height:
+            maxheight = height
 
-    if type ( f0 ) is not type ( None ):
-        cv2.imshow ( "Angle Histogram", f0 )
-        cv2.moveWindow ( "Angle Histogram", width, 0 )
-    if type ( f1 ) is not type ( None ):
-        cv2.imshow ( "Dir. Histogram", f1 )
-        cv2.moveWindow ( "Dir. Histogram", int(width*2), 0 )
+        cv2.imshow(title, figures[title])
+        cv2.moveWindow(title, col, row)
+        col += width+edgewidth
+        colcount+=1
+        if colcount % ncols == 0:
+            col = 0
+            row = maxheight + edgeheight
 
-    cv2.imshow ( "Frame", img0 )
-    cv2.moveWindow ( "Frame", 0, 0 )
-
-    if type ( flow ) is not type ( None ):
-        cv2.imshow ( "FB Flow", flow )
-        cv2.moveWindow ( "FB Flow", width, height )
-    if type ( glitch ) is not type ( None ):
-        cv2.imshow ( "FB Flow Glitch", glitch )
-        cv2.moveWindow ( "FB Flow Glitch", width, height )
-    cv2.waitKey ( 1 ) & 0xFF
+# def refreshScreen(thresh, f0, f1, img0, flow, glitch, width, height):
+#     cv2.imshow ( "Thresh", thresh )
+#     cv2.moveWindow ( "Thresh", 0, height )
+#
+#     if type ( f0 ) is not type ( None ):
+#         cv2.imshow ( "Angle Histogram", f0 )
+#         cv2.moveWindow ( "Angle Histogram", width, 0 )
+#     if type ( f1 ) is not type ( None ):
+#         cv2.imshow ( "Dir. Histogram", f1 )
+#         cv2.moveWindow ( "Dir. Histogram", int(width*2), 0 )
+#
+#     cv2.imshow ( "Frame", img0 )
+#     cv2.moveWindow ( "Frame", 0, 0 )
+#
+#     if type ( flow ) is not type ( None ):
+#         cv2.imshow ( "FB Flow", flow )
+#         cv2.moveWindow ( "FB Flow", width, height )
+#     if type ( glitch ) is not type ( None ):
+#         cv2.imshow ( "FB Flow Glitch", glitch )
+#         cv2.moveWindow ( "FB Flow Glitch", width, height )
+#     cv2.waitKey ( 1 ) & 0xFF
 
 
 # In Numpy, axes are defined for arrays with more than one dimension.
@@ -234,6 +260,7 @@ previousGray = None
 previousFrameDelta1 = None
 frameDeltaTemp = None
 image_hist_angle = None
+image_hist_angle_accumulated = None
 image_hist_dist = None
 frame_counter = 0
 frame_count_max = 0
@@ -264,20 +291,23 @@ optic_flow_window_size=8
 arrows = []
 vectors_tracked = []
 vectors_tracked_for_hist = []
-vectors_tracked_for_hist_accumulator = []
+angle_hist_shaped_accumulator = []
 vectors_untracked = []
 angle_hist_values = ""
 dist_hist_values = ""
 
 hist_height_angle = 360
 hist_width_angle = 360
-nbins_angle = 16
+nbins_angle = 180
 bin_width_angle = hist_width_angle/nbins_angle
 
 hist_height_dist = 8
 hist_width_dist = 16
 nbins_dist = 16
 bin_width_dist= hist_width_dist/nbins_dist
+figures = {}
+
+histogram_comparrison_result = None
 
 # construct a sharpening filter
 sharpen = np.array ( (
@@ -641,54 +671,53 @@ try:
             if 1 == 1:
                 # Angle begin histogram - get the angles into a list
                 angle_hist = [x[0] for x in vectors_tracked_for_hist]
-                # Dist
-                dist_hist = [x[1] for x in vectors_tracked_for_hist]
-
-                # Angle - change type
                 angle_hist_shaped = np.array(angle_hist).astype(np.float32)
-                vectors_tracked_for_hist_accumulator = np.append(vectors_tracked_for_hist_accumulator,angle_hist_shaped).astype(np.float32)
+                image_angle_hist_shaped = cv2.calcHist( [angle_hist_shaped], [0], None, [nbins_angle], [0, hist_width_angle] )
+                cv2.normalize ( image_angle_hist_shaped, image_angle_hist_shaped, 0, hist_height_angle, cv2.NORM_MINMAX )
 
-                # Dist
-                dist_hist_shaped = np.array(dist_hist).astype(np.float32 )
+                # Accumulator
+                angle_hist_shaped_accumulator = np.append(angle_hist_shaped_accumulator, angle_hist_shaped ).astype(
+                    np.float32)
+                image_angle_hist_shaped_accumulator = cv2.calcHist( [angle_hist_shaped_accumulator], [0], None, [nbins_angle], [0, hist_width_angle] )
+                cv2.normalize ( image_angle_hist_shaped_accumulator, image_angle_hist_shaped_accumulator, 0, hist_height_angle, cv2.NORM_MINMAX )
 
-                # Angle - create an empty image for the histogram
-                image_hist_angle = np.zeros((hist_height_angle, hist_width_angle), dtype=np.float32 )
-                # Dist
-                image_hist_dist = np.zeros((hist_height_dist, hist_width_dist), dtype=np.float32 )
-
-                # Angle - calculate and normalise the histogram
-                hist_item_angle = cv2.calcHist([angle_hist_shaped], [0], None, [nbins_angle], [0, hist_width_angle] )
-                cv2.normalize ( hist_item_angle, hist_item_angle, 0,hist_height_angle, cv2.NORM_MINMAX )
-
-                # Angle accumulator
-                hist_accumulated = cv2.calcHist([vectors_tracked_for_hist_accumulator], [0], None, [nbins_angle], [0,
-                                                                                                                  hist_width_angle] )
-                cv2.normalize ( hist_accumulated, hist_accumulated, 0,hist_height_angle, cv2.NORM_MINMAX )
-
-                H = comparehistograms( hist_item_angle, hist_accumulated )
-                result = H.compare('All')
+                # Compare the per-frame and accumulated histograms
+                H = comparehistograms( image_angle_hist_shaped, image_angle_hist_shaped_accumulator )
+                histogram_comparrison_result = H.compare('All')
                 print('Frame:' +
                       str(frame_counter) +
                       ' ' +
                           str(
-                            list(map((lambda x: x[0][:3] + ':{:.1f}'.format(x[1])), result))
+                            list(map((lambda x: x[0][:3] + ':{:.3f}'.format(x[1])), histogram_comparrison_result))
                           )
                       )
 
-                # Dist
+                # Distance
+                dist_hist = [x[1] for x in vectors_tracked_for_hist]
+                dist_hist_shaped = np.array(dist_hist).astype(np.float32)
+                image_hist_dist = np.zeros((hist_height_dist, hist_width_dist), dtype=np.float32)
                 hist_item_dist = cv2.calcHist ( [dist_hist_shaped], [0], None, [nbins_dist], [0, hist_width_dist] )
                 #cv2.normalize ( hist_item_dist, hist_item_dist, 0, hist_height_dist, cv2.NORM_MINMAX )
 
-                angle_hist_values = ','.join ( map ( str, hist_item_angle.flatten () ) )
+                angle_hist_values = ','.join ( map ( str, image_angle_hist_shaped.flatten () ) )
                 dist_hist_values = ','.join ( map ( str, hist_item_dist.flatten () ) )
 
                 # Angle - Loop through each bin and plot the rectangle in 255 white
-                for x, y in enumerate ( hist_item_angle ):
+                image_hist_angle = np.zeros((hist_height_angle, hist_width_angle), dtype=np.float32)
+                for x, y in enumerate ( image_angle_hist_shaped ):
                     cv2.rectangle ( image_hist_angle, (int ( x * bin_width_angle ), int ( y )),
                                     (int ( x * bin_width_angle + bin_width_angle - 1 ), int ( hist_height_angle)),
                                     255, -1 )
-                # Angle - Flip upside down
                 image_hist_angle = np.flipud ( image_hist_angle )
+
+                # Accumlator - Loop through each bin and plot the rectangle in 255 white
+                image_hist_angle_accumulated = np.zeros((hist_height_angle, hist_width_angle), dtype=np.float32)
+                for x, y in enumerate ( image_angle_hist_shaped_accumulator):
+                    cv2.rectangle ( image_hist_angle_accumulated,  (int ( x * bin_width_angle ), int ( y )),
+                                    (int ( x * bin_width_angle + bin_width_angle - 1 ), int ( hist_height_angle)),
+                                    255, -1 )
+                image_hist_angle_accumulated = np.flipud ( image_hist_angle_accumulated )
+
 
                 # Dist - Loop through each bin and plot the rectangle in 255 white
                 for x, y in enumerate ( hist_item_dist ):
@@ -711,9 +740,10 @@ try:
                 tracked_mean_end_y = np.mean ( tracked_data[4] )
                 tracked_mean_dist = distance ( (tracked_mean_start_x, tracked_mean_start_y),
                                                (tracked_mean_end_x, tracked_mean_end_y) )
-                if tracked_mean_dist < 0.5:
-                    vectors_tracked_for_hist_accumulator = []
-                    print("CUT Frame:{}", frame_counter)
+                #if tracked_mean_dist < 0.5:
+                #if histogram_comparrison_result[0][1]>1.0:
+                #    angle_hist_shaped_accumulator = []
+                #    print("CUT Frame:{}", frame_counter)
 
 
                 cv2.arrowedLine ( img0, (int ( tracked_mean_start_x ), int ( tracked_mean_start_y )),
@@ -744,9 +774,10 @@ try:
                 logger.info ( ','.join ( map ( str, image_data ) ) +',5151,'+angle_hist_values+',5152,'+dist_hist_values+
                               ','+ str(frame_counter))
 
-                print ( 'Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
-                    tracked_data[0], tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
-                    tracked_std_dev_dist, tracked_var_rad ) )
+                #print ( 'Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{
+                # :.1f}'.format (
+                 #   tracked_data[0], tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
+                 #   tracked_std_dev_dist, tracked_var_rad ) )
                 #print( 'Tracked Hist Angles:{}',format(angle_hist_values))
                 image_data = [tracked_data[0], 'untracked', untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
                               untracked_std_dev_dist, untracked_var_rad]
@@ -780,11 +811,13 @@ try:
             print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                 untracked_dist, untracked_rad, math.degrees ( untracked_rad ), untracked_std_dev_dist, untracked_var_rad ) )
 
-        refreshScreen ( image_thresh, image_hist_angle, image_hist_dist, img0, image_flow, image_curr_glitch, \
-                                                                             width, height )
+        figures['im'+str(0)] = img0
+        figures['im'+str(1)] = image_flow
+        figures['im'+str(2)] = image_hist_dist
+        figures['im'+str(3)] = image_hist_angle
+        figures['im'+str(4)] = image_hist_angle_accumulated
 
-        # show blobs
-        # cv2.imshow ("Keypoints", im_with_keypoints )
+        plot_images(figures,3)
 
         # save the previous frames to calculate derivatives
         previousGray = gray
@@ -810,9 +843,10 @@ try:
         # time.sleep(.25 - (1.0 / cv2.getTickFrequency() / (cv2.getTickCount() - timer)))
 
         # output result
-        print (
-            'fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, distance:{6} vector_result:{7}'.format (
-                fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, dist_to_polygon, vector_result ) )
+        #print (
+        #    'fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f},
+            # distance:{6} vector_result:{7}'.format (
+          #      fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, dist_to_polygon, vector_result ) )
 
         # calculate Frames per second (FPS)
         fps = cv2.getTickFrequency () / (cv2.getTickCount () - timer)

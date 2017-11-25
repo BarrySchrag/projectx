@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/CompareHistograms.py" afterPath="$PROJECT_DIR$/comparehistograms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sprint7.py" afterPath="$PROJECT_DIR$/sprint7.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo.txt" afterPath="$PROJECT_DIR$/todo.txt" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +16,8 @@
       <file leaf-file-name="comparehistograms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/comparehistograms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="331" column="0" lean-forward="false" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+            <state relative-caret-position="36">
+              <caret line="351" column="0" lean-forward="true" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
               <folding>
                 <element signature="e#90#106#0" expanded="true" />
               </folding>
@@ -40,8 +38,8 @@
       <file leaf-file-name="sprint7.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sprint7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="709" column="48" lean-forward="true" selection-start-line="709" selection-start-column="48" selection-end-line="709" selection-end-column="48" />
+            <state relative-caret-position="163">
+              <caret line="300" column="17" lean-forward="false" selection-start-line="300" selection-start-column="17" selection-end-line="300" selection-end-column="17" />
               <folding>
                 <element signature="e#1839#1855#0" expanded="true" />
               </folding>
@@ -53,20 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>video</find>
-      <find>frame_count</find>
-      <find>dist_hist_values</find>
-      <find>hist_item_dist</find>
-      <find>tracked_object_bbox.is_point_inside_rect</find>
-      <find>captures</find>
-      <find>eps</find>
-      <find>dist</find>
-      <find>output</find>
-      <find>print</find>
-      <find>[3]</find>
-      <find>method</find>
-      <find>dict</find>
-      <find>{</find>
       <find>Hist Angles</find>
       <find>angle_hist_values</find>
       <find>arrows</find>
@@ -83,6 +67,20 @@
       <find>arrow</find>
       <find>Untracked</find>
       <find>bins</find>
+      <find>moveWindow</find>
+      <find>refresh</find>
+      <find>plot_images</find>
+      <find>waitKey</find>
+      <find>image_hist_angle_</find>
+      <find>hist_item_angle</find>
+      <find>image_hist_angle_accum</find>
+      <find>image_angle_hist_shaped</find>
+      <find>image_hist_angle</find>
+      <find>image_hist_angle_accumulated</find>
+      <find>Tracked</find>
+      <find>Print</find>
+      <find>'Frame</find>
+      <find>16</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -109,8 +107,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="648" />
-    <option name="y" value="30" />
+    <option name="x" value="676" />
+    <option name="y" value="37" />
     <option name="width" value="1242" />
     <option name="height" value="1013" />
   </component>
@@ -256,8 +254,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="648" y="30" width="1242" height="1013" extended-state="0" />
-    <editor active="true" />
+    <frame x="676" y="37" width="1242" height="1013" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17990276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
@@ -267,10 +264,10 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32406417" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18395722" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34230354" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34230354" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46325877" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.036466774" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38764644" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05591572" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -330,7 +327,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="320" />
+      <option name="time" value="341" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -702,8 +699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/comparehistograms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="331" column="0" lean-forward="false" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+        <state relative-caret-position="36">
+          <caret line="351" column="0" lean-forward="true" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
           <folding>
             <element signature="e#90#106#0" expanded="true" />
           </folding>
@@ -712,8 +709,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sprint7.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="709" column="48" lean-forward="true" selection-start-line="709" selection-start-column="48" selection-end-line="709" selection-end-column="48" />
+        <state relative-caret-position="163">
+          <caret line="300" column="17" lean-forward="false" selection-start-line="300" selection-start-column="17" selection-end-line="300" selection-end-column="17" />
           <folding>
             <element signature="e#1839#1855#0" expanded="true" />
           </folding>
