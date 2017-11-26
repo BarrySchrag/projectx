@@ -25,6 +25,7 @@
 # TODO  Display the mean vectors
 # TODO  Subtract the background vectors from the object vectors
 
+
 import traceback
 import argparse
 import cv2
@@ -42,7 +43,7 @@ import logging
 from datetime import *
 from testpattern import *
 from comparehistograms import *
-
+import matplotlib
 # Plot a dictionary of figures.
 # Use:
 # figures = {}
@@ -258,6 +259,8 @@ show_optic_flow_glitch = False
 source = None
 previousGray = None
 previousFrameDelta1 = None
+image_angle_hist_shaped = None
+previous_image_angle_hist_shaped = None
 frameDeltaTemp = None
 image_hist_angle = None
 image_hist_angle_accumulated = None
@@ -298,8 +301,10 @@ dist_hist_values = ""
 
 hist_height_angle = 360
 hist_width_angle = 360
-nbins_angle = 180
+nbins_angle = 16
 bin_width_angle = hist_width_angle/nbins_angle
+action_cut_correlation_value = 1.0001
+action_cut_chisquared_value = 0.0000
 
 hist_height_dist = 8
 hist_width_dist = 16
@@ -672,25 +677,36 @@ try:
                 # Angle begin histogram - get the angles into a list
                 angle_hist = [x[0] for x in vectors_tracked_for_hist]
                 angle_hist_shaped = np.array(angle_hist).astype(np.float32)
+                #np.save('./media/angle_hist_shaped-{}.npy'.format(frame_counter), angle_hist_shaped)
+
                 image_angle_hist_shaped = cv2.calcHist( [angle_hist_shaped], [0], None, [nbins_angle], [0, hist_width_angle] )
                 cv2.normalize ( image_angle_hist_shaped, image_angle_hist_shaped, 0, hist_height_angle, cv2.NORM_MINMAX )
 
                 # Accumulator
-                angle_hist_shaped_accumulator = np.append(angle_hist_shaped_accumulator, angle_hist_shaped ).astype(
-                    np.float32)
+                angle_hist_shaped_accumulator = np.append(angle_hist_shaped_accumulator,
+                    angle_hist_shaped ).astype( np.float32)
+
                 image_angle_hist_shaped_accumulator = cv2.calcHist( [angle_hist_shaped_accumulator], [0], None, [nbins_angle], [0, hist_width_angle] )
                 cv2.normalize ( image_angle_hist_shaped_accumulator, image_angle_hist_shaped_accumulator, 0, hist_height_angle, cv2.NORM_MINMAX )
 
-                # Compare the per-frame and accumulated histograms
-                H = comparehistograms( image_angle_hist_shaped, image_angle_hist_shaped_accumulator )
-                histogram_comparrison_result = H.compare('All')
-                print('Frame:' +
-                      str(frame_counter) +
-                      ' ' +
-                          str(
-                            list(map((lambda x: x[0][:3] + ':{:.3f}'.format(x[1])), histogram_comparrison_result))
+                if previous_image_angle_hist_shaped is not None:
+                    # Compare the per-frame and accumulated histograms
+                    H = comparehistograms( image_angle_hist_shaped, previous_image_angle_hist_shaped)
+                    histogram_comparrison_result = H.compare('All')
+                    print('Frame:' +
+                          str(frame_counter) +
+                          ' ' +
+                              str(
+                                list(map((lambda x: x[0][:3] + ':{:.3f}'.format(x[1])), histogram_comparrison_result))
+                              )
                           )
-                      )
+                    if frame_counter > 112:
+                        print(' ')
+                    if (histogram_comparrison_result[0][1] <= action_cut_correlation_value) or (
+                              histogram_comparrison_result[0][1] <= 1.0001 and  histogram_comparrison_result[1][1] ==
+                                action_cut_chisquared_value):
+                       angle_hist_shaped_accumulator = []
+                       print("CUT Frame:{}", frame_counter)
 
                 # Distance
                 dist_hist = [x[1] for x in vectors_tracked_for_hist]
@@ -739,12 +755,7 @@ try:
                 tracked_mean_end_x = np.mean ( tracked_data[3] )
                 tracked_mean_end_y = np.mean ( tracked_data[4] )
                 tracked_mean_dist = distance ( (tracked_mean_start_x, tracked_mean_start_y),
-                                               (tracked_mean_end_x, tracked_mean_end_y) )
-                #if tracked_mean_dist < 0.5:
-                #if histogram_comparrison_result[0][1]>1.0:
-                #    angle_hist_shaped_accumulator = []
-                #    print("CUT Frame:{}", frame_counter)
-
+                                               (tracked_mean_end_x, tracked_mean_end_y))
 
                 cv2.arrowedLine ( img0, (int ( tracked_mean_start_x ), int ( tracked_mean_start_y )),
                                   (int ( tracked_mean_end_x ), int ( tracked_mean_end_y )),
@@ -811,17 +822,20 @@ try:
             print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
                 untracked_dist, untracked_rad, math.degrees ( untracked_rad ), untracked_std_dev_dist, untracked_var_rad ) )
 
-        figures['im'+str(0)] = img0
-        figures['im'+str(1)] = image_flow
-        figures['im'+str(2)] = image_hist_dist
-        figures['im'+str(3)] = image_hist_angle
-        figures['im'+str(4)] = image_hist_angle_accumulated
+        figures['original-'+str(0)] = img0
+        figures['flow-'+str(1)] = image_flow
+        figures['dist-'+str(2)] = image_hist_dist
+        figures['angle-'+str(3)] = image_hist_angle
+        figures['accumulated-'+str(4)] = image_hist_angle_accumulated
 
         plot_images(figures,3)
+        # Beware, this writes images, not the original data!
+        #cv2.imwrite('./media/hist_images_180bins-{}.jpg'.format(frame_counter),image_hist_angle)
 
         # save the previous frames to calculate derivatives
         previousGray = gray
         previousFrameDelta1 = frameDelta1
+        previous_image_angle_hist_shaped = image_angle_hist_shaped
 
         key = cv2.waitKey ( 1 )
         # if the 'q' key is pressed, stop the loop

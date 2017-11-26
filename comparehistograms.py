@@ -332,10 +332,14 @@ def histogramOutput(unique_id, data_new, data_old, comparrison_type, do_normaliz
     for (methodName, value) in result:
         print('\t' + methodName + ': {:.2f}'.format(value))
 
-    image = comparehistograms.histogramToImage(H_new, True, hist_height, hist_width, nbins)
-    if type(image) is not type(None):
-        cv2.imshow(str(unique_id), image)
+    image_new = comparehistograms.histogramToImage(H_new, True, hist_height, hist_width, nbins)
+    image_old = comparehistograms.histogramToImage(H_old, True, hist_height, hist_width, nbins)
+    if type(image_old) is not type(None):
+        cv2.imshow(str(unique_id), image_old)
         cv2.moveWindow(str(unique_id), hist_width*unique_id+10, 0)
+    if type(image_new) is not type(None):
+        cv2.imshow(str(unique_id+10), image_new)
+        cv2.moveWindow(str(unique_id+10), hist_width*unique_id+10, hist_height +25)
 
 
 def shiftLeft(seq, n):
@@ -348,8 +352,50 @@ def shiftRight(seq, n):
     # right: back from the end to the nth element, put that on the left front of the list -n items
     return seq[-n:] + seq[:-n]
 
-if __name__ == "__main__":
+def data_from_file():
+    hist_height = 360
+    hist_width = 360
+    nbins = 16
+    do_normalize = True
+    comparrison_type = 'All'
+    # d1 = np.load('./media/angle_hist_shaped-69.npy') #69 fastest ball drop rate
+    # d2 = np.load('./media/angle_hist_shaped-70.npy') #70 ball on the floor
+    # histogramOutput(0, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+    #
+    # d1 = np.load('./media/angle_hist_shaped-70.npy') #70 ball on floor
+    # d2 = np.load('./media/angle_hist_shaped-71.npy') #71 ball begins to rise
+    # histogramOutput(1, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+    #
+    # d1 = np.load('./media/angle_hist_shaped-82.npy') # ball at arc of apogee 1
+    # d2 = np.load('./media/angle_hist_shaped-83.npy') # ball begins to drop almost no motion
+    # histogramOutput(2, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+    #
+    # d1 = np.load('./media/angle_hist_shaped-83.npy') # ball begins to drop almost no motion
+    # d2 = np.load('./media/angle_hist_shaped-84.npy') # no motion detected, 1 item
+    # histogramOutput(3, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+    #
+    # d1 = np.load('./media/angle_hist_shaped-84.npy') # no motion detected 1 item
+    # d2 = np.load('./media/angle_hist_shaped-85.npy') # begins to drop
+    # histogramOutput(4, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
 
+    d1 = np.load('./media/angle_hist_shaped-113.npy')
+    d2 = np.load('./media/angle_hist_shaped-114.npy')
+    histogramOutput(0, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+
+    d1 = np.load('./media/angle_hist_shaped-114.npy')
+    d2 = np.load('./media/angle_hist_shaped-115.npy')
+    histogramOutput(1, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+
+    d1 = np.load('./media/angle_hist_shaped-115.npy')
+    d2 = np.load('./media/angle_hist_shaped-116.npy')
+    histogramOutput(2, d1, d2, comparrison_type, do_normalize, hist_height, hist_width, nbins)
+
+
+
+if __name__ == "__main__":
+    data_from_file()
+    cv2.waitKey(0)
+    sys.exit()
     # example #:  How to use to compare data via histograms via one or all of:
     # Correlation,Chi-Squared,Intersection,Bhattacharyya,Hellinger,Chi-Squared Alternative,
     # Kullback-Leibler Divergence,Euclidean,Manhattan,Chebysev
