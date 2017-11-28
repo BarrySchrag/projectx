@@ -44,6 +44,7 @@ from datetime import *
 from testpattern import *
 from comparehistograms import *
 import matplotlib
+import random
 # Plot a dictionary of figures.
 # Use:
 # figures = {}
@@ -313,7 +314,7 @@ bin_width_dist= hist_width_dist/nbins_dist
 figures = {}
 
 histogram_comparrison_result = None
-
+highlight_color = 255
 # construct a sharpening filter
 sharpen = np.array ( (
     [1, 1, 1],
@@ -429,8 +430,10 @@ try:
                 else:
                     video_file = args["video"]
                     video_file = './media/00001-Dup15rVd2eU.mp4' # tiny ball drop
+                    #frame_counter_start_frame = 45
                     #video_file = './media/Bouncing_Ball_Reference-Tk2v1UaTgmk.mp4' # 700 area giant bball
-                    # video_file = './media/20171014_180142.mp4' # Kat
+                    video_file = './media/20171014_180142.mp4' # Kat
+                    frame_counter_start_frame = 70
                     source = cv2.VideoCapture ( video_file )
 
             frame_count_max = source.get ( cv2.CAP_PROP_FRAME_COUNT )
@@ -594,7 +597,7 @@ try:
             dist_to_polygon2 = cv2.pointPolygonTest ( c, maxLoc2, True )
             dist_between_dt2 = distance(maxLoc,maxLoc2)
             area = cv2.contourArea(c)
-            if area > 720 and dist_between_dt2 < 2 and dist_to_polygon > -1: #area > 800 and
+            if area > 520 and dist_between_dt2 < 2 and dist_to_polygon > -1: #area > 800 and
                 #area > 1000 and  dist_between_dt2 < 5:#  and dist_to_polygon > 3:
                 # and blue circle contains the min and max loc..
                 bboxt = cv2.boundingRect ( c )  # x,y,w,h
@@ -612,8 +615,8 @@ try:
                 bbox = (bboxt[0],bboxt[1],tempw,temph)
                 proposed_object_bbox = Rect ( int ( bbox[0] ), int ( bbox[1] ),
                                               int ( bbox[2] ), int ( bbox[3] ) )  # x, y, width, height):
-                drawRectagleOnImage ( img0, bbox, (128, 128, 128) )
-                drawRectagleOnImage2 ( img0, proposed_object_bbox, (0, 0, 128) )
+                #drawRectagleOnImage ( img0, bbox, (128, 128, 128) )
+                #drawRectagleOnImage2 ( img0, proposed_object_bbox, (0, 0, 128) )
 
                 # We have not yet tracked anything, so add it
                 proposed_box_overlaps = False
@@ -659,8 +662,12 @@ try:
         # Draw bounding box if tracking success
         for i in np.arange ( 0, captures ):
             bx = trackers.getObjects ()[i]
-            drawRectagleOnImage ( img0, bx, (0, 255, 0) )
-            cv2.putText ( img0, str ( i ), (int ( bx[0] + 1 ), int ( bx[1] + 20 )), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
+
+            drawRectagleOnImage ( img0, bx, highlight_color )
+
+
+            #cv2.putText ( img0, str ( i ), (int ( bx[0] + 1 ), int ( bx[1] + 20 )), font, 0.8, (0, 255, 0), 1,
+            # cv2.LINE_AA )
 
             tracked_object_bbox = Rect ( int ( bx[0] ), int ( bx[1] ), int ( bx[2] ), int ( bx[3] ) )
 
@@ -700,12 +707,12 @@ try:
                                 list(map((lambda x: x[0][:3] + ':{:.3f}'.format(x[1])), histogram_comparrison_result))
                               )
                           )
-                    if frame_counter > 112:
-                        print(' ')
+
                     if (histogram_comparrison_result[0][1] <= action_cut_correlation_value) or (
                               histogram_comparrison_result[0][1] <= 1.0001 and  histogram_comparrison_result[1][1] ==
                                 action_cut_chisquared_value):
                        angle_hist_shaped_accumulator = []
+                       highlight_color = np.random.randint(0,255,(3)).tolist()
                        print("CUT Frame:{}", frame_counter)
 
                 # Distance
@@ -819,8 +826,9 @@ try:
                           untracked_std_dev_dist,
                           untracked_var_rad]
             logger.info ( ','.join ( map ( str, image_data ) ) )
-            print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
-                untracked_dist, untracked_rad, math.degrees ( untracked_rad ), untracked_std_dev_dist, untracked_var_rad ) )
+            print ( 'Bg frame:{} dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
+                frame_counter, untracked_dist, untracked_rad, math.degrees ( untracked_rad ), untracked_std_dev_dist,
+                untracked_var_rad ) )
 
         figures['original-'+str(0)] = img0
         figures['flow-'+str(1)] = image_flow
