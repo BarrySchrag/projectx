@@ -2,494 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55ac71df-3dac-4221-a0f9-1de94516abfb" name="Default" comment="added capability to view a video file">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/155107-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/155601-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/155736-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/195933-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/200835-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/201029-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/201154-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/201427-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/201556-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/201833-20171128.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/210807-20171128.csv" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/00001-Dup15rVd2eU.mp4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/20171014_180142.mp4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-100.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-101.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-102.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-103.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-104.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-105.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-106.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-107.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-108.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-109.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-110.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-111.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-112.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-113.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-114.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-115.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-116.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-117.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-118.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-119.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-120.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-121.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-122.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-123.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-124.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-125.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-126.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-127.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-128.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-129.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-130.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-131.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-132.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-133.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-134.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-135.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-136.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-137.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-138.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-139.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-140.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-141.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-142.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-143.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-144.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-145.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-146.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-147.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-148.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-149.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-150.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-151.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-152.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-153.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-154.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-155.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-156.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-157.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-158.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-159.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-160.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-161.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-162.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-163.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-164.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-165.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-166.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-167.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-168.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-169.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-170.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-171.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-172.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-173.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-174.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-175.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-176.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-177.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-178.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-179.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-180.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-181.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-69.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-70.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-71.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-72.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-73.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-74.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-75.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-76.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-77.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-78.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-79.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-80.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-81.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-82.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-83.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-84.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-85.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-86.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-87.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-88.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-89.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-90.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-91.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-92.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-93.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-94.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-95.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-96.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-97.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-98.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/angle_hist_shaped-99.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-100.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-101.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-102.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-103.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-104.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-105.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-106.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-107.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-108.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-109.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-110.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-111.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-112.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-113.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-114.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-115.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-116.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-117.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-118.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-119.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-120.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-121.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-122.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-123.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-124.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-126.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-127.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-128.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-129.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-130.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-131.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-132.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-133.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-134.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-135.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-136.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-137.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-138.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-139.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-140.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-141.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-142.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-143.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-144.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-145.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-146.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-147.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-148.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-149.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-150.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-151.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-152.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-153.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-154.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-155.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-156.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-157.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-158.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-159.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-160.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-161.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-162.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-163.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-164.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-165.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-166.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-167.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-168.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-169.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-170.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-171.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-172.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-174.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-175.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-176.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-177.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-178.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-179.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-180.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-181.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-182.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-183.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-47.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-48.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-49.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-50.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-51.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-52.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-53.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-54.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-55.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-56.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-57.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-58.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-59.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-60.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-61.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-62.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-63.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-64.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-65.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-66.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-67.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-68.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-69.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-70.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-71.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-72.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-73.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-74.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-75.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-76.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-77.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-78.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-79.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-80.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-81.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-82.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-83.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-84.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-85.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-86.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-87.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-88.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-89.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-90.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-91.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-92.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-93.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-94.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-95.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-96.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-97.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-98.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/hist_images_180bins-99.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-01.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-02.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-03.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-04.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-05.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-06.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-07.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-08.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-09.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-10.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-100.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-101.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-102.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-103.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-104.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-105.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-106.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-107.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-108.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-109.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-11.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-110.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-111.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-112.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-113.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-114.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-115.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-116.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-117.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-118.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-119.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-12.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-120.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-121.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-122.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-123.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-124.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-125.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-126.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-127.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-128.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-129.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-13.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-130.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-131.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-132.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-133.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-134.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-135.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-136.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-137.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-138.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-139.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-14.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-140.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-141.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-142.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-143.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-144.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-145.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-146.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-147.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-148.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-149.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-15.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-150.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-151.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-152.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-153.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-154.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-155.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-156.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-157.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-158.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-159.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-16.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-160.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-161.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-162.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-163.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-164.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-165.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-166.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-167.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-168.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-169.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-17.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-170.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-171.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-172.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-173.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-174.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-175.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-176.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-177.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-178.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-179.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-18.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-180.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-181.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-182.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-183.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-184.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-185.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-186.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-187.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-188.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-189.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-19.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-190.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-191.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-192.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-193.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-194.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-195.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-196.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-197.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-198.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-199.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-20.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-200.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-201.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-202.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-203.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-204.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-205.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-206.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-207.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-208.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-209.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-21.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-210.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-211.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-212.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-213.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-214.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-215.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-216.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-217.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-218.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-219.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-22.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-220.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-221.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-222.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-223.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-224.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-23.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-24.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-25.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-26.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-27.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-28.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-29.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-30.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-31.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-32.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-33.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-34.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-35.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-36.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-37.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-38.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-39.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-40.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-41.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-42.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-43.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-44.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-45.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-46.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-47.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-48.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-49.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-50.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-51.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-52.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-53.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-54.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-55.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-56.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-57.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-58.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-59.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-60.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-61.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-62.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-63.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-64.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-65.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-66.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-67.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-68.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-69.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-70.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-71.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-72.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-73.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-74.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-75.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-76.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-77.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-78.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-79.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-80.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-81.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-82.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-83.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-84.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-85.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-86.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-87.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-88.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-89.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-90.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-91.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-92.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-93.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-94.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-95.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-96.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-97.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-98.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/image-99.jpeg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ava/test_ava_train_v1.0.csv" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ava/extract_clips_frames_dset.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sprint1.py" afterPath="$PROJECT_DIR$/sprint1.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sprint8.py" afterPath="$PROJECT_DIR$/sprint8.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo.txt" afterPath="$PROJECT_DIR$/todo.txt" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -514,18 +32,18 @@
       <file leaf-file-name="todo.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            <state relative-caret-position="60">
+              <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sprint7.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sprint7.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sprint7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7632">
-              <caret line="424" column="17" lean-forward="false" selection-start-line="424" selection-start-column="17" selection-end-line="424" selection-end-column="17" />
+            <state relative-caret-position="954">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <element signature="e#1840#1856#0" expanded="true" />
               </folding>
@@ -533,24 +51,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sprint8.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sprint8.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sprint8.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="349">
+              <caret line="27" column="82" lean-forward="false" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="82" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="extract_clips_frames_dset.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ava/extract_clips_frames_dset.py">
+        <entry file="file://$PROJECT_DIR$/extract_clips_frames_dset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="116" column="34" lean-forward="false" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+            <state relative-caret-position="85">
+              <caret line="221" column="22" lean-forward="true" selection-start-line="221" selection-start-column="22" selection-end-line="221" selection-end-column="22" />
               <folding>
                 <element signature="e#496#505#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sprint1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sprint1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="60" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -559,22 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>matplotlib</find>
-      <find>./media</find>
-      <find>69</find>
-      <find>[0][1</find>
-      <find>angle_hist_shaped_accumulator</find>
-      <find>image_angle_hist_shaped</find>
-      <find>&lt;</find>
-      <find>.00</find>
-      <find>action_cut</find>
-      <find>16 bins</find>
-      <find>action_cut_correlation_value</find>
-      <find>Chi:0.000</find>
-      <find>0.000</find>
-      <find>action_cut_chisquared_value</find>
-      <find>255,</find>
-      <find>recta</find>
       <find>%</find>
       <find>620</find>
       <find>drawRectagleOnImage</find>
@@ -588,7 +100,23 @@
       <find>frame_counter_start_frame</find>
       <find>angle_hist_s</find>
       <find>.npy</find>
+      <find>-zc5fh</find>
       <find>ann</find>
+      <find>svgwrite</find>
+      <find>rm</find>
+      <find>clips</find>
+      <find>annot</find>
+      <find>videofile</find>
+      <find>video_extension</find>
+      <find>clip_time_padding</find>
+      <find>capture_start</find>
+      <find>capture</find>
+      <find>mil</find>
+      <find>jpg</find>
+      <find>_</find>
+      <find>frame_counter</find>
+      <find>width</find>
+      <find>draw_flow</find>
     </findStrings>
     <replaceStrings>
       <replace>_Akaze</replace>
@@ -609,18 +137,20 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/CompareHistograms.py" />
         <option value="$PROJECT_DIR$/comparehistograms.py" />
-        <option value="$PROJECT_DIR$/todo.txt" />
-        <option value="$PROJECT_DIR$/sprint8.py" />
         <option value="$PROJECT_DIR$/sprint7.py" />
         <option value="$PROJECT_DIR$/ava/extract_clips_frames_dset.py" />
+        <option value="$PROJECT_DIR$/todo.txt" />
+        <option value="$PROJECT_DIR$/sprint1.py" />
+        <option value="$PROJECT_DIR$/extract_clips_frames_dset.py" />
+        <option value="$PROJECT_DIR$/sprint8.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="480" />
-    <option name="y" value="30" />
-    <option name="width" value="1333" />
-    <option name="height" value="1023" />
+    <option name="x" value="645" />
+    <option name="y" value="29" />
+    <option name="width" value="1275" />
+    <option name="height" value="961" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -650,7 +180,24 @@
             <path>
               <item name="projectx" type="b2602c69:ProjectViewProjectNode" />
               <item name="projectx" type="462c0819:PsiDirectoryNode" />
+              <item name="ava" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectx" type="462c0819:PsiDirectoryNode" />
+              <item name="ava" type="462c0819:PsiDirectoryNode" />
+              <item name="videos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectx" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projectx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projectx" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="BallDrop1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -669,6 +216,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ava" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -687,7 +235,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.extract_clips_frames_dset">
+  <component name="RunManager" selected="Python.sprint8">
     <configuration name="CompareHistograms" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -705,6 +253,23 @@
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="extract_clips_frames_dset (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="projectx" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/extract_clips_frames_dset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="extract_clips_frames_dset" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -717,7 +282,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ava/extract_clips_frames_dset.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/extract_clips_frames_dset.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -752,22 +317,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="projectx" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sprint8.py" />
-      <option name="PARAMETERS" value="--video ./media/BallDrop1/BallDrop1.mp4 --width 320" />
+      <option name="PARAMETERS" value="--video ./media/BallDrop1/BallDrop1.mp4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.CompareHistograms" />
       <item index="1" class="java.lang.String" itemvalue="Python.sprint7" />
       <item index="2" class="java.lang.String" itemvalue="Python.sprint8" />
       <item index="3" class="java.lang.String" itemvalue="Python.extract_clips_frames_dset" />
+      <item index="4" class="java.lang.String" itemvalue="Python.extract_clips_frames_dset (1)" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.extract_clips_frames_dset" />
-        <item index="1" class="java.lang.String" itemvalue="Python.sprint7" />
-        <item index="2" class="java.lang.String" itemvalue="Python.sprint8" />
-        <item index="3" class="java.lang.String" itemvalue="Python.CompareHistograms" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.sprint8" />
+        <item index="1" class="java.lang.String" itemvalue="Python.extract_clips_frames_dset (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.CompareHistograms" />
+        <item index="3" class="java.lang.String" itemvalue="Python.extract_clips_frames_dset" />
+        <item index="4" class="java.lang.String" itemvalue="Python.sprint7" />
       </list>
     </recent_temporary>
   </component>
@@ -807,9 +374,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="480" y="30" width="1333" height="1023" extended-state="0" />
+    <frame x="645" y="29" width="1275" height="961" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16679245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17442778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33368984" sideWeight="0.20512821" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32484075" sideWeight="0.497952" order="1" side_tool="false" content_ui="tabs" />
@@ -817,9 +384,9 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32349843" sideWeight="0.4888438" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18395722" sideWeight="0.4897541" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27818757" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27733934" sideWeight="0.5294118" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38356164" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41037205" sideWeight="0.7948718" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.011565836" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.4897601" order="6" side_tool="false" content_ui="tabs" />
@@ -870,13 +437,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ava/extract_clips_frames_dset.py</url>
-          <line>121</line>
-          <option name="timeStamp" value="368" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -887,45 +447,18 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="369" />
+      <option name="time" value="389" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="tracked_mean_dist" language="Python" />
         <watch expression="tracked_dist" />
         <watch expression="histogram_comparrison_result[0][1]" language="Python" />
+        <watch expression="ffmpeg_command" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/version.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sprint0.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18450">
-          <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/version.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18450">
@@ -1014,31 +547,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sprint1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sprint2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sprint0.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sprint0.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1071,13 +583,6 @@
     </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/826386008/cv2/__init__.py" />
     <entry file="file://$PROJECT_DIR$/detectsymmetry2.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/detectSymmetry.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2250">
@@ -1242,18 +747,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
+    <entry file="file://$PROJECT_DIR$/ava/ava_action_list_v1.0.pbtxt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="308" column="29" lean-forward="false" selection-start-line="308" selection-start-column="29" selection-end-line="308" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ava/test_ava_train_v1.0.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="111127" column="43" lean-forward="true" selection-start-line="111127" selection-start-column="43" selection-end-line="111127" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ava/extract_clips_frames_dset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="116" column="34" lean-forward="false" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+        <state relative-caret-position="90">
+          <caret line="123" column="20" lean-forward="true" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dl4cv/lib/python3.5/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint0.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint0.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/BallDrop1/analysis.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="200" column="13" lean-forward="true" selection-start-line="200" selection-start-column="13" selection-end-line="200" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extract_clips_frames_dset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="221" column="22" lean-forward="true" selection-start-line="221" selection-start-column="22" selection-end-line="221" selection-end-column="22" />
           <folding>
             <element signature="e#496#505#0" expanded="true" />
           </folding>
@@ -1262,27 +823,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sprint8.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+        <state relative-caret-position="60">
+          <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sprint7.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7632">
-          <caret line="424" column="17" lean-forward="false" selection-start-line="424" selection-start-column="17" selection-end-line="424" selection-end-column="17" />
+        <state relative-caret-position="954">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <element signature="e#1840#1856#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sprint8.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="27" column="82" lean-forward="false" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>

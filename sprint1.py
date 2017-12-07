@@ -1,4 +1,25 @@
 # python sprint1.py --video ./media/20171014_180142.mp4 --width 340
+# python sprint1.py --video ./ava/clips/-5KQ66BBWC4/904.mp4
+# python sprint1.py --video ./ava/clips/zC5Fh2tTS1U/1147.mp4  1x occluded
+# python sprint1.py --video ./ava/clips/zC5Fh2tTS1U/1675.mp4  None
+# python sprint1.py --video ./ava/clips/26V9UzqSguo/925.mp4 2x scale1 and 10
+# python sprint1.py --video ./ava/clips/26V9UzqSguo/943.mp4  2x
+# python sprint1.py --video ./ava/clips/26V9UzqSguo/1321.mp4 Police Wave
+# python sprint1.py --video ./ava/clips/26V9UzqSguo/1456.mp4 None, maybe in car
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/949.mp4 3x
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/955.mp4 2x
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/961.mp4 1x scale 2
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/964.mp4 1x
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1462.mp4 1x scale 2
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1510.mp4 1x hand expansion scale 1
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1567.mp4 1x scale 2
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1753.mp4  2x A scale 2, B scale 8
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1759.mp4 scale 2
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1762.mp4 scale 2 same as previous
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1765.mp4 scale 2, GREAT CAPTURE
+# python sprint1.py --video ./ava/clips/8nO5FFbIAog/1768.mp4 scale 2, same as previous
+
+
 # Demonstrates constraining the region of attention based on analysis of change in a dynamic scene
 #
 # DONE Takes each a frame and frame+1

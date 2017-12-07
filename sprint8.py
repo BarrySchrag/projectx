@@ -1,6 +1,7 @@
 # python sprint8.py --video ./media/HandWave1/20171014_180142.mp4 --width 640 --start 60
 # python sprint8.py --video ./media/BallDrop1/BallDrop1.mp4 --width 640 -- start 45
-
+# python sprint8.py --video ./ava/clips/26V9UzqSguo/925.mp4 --width 400 #2x scale1 and 10
+# python sprint8.py --video ./ava/clips/8nO5FFbIAog/1765.mp4 --width 400 #scale 2, GREAT CAPTURE
 # Demonstrates capturing a region which has motion relevancy based on analysis of change in a dynamic scene
 # From a video stream, pick out one or more region candidates containing significant change  DONE
 #   Take each a frameN and frameN+1, apply intra-frame differencing
@@ -18,12 +19,15 @@
 #   Displays the mean vectors as a histogram
 #   Detects when the current frame vectors are significantly different from the previous set
 #       Changes the color of the box surrounding the region of interest upon every cut.
-# TODO: Investigate the data AND write a data extractor for the AVA dataset
-#   action_classification/AVA/extract_clips_frames_dset.py
+# DONE: Investigate the data AND write a data extractor for the AVA dataset
+#   action_classification/AVA/extract_clips_frames_dset.py  see sprint1.py comments section.
 # TODO:  Choose an action class, so we can build a training set
 # TODO:  Begin to export the 36 values per time step
 # TODO: (vector_angle, vector_magnitude,intra_sample_timestep,viewer_pitch, viewer_roll)
 # TODO:  Find an LSTM sample dataset to pattern after.
+# TODO Sprint 9 as of Wed Dec 6th - Brian can meet only the 11th, 18th (out 12-17)
+# TODO: choose the set of action class instances including the non class instances
+# TODO: film one of each
 
 import traceback
 import argparse
@@ -126,14 +130,11 @@ def var(v1):
     # math.sqrt ( (_x2 - x1) * (_x2 - x1) + (_y2 - y1) * (_y2 - y1) )
 #    return np.sqrt ( np.sum ( (v1 - v2) ** 2 ) )
 
-
 def sumColumn(m):
     return [sum ( col ) for col in zip ( *m )]
 
-
 def meanColumn(m):
     return [np.mean ( col ) for col in zip ( *m )]
-
 
 def draw_flow(img, arrows, flow, step=16):
     # global arrows
@@ -151,7 +152,6 @@ def draw_flow(img, arrows, flow, step=16):
         arrows.append ( [x1, y1, _x2, _y2, rad, dist] )
         cv2.circle ( vis, (x1, y1), 1, (0, 255, 0), -1 )
     return vis
-
 
 def draw_hsv(flow):
     h, w = flow.shape[:2]
@@ -325,7 +325,7 @@ ap = argparse.ArgumentParser ()
 ap.add_argument ( "-v", "--video", help="path to the (optional) video file" )
 ap.add_argument ( "-s", "--start", type=int, default=0, help="start frame index to begin processing the video file" )
 ap.add_argument ( "-p", "--testpattern", help="path to an (optional) background test pattern file" )
-ap.add_argument ( "-w", "--width", type=int, default=340, help="width to resize the image" )
+ap.add_argument ( "-w", "--width", type=int, default=400, help="width to resize the image" )
 #ap.add_argument ( "-p", "--points", type=int, default=32, help="points to detect in the image" )
 ap.add_argument ( "-a", "--min_area", type=int, default=1000, help="minimum area size" )
 ap.add_argument ( "-r", "--min_radius", type=int, default=2000, help="minimum radius size" )
@@ -439,6 +439,12 @@ try:
 
                     #video_file = './media/Miracle_1-zC5Fh2tTS1U.mp4'
                     #frame_counter_start_frame =38900
+
+                    # video_file = './ava/clips/26V9UzqSguo/925.mp4'
+                    #video_file = './ava/clips/8nO5FFbIAog/1765.mp4'
+
+                    #video_file = './ava/clips/8nO5FFbIAog/949.mp4'
+
                     source = cv2.VideoCapture ( video_file )
 
             frame_count_max = source.get ( cv2.CAP_PROP_FRAME_COUNT )
@@ -603,23 +609,34 @@ try:
             dist_to_polygon = cv2.pointPolygonTest ( c, maxLoc, True )
             dist_to_polygon2 = cv2.pointPolygonTest ( c, maxLoc2, True )
             dist_between_dt2 = distance(maxLoc,maxLoc2)
+            if frame_counter == 10:
+                 area = cv2.contourArea(c)
             area = cv2.contourArea(c)
             if area > 520 and dist_between_dt2 < 2 and dist_to_polygon > -1: #area > 800 and
                 #area > 1000 and  dist_between_dt2 < 5:#  and dist_to_polygon > 3:
                 # and blue circle contains the min and max loc..
                 bboxt = cv2.boundingRect ( c )  # x,y,w,h
-                # make square
+
+                # img.shape returns a tuple of number of rows Y, columns X and channels (if image is color):
+                # slice startY:endY, startX: endX
+                # if the box is too big (edge of screen) then continue
+                # x + w > screen width?
+                if bboxt[0] + bboxt[2] > width or  bboxt[2] + bboxt[3] > height:
+                    continue
+                bbox = bboxt
+
                 tempw = 0
                 temph = 0
-                if bboxt[2] < bboxt[3]:
-                    tempw = bboxt[3]
-                else:
-                    tempw = bboxt[2]
-                if bboxt[3] < bboxt[2]:
-                    temph = bboxt[2]
-                else:
-                    temph = bboxt[3]
-                bbox = (bboxt[0],bboxt[1],tempw,temph)
+                # make square
+                # if bboxt[2] < bboxt[3]:
+                #     tempw = bboxt[3]
+                # else:
+                #     tempw = bboxt[2]
+                # if bboxt[3] < bboxt[2]:
+                #     temph = bboxt[2]
+                # else:
+                #     temph = bboxt[3]
+                # bbox = (bboxt[0],bboxt[1],tempw,temph)
                 proposed_object_bbox = Rect ( int ( bbox[0] ), int ( bbox[1] ),
                                               int ( bbox[2] ), int ( bbox[3] ) )  # x, y, width, height):
                 #drawRectagleOnImage ( img0, bbox, (128, 128, 128) )
@@ -644,12 +661,13 @@ try:
 
                 # create a new tracked region only if we are not already tracking it
                 if proposed_box_overlaps == False:
+                    # img.shape returns a tuple of number of rows Y, columns X and channels (if image is color):
                     # slice startY:endY, startX: endX
-                    image_CropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3]-1 ),
-                                     int ( bbox[0] ):int ( bbox[0] + bbox[2]-1 )]
+                    image_CropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3]),
+                                     int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
 
                     # initialize a new feature tracker where bbox defines the region to track
-                    trackers.add ( cv2.TrackerMIL_create (), img, (bbox[0],bbox[1], bbox[2]-1,bbox[3]-1) )
+                    trackers.add ( cv2.TrackerMIL_create (), img, (bbox[0],bbox[1], bbox[2],bbox[3]) )
                     #cv2.putText ( image_CropOrig, str ( captures ), (1, 20), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
 
                     # show the region we are tracking
