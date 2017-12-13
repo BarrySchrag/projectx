@@ -13,7 +13,7 @@
 #               - execute the next step
 # Tag and track regions separately, not switching between them                               DONE
 #   Detect the external contour which encompasses the region of change                       DONE
-#   Capture a bounding box of this contour, and show it on screen                            DONE
+#   Capture a bqounding box of this contour, and show it on screen                            DONE
 # Extract the motion vectors contained in the matched region in the bounding box between frames     DONE
 #   Keep the mean vectors related to the object being tracked, and the background vectors exclusive DONE
 #   Displays the mean vectors as a histogram
