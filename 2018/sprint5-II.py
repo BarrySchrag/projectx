@@ -35,14 +35,14 @@ import logging
 from datetime import *
 
 def refreshScreen(thresh, frameDelta, img0, flow, glitch, width, height):
-    cv2.imshow("Thresh", thresh)
-    cv2.moveWindow("Thresh", 0, height)
-
-    cv2.imshow("Frame Delta", frameDelta)
-    cv2.moveWindow("Frame Delta", width, 0)
-
-    cv2.imshow("Frame", img0)
-    cv2.moveWindow("Frame", 0, 0)
+    # cv2.imshow("Thresh", thresh)
+    # cv2.moveWindow("Thresh", 0, height)
+    #
+    # cv2.imshow("Frame Delta", frameDelta)
+    # cv2.moveWindow("Frame Delta", width, 0)
+    #
+    # cv2.imshow("Frame", img0)
+    # cv2.moveWindow("Frame", 0, 0)
 
     if type ( flow ) is not type ( None ):
         cv2.imshow ("FB Flow", flow )
@@ -84,6 +84,12 @@ def sumColumn(m):
 
 def meanColumn(m):
     return [np.mean(col) for col in zip(*m)]
+
+def draw_flow2(img, arrows, flow, step=1):
+    mag, ang = cv2.cartToPolar(flow[..., 0], flow[..., 1])
+    hsv[..., 0] = ang * 180 / np.pi / 2
+    hsv[..., 2] = cv2.normalize(mag, None, 0, 255, cv2.NORM_MINMAX)
+    return cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
 
 def draw_flow(img, arrows, flow, step=16):
     #global arrows
@@ -316,6 +322,7 @@ logging.basicConfig(filename=file,
 
 logger = logging.getLogger('info')
 
+# Check this out: https://github.com/qijiezhao/OpticalFlow-SpeedTest
 while True:
     # start timer
     timer = cv2.getTickCount()
@@ -372,12 +379,11 @@ while True:
 
     height, width, channels = img0.shape
 
+    hsv = np.zeros_like(img0)
+    hsv[..., 1] = 255
+
     # Detect blobs.
     keypoints = None # detector.detect (img0)
-
-    # Draw detected blobs as red circles.
-    # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
-    #im_with_keypoints = cv2.drawKeypoints (img0, keypoints, np.array ( [] ), (0, 0, 255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS )
 
     gray = cv2.cvtColor(img0, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7,7), 0)  # or 3,5,7,9,11,13,15,17,21
@@ -399,8 +405,8 @@ while True:
     frameDelta2 = cv2.absdiff ( previousFrameDelta1, frameDelta1 )
 
     # determine min/max value location
-    (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc( frameDelta1, None )
-    (minVal2, maxVal2, minLoc2, maxLoc2) = cv2.minMaxLoc ( frameDelta2, None )
+    # (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc( frameDelta1, None )
+    # (minVal2, maxVal2, minLoc2, maxLoc2) = cv2.minMaxLoc ( frameDelta2, None )
 
     # take the threshold of the absolute difference
     if imageDerivative == 2:
@@ -413,9 +419,13 @@ while True:
 
     # determine optic flow
     if show_optic_flow_fb == True:
-        image_flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, image_thresh, 0.5, 2, 15, 2, 5, 1.1, 0) #cv2.OPTFLOW_FARNEBACK_GAUSSIAN )
+        image_flow = cv2.calcOpticalFlowFarneback ( previousGray, gray, image_thresh, 0.5, 3, 15, 3, 5, 1.2, 0)
+
+        #2, 15, 2, 5, 1.1, 0) #cv2.OPTFLOW_FARNEBACK_GAUSSIAN )
+
+
         #arrows.clear ()
-        image_flow = draw_flow ( gray, arrows, image_flow, 16 )
+        image_flow = draw_flow2 ( gray, arrows, image_flow, 16 )
 
         if show_optic_flow_hsv == True:
             image_flow = draw_hsv ( image_flow )
@@ -424,15 +434,9 @@ while True:
 #https://stackoverflow.com/questions/41760437/opencv-how-to-apply-a-filter-on-vectors-obtained-through-calcopticalflowfarneba
 
     # draw marker at max location
-    cv2.drawMarker(img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 2)
-    cv2.drawMarker ( img0, maxLoc2, (0, 0, 255), cv2.MARKER_CROSS, 20, 4 )
+    # cv2.drawMarker(img0, maxLoc, (0, 0, 255), cv2.MARKER_CROSS, 20, 2)
+    # cv2.drawMarker ( img0, maxLoc2, (0, 0, 255), cv2.MARKER_CROSS, 20, 4 )
 
-     # limit the size of the queue
-    if len(que) > count_of_concordant_points:
-        que.popleft()
-
-    # add the latest location to the que
-    que.append(maxLoc)
 
     mean_x = 0
     mean_y = 0
@@ -440,155 +444,7 @@ while True:
     y = 0
     vector_result = (0, 0)
     num_pts = len(que)
-    for xy in list(que):
-        if previousXY is None:
-            previousXY = xy
-            continue
-        # the mean distance between each x,y point is calculated
-        mean_x = abs(xy[0] - previousXY[0])
-        mean_y = abs(xy[1] - previousXY[1])
 
-        # the mean location in x,y is determined
-        x += xy[0]
-        y += xy[1]
-
-        cv2.drawMarker(img0, xy, (128, 128, 128), cv2.MARKER_CROSS, 10, 1)
-
-    # find the mean of the x, y positions
-    x /= num_pts
-    y /= num_pts
-
-    # find the mean of the distances between the points
-    mean_x /= num_pts
-    mean_y /= num_pts
-
-    # find the std deviation of the distances between each point
-    list_x = [x[0] for x in que]
-    stdev_x = np.std(list_x)
-    list_y = [y[1] for y in que]
-    stdev_y = np.std(list_y)
-
-    # find the stdev in x,y
-    stdev_in_xy = (stdev_x + stdev_y) / 2
-
-
-    # if the std deviation is small
-    if stdev_in_xy < stdev_min:
-        # draw the mean center of the x,y points
-        cv2.circle(img0, (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), (255, 0, 0), 2)
-
-        # close the holes
-        #image_thresh = cv2.dilate(image_thresh, kernel, iterations=1)
-
-        # roi = cv2.circle(np.zeros(image_thresh.shape, image_thresh.dtype),
-        #                 (int(x), int(y)), int(stdev_in_xy * scalar_stdev_in_xy), 255, -1 )
-        # image_thresh = cv2.bitwise_and(image_thresh, image_thresh, mask=roi)
-
-        # find contours - returns image, contours, hierarchy
-        (contours, hierarchy) = cv2.findContours( image_thresh, cv2.RETR_EXTERNAL,
-                                                     cv2.CHAIN_APPROX_SIMPLE, None, None )
-    #else:
-        # image_thresh = np.zeros( image_thresh.shape, image_thresh.dtype )
-        # contours.clear
-
-    if len(contours) > 0 and captures < captures_max:
-        # find the largest contour
-        c = max(contours, key=cv2.contourArea)
-        dist_to_polygon = cv2.pointPolygonTest(c, maxLoc, True)
-        if dist_to_polygon > 5:
-            bbox = cv2.boundingRect(c) # x,y,w,h
-            proposed_object_bbox = Rect ( int ( bbox[0] ), int ( bbox[1] ), int ( bbox[2] ), int ( bbox[3] ) ) # x, y, width, height):
-            drawRectagleOnImage ( img0, bbox, (128,128,128))
-            drawRectagleOnImage2 ( img0, proposed_object_bbox, (0, 0, 128) )
-
-            # We have not yet tracked anything, so add it
-            proposed_box_overlaps = False
-            if trackers.getObjects() == ():
-                proposed_box_overlaps == False
-            else:
-                # Loop through all existing bounding boxes to see if this point is already in a region
-                for i in np.arange(0, captures):
-
-                    bx = trackers.getObjects()[i]
-                    tracked_object_bbox = Rect( int(bx[0]), int(bx[1] ), int(bx[2] ), int(bx[3] ) )
-
-                    # Is the point inside the box OR the tracked objects' bounding box overlaps
-                    # Do not make a new track if we are already tracking it
-                    if (tracked_object_bbox.is_point_inside_rect(Point(maxLoc[0],maxLoc[1])) == True
-                        or proposed_object_bbox.overlaps_with(tracked_object_bbox) == True):
-                        proposed_box_overlaps = True
-
-            # create a new tracked region only if we are not already tracking it
-            if proposed_box_overlaps == False:
-                # slice startY:endY, startX: endX
-                image_CropOrig = img[int ( bbox[1] ):int ( bbox[1] + bbox[3] ),
-                             int ( bbox[0] ):int ( bbox[0] + bbox[2] )]
-
-
-                # initialize a new feature tracker where bbox defines the region to track
-                trackers.add(cv2.TrackerMIL_create(), img, bbox)
-                cv2.putText ( image_CropOrig, str(captures), (1,20), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
-
-                # show the region we are tracking
-                cv2.imshow ( str ( captures ), image_CropOrig )
-                cv2.moveWindow ( str ( captures ), capture_window_x, (height + 10) * 2 )
-                capture_window_x += int ( image_CropOrig.shape[1] ) + 10
-
-                captures += 1
-
-    # send the next image to a feature_tracker to find region in the new image
-    trackers.update(img)
-
-    vectors_tracked.clear ()
-    vectors_untracked.clear ()
-
-    # Draw bounding box if tracking success
-    for i in np.arange(0, captures):
-        bx = trackers.getObjects()[i]
-        drawRectagleOnImage (img0,  bx, (0, 255, 0) )
-        cv2.putText ( img0, str(i), (int(bx[0]+1),int(bx[1]+20)), font, 0.8, (0, 255, 0), 1, cv2.LINE_AA )
-
-        tracked_object_bbox = Rect ( int ( bx[0] ), int ( bx[1] ), int ( bx[2] ), int ( bx[3] ) )
-
-        # extract optic flow only from the tracked region
-        for x1, y1, _x2, _y2, rad, dist in arrows:
-            # Is the arrow origin inside the tracked object box? add it to our vector list
-            if tracked_object_bbox.is_point_inside_rect ( Point ( x1,y1 ) ) == True:
-                vectors_tracked.append([i, x1, y1, _x2, _y2, rad, dist])
-            else:
-                vectors_untracked.append([i, x1, y1, _x2, _y2, rad, dist])
-
-        tracked_data = meanColumn(vectors_tracked)
-        untracked_data = meanColumn(vectors_untracked)
-
-        tracked_rad = angle_between((tracked_data[1],tracked_data[2]), (tracked_data[3],tracked_data[4]))
-        tracked_dist =     distance((tracked_data[1],tracked_data[2]), (tracked_data[3],tracked_data[4]))
-        tracked_std_dev_rad =   std_dev(vectors_tracked)[5]
-        tracked_std_dev_dist =  std_dev(vectors_tracked)[6]
-        tracked_var_rad =           var(vectors_tracked)[5]
-        tracked_var_dist=           var(vectors_tracked)[6]
-        untracked_rad = angle_between ((untracked_data[1], untracked_data[2]), (untracked_data[3], untracked_data[4]))
-        untracked_dist =     distance ((untracked_data[1], untracked_data[2]), (untracked_data[3], untracked_data[4]))
-        untracked_std_dev_rad = std_dev(vectors_untracked)[5]
-        untracked_std_dev_dist= std_dev(vectors_untracked)[6]
-        untracked_var_rad =         var(vectors_untracked)[5]
-        untracked_var_dist =        var(vectors_untracked)[6]
-
-        image_data = [ tracked_data[0], 'tracked', tracked_dist, tracked_rad, math.degrees ( tracked_rad ),
-                       tracked_std_dev_dist, tracked_var_rad]
-        logger.info ( ','.join ( map ( str, image_data ) ) )
-
-        print('Tracked   item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
-              tracked_data[0], tracked_dist, tracked_rad, math.degrees(tracked_rad),
-            tracked_std_dev_dist, tracked_var_rad))
-
-        image_data = [tracked_data[0], 'untracked', untracked_dist, untracked_rad, math.degrees ( untracked_rad ),
-                      untracked_std_dev_dist, untracked_var_rad]
-        logger.info ( ','.join ( map ( str, image_data ) ) )
-
-        print ( 'UnTracked item:{}, dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format (
-                untracked_data[0], untracked_dist, untracked_rad, math.degrees(untracked_rad),
-            untracked_std_dev_dist, untracked_var_rad))
 
     # https://www.youtube.com/watch?v=WcmHxBtz3EY  # complete pan up from static camera outdoors dist:0.7 @359.9 deg
     # https://www.youtube.com/watch?v=eBL6vu9NQtw  # complete pan right static camera indoors
@@ -598,21 +454,21 @@ while True:
     # https://www.youtube.com/watch?v=yCaZW8pGijE # zoom, rotate, pan
 
 
-    # If no tracks, then average the flow field
-    if captures == 0:
-        untracked_data = meanColumn(arrows)
-        untracked_rad = angle_between((untracked_data[0], untracked_data[1]), (untracked_data[2], untracked_data[3]))
-        untracked_dist =     distance((untracked_data[0], untracked_data[1]), (untracked_data[2], untracked_data[3]))
-        untracked_std_dev_rad = std_dev ( arrows )[4]
-        untracked_std_dev_dist = std_dev ( arrows )[5]
-        untracked_var_rad = var ( arrows )[4]
-        untracked_var_dist = var ( arrows )[5]
-        image_data = [-1,'untracked', untracked_dist, untracked_rad, math.degrees (untracked_rad ),
-                      untracked_std_dev_dist,
-               untracked_var_rad]
-        logger.info(','.join(map(str, image_data)))
-        print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format(
-                untracked_dist, untracked_rad, math.degrees(untracked_rad), untracked_std_dev_dist, untracked_var_rad))
+    # # If no tracks, then average the flow field
+    # if captures == 0:
+    #     untracked_data = meanColumn(arrows)
+    #     untracked_rad = angle_between((untracked_data[0], untracked_data[1]), (untracked_data[2], untracked_data[3]))
+    #     untracked_dist =     distance((untracked_data[0], untracked_data[1]), (untracked_data[2], untracked_data[3]))
+    #     untracked_std_dev_rad = std_dev ( arrows )[4]
+    #     untracked_std_dev_dist = std_dev ( arrows )[5]
+    #     untracked_var_rad = var ( arrows )[4]
+    #     untracked_var_dist = var ( arrows )[5]
+    #     image_data = [-1,'untracked', untracked_dist, untracked_rad, math.degrees (untracked_rad ),
+    #                   untracked_std_dev_dist,
+    #            untracked_var_rad]
+    #
+    #     print ( 'Background dist:{:.1f} rad:{:.1f}, deg:{:.1f}, std_dist:{:.1f}, var_angle:{:.1f}'.format(
+    #             untracked_dist, untracked_rad, math.degrees(untracked_rad), untracked_std_dev_dist, untracked_var_rad))
 
     refreshScreen ( image_thresh, frameDeltaTemp, img0, image_flow, image_curr_glitch, width, height )
 
@@ -644,8 +500,8 @@ while True:
 
     # output result
     print (
-        'fps:{0:.1f}, frame#{1}, num_pts:{2}, stdev_x:{3:.1f}, stdev_y:{4:.1f}, stdev_in_xy:{5:.1f}, distance:{6} vector_result:{7}'.format (
-            fps, frame_counter, num_pts, stdev_x, stdev_y, stdev_in_xy, dist_to_polygon, vector_result ) )
+        'fps:{0:.1f}, frame#{1}'.format (
+            fps, frame_counter ) )
 
     # calculate Frames per second (FPS)
     fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer)
