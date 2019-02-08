@@ -6,9 +6,16 @@
 
 import argparse
 import cv2
+import sys
+if sys.version_info[0] == 3:
+    # for Python3
+    from tkinter import *   ## notice lowercase 't' in tkinter here
+else:
+    # for Python2
+    from Tkinter import *   ## notice capitalized T in Tkinter
 import matplotlib.pyplot as plt
 import imutils
-import sys
+
 
 width_resize = 400
 matches_requested = 32

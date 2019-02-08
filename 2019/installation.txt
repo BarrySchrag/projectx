@@ -1,0 +1,27 @@
+sudo apt install python3-pip
+sudo apt-get install python-matplotlib
+sudo apt-get install cython cython3
+pip3 install flask
+pip3 intall pillow
+sudo apt install ffmpeg
+sudo apt install drive # allows grabbing files from google drive
+drive init # produces a url to gain the key
+cd ~
+mkdir gdrive
+cd gdrive
+drive pull Google\ Photos\2019
+
+sudo apt-get install python3-tk 
+
+GitHub Flow projects analyzed
+PX4/OpticalFlow         12/2018  Not sure of use
+liruoteng/OpticalFlowToolkit    3/2018  KITTI 2012 Optical Flow specific
+xingdi-eric-yuan/optical-flow   8/2014 Not sure of use
+kevin-ssy/Optical-Flow-Guided-Feature 10/2018 train/test split specific
+jadarve/optical-flow-filter 7/2018 in C++, Was able to get WebCam to work 18fps 
+sahakorn/Python-optical-flow-tracking  2013 Python 2.7
+https://github.com/leon196/OpticalFlowExample  Looks like a processing sample
+Seems to be a security problem accessing media!jhgyh
+https://github.com/AdrianNunez/Fall-Detection-with-CNNs-and-Optical-Flow Jan 4 2019
+https://github.com/pathak22/pyflow  5.29 seconds for 1 image size (480,640,3)
+https://github.com/qijiezhao/py-denseflow.git

@@ -1,4 +1,4 @@
-# python sprint1.py --video ./media/20171014_180142.mp4 --width 340
+# python sprint1.py --video ./media/20171114_080046.mp4 --width 340
 # python sprint1.py --video ./ava/clips/-5KQ66BBWC4/904.mp4
 # python sprint1.py --video ./ava/clips/zC5Fh2tTS1U/1147.mp4  1x occluded
 # python sprint1.py --video ./ava/clips/zC5Fh2tTS1U/1675.mp4  None
