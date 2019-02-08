@@ -1,6 +1,6 @@
 #
 # Simple generic rectangle that works with negative and positive
-# float numbers
+#     float numbers
 #
 #    * A rectangle is made out of four points.
 #    * Iterating over a rectangle iterates over its corner points.
