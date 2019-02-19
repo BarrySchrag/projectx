@@ -1,7 +1,18 @@
 #!/bin/bash
 # 20190118_151949
-# -pix_fmt gray
-# ffmpeg  -vf format=gray,format=yuv422p
+
+pt-get install aubio-tools libaubio-dev libaubio-doc
+# aubiopitch ./processed/input_audio.mp3 > ./processed/input_audio.txt // https://media.readthedocs.org/pdf/aubio/latest/aubio.pdf
+#6  Execute: Process for pantomimes - merge videos, split, move to appropriate folders
+# merge videos w/concat demuxer: Use when you want to avoid a re-encode and your format does not support file level concatenation 
+$ cat mylist.txt
+file '/path/to/file1'
+file '/path/to/file2'
+file '/path/to/file3'
+$ ffmpeg -f concat -i mylist.txt -c copy output
+
+#https://drive.google.com/drive/search?q=type:presentation
+
 ffmpeg_path='ffmpeg'
 next_t=4
 extent_t=10

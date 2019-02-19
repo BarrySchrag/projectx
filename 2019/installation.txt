@@ -4,16 +4,32 @@ sudo apt-get install cython cython3
 pip3 install flask
 pip3 intall pillow
 sudo apt install ffmpeg
-sudo apt install drive # allows grabbing files from google drive
-drive init # produces a url to gain the key
-cd ~
-mkdir gdrive
-cd gdrive
-drive pull Google\ Photos\2019
-
 sudo apt-get install python3-tk 
+pip3 intall tensorflow
 
-GitHub Flow projects analyzed
+# Sync tool for files from google drive
+sudo apt install drive 
+    # produces a url to gain the key for google drive
+    drive init 
+    cd ~
+    mkdir <top level folder name>
+    cd <top level folder name>
+    drive pull Google\ Photos\2019
+
+# Audio tool to generate key tones to add to the PPT
+sudo apt install siggen
+    # Generate tone with
+    tones -w seq.wav 500 800 1600 3200 
+    # Play tone with 
+    aplay seq.wav
+
+# Audio tool to export all frequencies from the .mp3 file 
+sudo apt-get install aubio-tools libaubio-dev libaubio-doc
+    # export frequencies to text file
+    aubiopitch ./processed/input_audio.mp3 > ./processed/input_audio.txt 
+
+
+# GitHub Flow projects analyzed
 PX4/OpticalFlow         12/2018  Not sure of use
 liruoteng/OpticalFlowToolkit    3/2018  KITTI 2012 Optical Flow specific
 xingdi-eric-yuan/optical-flow   8/2014 Not sure of use
