@@ -1,0 +1,97 @@
+Installation steps are at the end of this document.
+
+Overall Dataflow Architecture for V1
+The Phone to takes video data and sends it up where it is processed. 
+
+Phone to Server Data collection (V1):  
+v1-10 Phone records video continuously, splitting into 1 minute intervals. Tools: IP WebCam or other
+v1-11 Phone has background process to upload video interval 30 minutes.  Tools:  DriveSync or other
+ 
+
+Processing at the server:
+The process takes a folder and iterates.  For every inbound video file 
+from google drive, preprocess and generat analagous vector output.
+
+V1 Server Processing Architecture:
+1-20. Video processing to vectorization
+      Import google drive mp4 files
+        drive pull MagickPOC
+1-21 Generic video process
+     Convert Inbound 1 minute RGB video to Grayscale - 2.6MB/7.6MB = 34% of original size, alternate format=gray 2% larger
+        ffmpeg -i input.mp4 -vf hue=s=0 ./processed/input_gray.mp4
+     Remove original file in gdrive and locally to save space
+       rm input.mp4  
+1-30 Audio Analysis
+   Export audio at 48K sample rate
+     fmpeg -i input.mp4 -vn -acodec mp3 ./processed/input_audio.mp3
+1-31 Panto sectioning
+
+1-40 Delivery to Cloud storage 
+
+1.9. Vector + Grayscale combiner
+   /projectx/optical-flow-filter/demos/flowWebCam/build$ ./flowWebCam -i "/home/barry/gdrive/Google Photos/2019/processed/input_gray.mp4" -f RGB -o "/home/barry/gdrive/Google Photos/2019/processed/input-rgb.avi" -r 50 -c "X264" 
+5. Execute: Detect audio start sequence of ppt tones as generated here 
+   # export frequencies to a text file
+   aubiopitch ./processed/input_audio.mp3 > ./processed/input_audio.txt // https://media.readthedocs.org/pdf/aubio/latest/aubio.pdf
+   # determine 800hz frequency
+   egrep '^.{10}80[0-9].' input41_audio.txt
+   # determine 3200hz frequency lines and extract the exact second when the event occured
+   a=$(egrep '^.{10}32[0-9][0-9]' input41_audio.txt | grep -o '^[^.]\+' | uniq --count | sort -nr | head -n 1 | awk '{print $2}')
+   
+
+#6  Execute: Process for pantomimes - merge videos, split, move to appropriate folders
+# merge videos w/concat demuxer: Use when you want to avoid a re-encode and your format does not support file level concatenation 
+$ cat mylist.txt
+file '/path/to/file1'
+file '/path/to/file2'
+file '/path/to/file3'
+$ ffmpeg -f concat -i mylist.txt -c copy output
+
+Define overall process 
+Phone takes videos 
+
+
+Installation steps:
+    sudo apt install python3-pip
+    sudo apt-get install python-matplotlib
+    sudo apt-get install cython cython3
+    pip3 install flask
+    pip3 intall pillow
+    sudo apt install ffmpeg
+    sudo apt-get install python3-tk 
+    pip3 intall tensorflow
+
+# Sync tool for files from google drive
+sudo apt install drive 
+    # produces a url to gain the key for google drive
+    drive init 
+    cd ~
+    mkdir <top level folder name>
+    cd <top level folder name>
+    drive pull MagickPOC
+
+# Audio tool to generate key tones to add to the PPT
+sudo apt install siggen
+    # Generate tone with
+    tones -w seq.wav 500 800 1600 3200 
+    # Play tone with 
+    aplay seq.wav
+
+# Audio tool to export all frequencies from the .mp3 file 
+sudo apt-get install aubio-tools libaubio-dev libaubio-doc
+    # export frequencies to text file
+    aubiopitch ./processed/input_audio.mp3 > ./processed/input_audio.txt 
+
+
+# GitHub Flow projects analyzed
+PX4/OpticalFlow         12/2018  Not sure of use
+liruoteng/OpticalFlowToolkit    3/2018  KITTI 2012 Optical Flow specific
+xingdi-eric-yuan/optical-flow   8/2014 Not sure of use
+kevin-ssy/Optical-Flow-Guided-Feature 10/2018 train/test split specific
+jadarve/optical-flow-filter 7/2018 in C++, Was able to get WebCam to work 18fps 
+sahakorn/Python-optical-flow-tracking  2013 Python 2.7
+https://github.com/leon196/OpticalFlowExample  Looks like a processing sample
+Seems to be a security problem accessing media!jhgyh
+https://github.com/AdrianNunez/Fall-Detection-with-CNNs-and-Optical-Flow Jan 4 2019
+https://github.com/pathak22/pyflow  5.29 seconds for 1 image size (480,640,3)
+https://github.com/qijiezhao/py-denseflow.git
