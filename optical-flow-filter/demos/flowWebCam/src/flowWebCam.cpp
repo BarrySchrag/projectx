@@ -5,7 +5,7 @@
  * \license 3-clause BSD, see LICENSE for more details
  TODO
  (py3cv4) barry@LenovoY70:~/PycharmProjects/projectx/optical-flow-filter/demos/flowWebCam/build$ make
-(py3cv4) barry@LenovoY70:~/PycharmProjects/projectx/optical-flow-filter/demos/flowWebCam/build ./flowWebCam -i 0 -f RGB -v
+(py3cv4) barry@LenovoY70:~/PycharmProjects/projectx/optical-flow-filter/demos/flowWebCam/build ./flowWebCam -i 0 -o out.avi -f RGBDegrees
  */
 
 #include <iostream>
@@ -449,10 +449,11 @@ int main(int argc, char** argv) {
             if(visualOutput) imshow("optical flow", frameMerged);
         }
         // detect user exit in the case of no opencv UI
-        if( kbhit() ) {
-            getchar();
-            break;
-        }
+        // Bug eats one character from stdin no matter what??
+        // if( kbhit() ) {
+        //     getchar();
+        //     break;
+        // }
     }
    
     if(!outputFile.empty())

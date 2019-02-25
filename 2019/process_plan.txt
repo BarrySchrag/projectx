@@ -16,6 +16,30 @@ V1 Server Processing Architecture:
 1-20. Video processing to vectorization
       Import google drive mp4 files
         drive pull MagickPOC
+14:46 pm 
+barry@LenovoY70:~/gdrive/MagickPOC/modet$ drive stat modet_2019-02-20_14-40.mp4  
+/MagickPOC/modet/modet_2019-02-20_14-40.mp4
+Filename                  modet_2019-02-20_14-40.mp4    
+FileId                    1aTUNtxpIhM-f8e5qGnqcuvjo_TunNIxD
+Bytes                     40960                         
+Size                      40.00KB                       
+QuotaBytesUsed            40960                         
+DirType                   file                          
+VersionNumber             7                             
+MimeType                  video/mp4                     
+Etag                      "dF23VBPWC0rKb2VW_F-OMTvkpUo/MTU1MDcwMjQ0NTAwMA"
+ModTime                   2019-02-20 22:40:45 +0000 UTC 
+LastViewedByMe            2019-02-20 22:45:54 +0000 UTC 
+Shared                    false                         
+Owners                    Barry Schrag                  
+LastModifyingUsername     Barry Schrag                  
+Md5Checksum               a903adcf471ffcb8d5710065515d997c
+Copyable                  true                          
+Starred                   false                         
+Viewed                    true                          
+Trashed                   false                         
+ViewersCanDownload        false       
+
 1-21 Generic video process
      Convert Inbound 1 minute RGB video to Grayscale - 2.6MB/7.6MB = 34% of original size, alternate format=gray 2% larger
         ffmpeg -i input.mp4 -vf hue=s=0 ./processed/input_gray.mp4
@@ -59,8 +83,11 @@ Installation steps:
     pip3 intall pillow
     sudo apt install ffmpeg
     sudo apt-get install python3-tk 
-    pip3 intall tensorflow
-
+    pip3 intall tensorflow-gpu
+    pip install jupyter_http_over_ws
+        One-time jupyter serverextension enable --py jupyter_http_over_ws
+    sudo apt install jq
+    
 # Sync tool for files from google drive
 sudo apt install drive 
     # produces a url to gain the key for google drive
